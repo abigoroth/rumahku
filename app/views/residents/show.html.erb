@@ -1,0 +1,23 @@
+
+<p>
+  <strong>Name:</strong>
+  <%= @resident.name %>
+</p>
+
+<p>
+  <strong>Id:</strong>
+  <%= @resident.id %>
+</p>
+
+<p>
+  <strong>Phonenum:</strong>
+  <%= @resident.phonenum %>
+</p>
+
+<p>
+  <strong>Owner:</strong>
+  <%= @resident.owner %>
+</p>
+
+<%= link_to 'Edit', edit_resident_path(@resident) %> |
+<%= link_to 'Back', residents_path %>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.topnav {
+  overflow: hidden;
+  background-color: #333;
+}
+
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.topnav a.active {
+  background-color: #4CAF50;
+  color: white;
+}
+
+</style>
+</head>
+<body>
+
+<div class="topnav">
+  <a href="http://localhost:3000/pages/admin">Home</a>
+  <a class="active" href="http://localhost:3000/users/sign_up">Resident Registration</a>
+  <a href="#contact">Car</a>
+  <a href="#about">Space Parking</a>
+</div>
+
+</body>
+</html>
+
+
+
+<form class="center">
+  <fieldset>
+    <legend><h2>Register Resident</h2></legend>
+
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%= devise_error_messages! %>
+
+        <div class="field" >
+          <%= f.label :email %><br />
+          <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+        </div>
+
+        <div class="field">
+          <%= f.label :fullname %><br />
+          <%= f.text_field :fullname, autofocus: true, autocomplete: "full_name" %>
+        </div>
+
+        <div class="field">
+          <%= f.label :aptnums %><br />
+          <%= f.text_field :aptnums, autofocus: true, autocomplete: "aptnums" %>
+        </div>
+
+        <div class="field">
+          <%= f.label :phonenum %><br />
+          <%= f.text_field :phonenum, autofocus: true, autocomplete: "phonenum" %>
+        </div>
+
+        <div class="field">
+          <%= f.label :owner %>
+            <%= f.check_box :owner %>
+        </div>
+
+        <div class="field">
+          <%= f.label :password %>
+          <% if @minimum_password_length %>
+          <em>(<%= @minimum_password_length %> characters minimum)</em>
+          <% end %><br /><br />
+          <%= f.password_field :password, autocomplete: "new-password" %>
+        </div>
+
+        <div class="field">
+          <%= f.label :password_confirmation %><br />
+          <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+        </div>
+
+        <div class="actions">
+          <%= f.submit "Sign up" %>
+        </div>
+      <% end %>
+
+      <%= render "users/shared/links" %>
+
+</fieldset>
+  </form>
