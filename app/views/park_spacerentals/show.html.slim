@@ -1,0 +1,21 @@
+p#notice = notice
+
+p
+  strong Ps:
+  = @park_spacerental.ps_id
+p
+  strong Car:
+  = @park_spacerental.car_id
+p
+  strong Start rent:
+  = @park_spacerental.start_rent
+p
+  strong End rent:
+  = @park_spacerental.end_rent
+p
+  strong Price:
+  = @park_spacerental.price
+
+=> link_to 'Edit', edit_park_spacerental_path(@park_spacerental)
+'
+=< link_to 'Back', park_spacerentals_path

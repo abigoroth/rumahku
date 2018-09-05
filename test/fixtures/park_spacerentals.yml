@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  ps_id: MyString
+  car_id: MyString
+  start_rent: 2018-09-04
+  end_rent: 2018-09-04
+  price: MyString
+
+two:
+  ps_id: MyString
+  car_id: MyString
+  start_rent: 2018-09-04
+  end_rent: 2018-09-04
+  price: MyString

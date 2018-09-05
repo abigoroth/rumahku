@@ -1,0 +1,2 @@
+class ParkSpacerental < ApplicationRecord
+end

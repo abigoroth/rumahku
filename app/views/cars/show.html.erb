@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Type:</strong>
+  <%= @car.cartype %>
+</p>
+
+<p>
+  <strong>Owner:</strong>
+  <%= @car.owner %>
+</p>
+
+<p>
+  <strong>Queue:</strong>
+  <%= @car.queue %>
+</p>
+
+<p>
+  <strong>Platnum:</strong>
+  <%= @car.platnum %>
+</p>
+
+<%= link_to 'Edit', edit_car_path(@car) %> |
+<%= link_to 'Back', cars_path %>
