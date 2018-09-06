@@ -1,0 +1,15 @@
+p#notice = notice
+
+p
+  strong Name:
+  = @parkingqueue.name
+p
+  strong Apartment number:
+  = @parkingqueue.apartment_number
+p
+  strong Date:
+  = @parkingqueue.date
+
+=> link_to 'Edit', edit_parkingqueue_path(@parkingqueue)
+'|
+=< link_to 'Back', parkingqueues_path

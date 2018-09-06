@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_05_085655) do
+ActiveRecord::Schema.define(version: 2018_09_06_080930) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 2018_09_05_085655) do
     t.string "ApartmentType"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "resident_id"
   end
 
   create_table "cars", force: :cascade do |t|
@@ -85,6 +86,14 @@ ActiveRecord::Schema.define(version: 2018_09_05_085655) do
     t.string "parknum"
     t.string "spacetype"
     t.boolean "available"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "parkingqueues", force: :cascade do |t|
+    t.string "name"
+    t.string "apartment_number"
+    t.date "date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
