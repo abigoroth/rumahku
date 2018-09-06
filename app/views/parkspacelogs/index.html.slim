@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 h1 Listing Park Space Logs
 
 
@@ -25,31 +24,3 @@ table.table.table-striped.table-bordered.table-hover
 br
 
 = link_to 'New Park Space Log', new_parkspacelog_path
-=======
-h1 Listing Park Space Logs
-
-
-table.table.table-striped.table-bordered.table-hover
-  thead.thead-dark
-    tr
-      th Parking no
-      th Date
-      th Message
-      th
-      th
-      th
-
-  tbody
-    - @parkspacelogs.each do |parkspacelog|
-      tr
-        td = parkspacelog.parking_no
-        td = parkspacelog.date
-        td = parkspacelog.message
-        td = link_to 'View', parkspacelog
-        td = link_to 'Edit', edit_parkspacelog_path(parkspacelog)
-        td = link_to 'Delete', parkspacelog, data: { confirm: 'Are you sure?' }, method: :delete
-
-br
-
-= link_to 'New Park Space Log', new_parkspacelog_path
->>>>>>> 6c0fc0d134d542fcdbd0c0602a0de364ad80eff7
