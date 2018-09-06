@@ -12,6 +12,7 @@
 
 ActiveRecord::Schema.define(version: 2018_09_05_040138) do
 ActiveRecord::Schema.define(version: 2018_09_05_032757) do
+ActiveRecord::Schema.define(version: 2018_09_05_085655) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +25,11 @@ ActiveRecord::Schema.define(version: 2018_09_05_032757) do
     t.text "NumberApartment"
     t.text "Level"
     t.string "ApartmentType"
+  create_table "cars", force: :cascade do |t|
+    t.string "cartype"
+    t.string "owner"
+    t.string "queue"
+    t.string "platnum"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -55,6 +61,24 @@ ActiveRecord::Schema.define(version: 2018_09_05_032757) do
     t.string "number_apartment"
     t.string "level"
     t.string "apartment_type"
+  create_table "park_spacerentals", force: :cascade do |t|
+    t.string "park_space_id"
+    t.string "car_id"
+    t.date "start_rent"
+    t.date "end_rent"
+    t.string "price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "park_spaces", force: :cascade do |t|
+    t.string "parknum"
+    t.string "spacetype"
+    t.boolean "available"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "parkspacelogs", force: :cascade do |t|
     t.string "parking_no"
     t.date "date"

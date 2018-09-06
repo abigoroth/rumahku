@@ -1,0 +1,21 @@
+p#notice = notice
+
+p
+  strong Park Space:
+  = link_to @park_spacerental.park_space.parknum, @park_spacerental.park_space
+p
+  strong Car:
+  = link_to @park_spacerental.car.platnum, @park_spacerental.car
+p
+  strong Start rent:
+  = @park_spacerental.start_rent
+p
+  strong End rent:
+  = @park_spacerental.end_rent
+p
+  strong Price:
+  = @park_spacerental.price
+
+=> link_to 'Edit', edit_park_spacerental_path(@park_spacerental)
+'
+=< link_to 'Back', park_spacerentals_path
