@@ -1,4 +1,6 @@
 class PagesController < ApplicationController
-  def guestregister
+  def residentlist
+  end
+  def space_rental
   end
 end

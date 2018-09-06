@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_05_080755) do
+ActiveRecord::Schema.define(version: 2018_09_05_085655) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,15 @@ ActiveRecord::Schema.define(version: 2018_09_05_080755) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
+  create_table "cars", force: :cascade do |t|
+    t.string "cartype"
+    t.string "owner"
+    t.string "queue"
+    t.string "platnum"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "guards", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -39,6 +48,17 @@ ActiveRecord::Schema.define(version: 2018_09_05_080755) do
     t.index ["reset_password_token"], name: "index_guards_on_reset_password_token", unique: true
   end
 
+  create_table "guests", force: :cascade do |t|
+    t.string "plat_number"
+    t.string "block"
+    t.string "no_apartment"
+    t.date "date"
+    t.string "phone_number"
+    t.text "purpose"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "infos", force: :cascade do |t|
     t.string "email"
     t.string "name"
@@ -47,6 +67,32 @@ ActiveRecord::Schema.define(version: 2018_09_05_080755) do
     t.boolean "owner"
     t.string "password"
     t.string "picture"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "park_spacerentals", force: :cascade do |t|
+    t.string "park_space_id"
+    t.string "car_id"
+    t.date "start_rent"
+    t.date "end_rent"
+    t.string "price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "park_spaces", force: :cascade do |t|
+    t.string "parknum"
+    t.string "spacetype"
+    t.boolean "available"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "parkspacelogs", force: :cascade do |t|
+    t.string "parking_no"
+    t.date "date"
+    t.text "message"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

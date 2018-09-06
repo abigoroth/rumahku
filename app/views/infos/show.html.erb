@@ -1,5 +1,8 @@
 <p id="notice"><%= notice %></p>
 
+
+
+
 <p>
   <strong>Email:</strong>
   <%= @info.email %>
@@ -7,17 +10,17 @@
 
 <p>
   <strong>Name:</strong>
-  <%= @info.name %>
+  <%= @info.fullname %>
 </p>
 
 <p>
   <strong>Apartmentnum:</strong>
-  <%= @info.apartmentnum %>
+  <%= @info.aptnums %>
 </p>
 
 <p>
   <strong>Phonenumber:</strong>
-  <%= @info.phonenumber %>
+  <%= @info.phonenum %>
 </p>
 
 <p>
@@ -25,15 +28,8 @@
   <%= @info.owner %>
 </p>
 
-<p>
-  <strong>Password:</strong>
-  <%= @info.password %>
-</p>
 
-<p>
-  <strong>Picture:</strong>
-  <%= @info.picture %>
-</p>
+
 
 <%= link_to 'Edit', edit_info_path(@info) %> |
 <%= link_to 'Back', infos_path %>

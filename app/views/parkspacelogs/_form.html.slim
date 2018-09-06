@@ -1,0 +1,7 @@
+=simple_form_for @parkspacelog do |f|
+  = f.input :parking_no
+  .field
+   = f.label :date
+    = f.date_select :date
+  = f.input :message
+  = f.submit
