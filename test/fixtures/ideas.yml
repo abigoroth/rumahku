@@ -1,0 +1,71 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  description: MyText
+  picture: 
+  generate: MyString
+  scaffold: MyString
+  idea: MyString
+  name: MyString
+  description: MyText
+  picture: 
+  generate: MyString
+  scaffold: MyString
+  idea: MyString
+  name: MyString
+  description: MyText
+  picture: 
+  generate: MyString
+  scaffold: MyString
+  idea: MyString
+  name: MyString
+  description: MyText
+  picture: 
+  generate: MyString
+  scaffold: MyString
+  idea: MyString
+  name: MyString
+  description: MyText
+  picture: 
+  generate: MyString
+  scaffold: MyString
+  idea: MyString
+  name: MyString
+  description: MyText
+  picture: MyString
+
+two:
+  name: MyString
+  description: MyText
+  picture: 
+  generate: MyString
+  scaffold: MyString
+  idea: MyString
+  name: MyString
+  description: MyText
+  picture: 
+  generate: MyString
+  scaffold: MyString
+  idea: MyString
+  name: MyString
+  description: MyText
+  picture: 
+  generate: MyString
+  scaffold: MyString
+  idea: MyString
+  name: MyString
+  description: MyText
+  picture: 
+  generate: MyString
+  scaffold: MyString
+  idea: MyString
+  name: MyString
+  description: MyText
+  picture: 
+  generate: MyString
+  scaffold: MyString
+  idea: MyString
+  name: MyString
+  description: MyText
+  picture: MyString

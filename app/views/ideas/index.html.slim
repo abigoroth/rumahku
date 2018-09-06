@@ -1,0 +1,85 @@
+h1 Listing ideas
+
+table
+  thead
+    tr
+      th Name
+      th Description
+      th Picture
+      th Generate
+      th Scaffold
+      th Idea
+      th Name
+      th Description
+      th Picture
+      th Generate
+      th Scaffold
+      th Idea
+      th Name
+      th Description
+      th Picture
+      th Generate
+      th Scaffold
+      th Idea
+      th Name
+      th Description
+      th Picture
+      th Generate
+      th Scaffold
+      th Idea
+      th Name
+      th Description
+      th Picture
+      th Generate
+      th Scaffold
+      th Idea
+      th Name
+      th Description
+      th Picture
+      th
+      th
+      th
+
+  tbody
+    - @ideas.each do |idea|
+      tr
+        td = idea.name
+        td = idea.description
+        td = idea.picture
+        td = idea.generate
+        td = idea.scaffold
+        td = idea.idea
+        td = idea.name
+        td = idea.description
+        td = idea.picture
+        td = idea.generate
+        td = idea.scaffold
+        td = idea.idea
+        td = idea.name
+        td = idea.description
+        td = idea.picture
+        td = idea.generate
+        td = idea.scaffold
+        td = idea.idea
+        td = idea.name
+        td = idea.description
+        td = idea.picture
+        td = idea.generate
+        td = idea.scaffold
+        td = idea.idea
+        td = idea.name
+        td = idea.description
+        td = idea.picture
+        td = idea.generate
+        td = idea.scaffold
+        td = idea.idea
+        td = idea.name
+        td = idea.description
+        td = idea.picture
+        td = link_to 'Show', idea
+        td = link_to 'Edit', edit_idea_path(idea)
+        td = link_to 'Destroy', idea, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Idea', new_idea_path

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -32,3 +33,39 @@
 
 <%= link_to 'Edit', edit_guest_path(@guest) %> |
 <%= link_to 'Back', guests_path %>
+=======
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Plat number:</strong>
+  <%= @guest.plat_number %>
+</p>
+
+<p>
+  <strong>Block:</strong>
+  <%= @guest.block %>
+</p>
+
+<p>
+  <strong>No apartment:</strong>
+  <%= @guest.no_apartment %>
+</p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @guest.date %>
+</p>
+
+<p>
+  <strong>Phone number:</strong>
+  <%= @guest.phone_number %>
+</p>
+
+<p>
+  <strong>Purpose:</strong>
+  <%= @guest.purpose %>
+</p>
+
+<%= link_to 'Edit', edit_guest_path(@guest) %> |
+<%= link_to 'Back', guests_path %>
+>>>>>>> 6c0fc0d134d542fcdbd0c0602a0de364ad80eff7

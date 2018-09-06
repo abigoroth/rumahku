@@ -1,0 +1,37 @@
+h1 Listing jeng2s
+
+form.example action="/action_page.php" 
+  input name="search" placeholder="Search.." type="text" /
+  
+table.table.table-striped.table-bordered.table-hover
+  thead.thead-dark
+    tr
+      th Name
+      th Age
+      th Parking number
+      th Phone number
+      th Number apartment
+      th Level
+      th Apartment type
+      th
+      th
+      th
+
+  tbody
+    - @jeng2s.each do |jeng2|
+      tr
+        td = jeng2.name
+        td = jeng2.age
+        td = jeng2.parking_number
+        td = jeng2.phone_number
+        td = jeng2.number_apartment
+        td = jeng2.level
+        td = jeng2.apartment_type
+        td = link_to 'Show', jeng2
+        td = link_to 'Edit', edit_jeng2_path(jeng2)
+        td = link_to 'Destroy', jeng2, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Jeng2', new_jeng2_path 
+= link_to 'Back', pages_main_path 

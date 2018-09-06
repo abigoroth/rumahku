@@ -20,6 +20,7 @@
     </p>
 
   <body>
+    <div class="container">
     <% if notice %>
   <p class="alert alert-success"><%= notice %></p>
 <% end %>
@@ -27,5 +28,6 @@
   <p class="alert alert-danger"><%= alert %></p>
 <% end %>
     <%= yield %>
+  </div>
   </body>
 </html>
