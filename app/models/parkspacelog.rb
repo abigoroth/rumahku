@@ -1,0 +1,2 @@
+class Parkspacelog < ApplicationRecord
+end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_05_053718) do
+ActiveRecord::Schema.define(version: 2018_09_05_085655) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,12 +24,39 @@ ActiveRecord::Schema.define(version: 2018_09_05_053718) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "guests", force: :cascade do |t|
+    t.string "plat_number"
+    t.string "block"
+    t.string "no_apartment"
+    t.date "date"
+    t.string "phone_number"
+    t.text "purpose"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "park_spacerentals", force: :cascade do |t|
-    t.string "ps_id"
+    t.string "park_space_id"
     t.string "car_id"
     t.date "start_rent"
     t.date "end_rent"
     t.string "price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "park_spaces", force: :cascade do |t|
+    t.string "parknum"
+    t.string "spacetype"
+    t.boolean "available"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "parkspacelogs", force: :cascade do |t|
+    t.string "parking_no"
+    t.date "date"
+    t.text "message"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

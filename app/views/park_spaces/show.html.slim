@@ -1,0 +1,32 @@
+p#notice = notice
+
+p
+  strong Park Number:
+  = @park_space.parknum
+p
+  strong Space Type:
+  = @park_space.spacetype
+p
+  strong Available:
+  = @park_space.available
+
+=> link_to 'Edit', edit_park_space_path(@park_space)
+'|
+=< link_to 'Back', park_spaces_path
+
+table.table 
+  thead
+    tr 
+      th No 
+      th Car 
+      th Start Date
+      th End Date
+  tbody
+    - @park_space.park_spacerentals.each_with_index do |psr,index| 
+      tr 
+        td = index+1
+        td = psr.car.platnum
+        td = psr.start_rent
+        td = psr.end_rent
+
+

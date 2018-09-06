@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  plat_number: MyString
+  block: MyString
+  no_apartment: MyString
+  date: MyString
+  phone_number: MyString
+  purpose: MyText
+
+two:
+  plat_number: MyString
+  block: MyString
+  no_apartment: MyString
+  date: MyString
+  phone_number: MyString
+  purpose: MyText

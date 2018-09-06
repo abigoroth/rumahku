@@ -15,7 +15,7 @@ table class="table table-striped table-bordered table-hover"
   tbody
     - @park_spacerentals.each do |park_spacerental|
       tr
-        td = park_spacerental.ps_id
+        td = park_spacerental.park_space_id
         td = park_spacerental.car_id
         td = park_spacerental.start_rent
         td = park_spacerental.end_rent

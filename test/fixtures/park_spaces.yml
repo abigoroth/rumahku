@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  parknum: MyString
+  spacetype: MyString
+  available: false
+
+two:
+  parknum: MyString
+  spacetype: MyString
+  available: false

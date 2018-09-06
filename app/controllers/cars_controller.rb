@@ -1,11 +1,13 @@
 class CarsController < ApplicationController
   before_action :set_car, only: [:show, :edit, :update, :destroy]
 
+
   # GET /cars
   # GET /cars.json
   def index
     @cars = Car.all
-  end
+   end        
+ 
 
   # GET /cars/1
   # GET /cars/1.json

@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  parking_no: MyString
+  date: 2018-09-05
+  message: MyText
+
+two:
+  parking_no: MyString
+  date: 2018-09-05
+  message: MyText
