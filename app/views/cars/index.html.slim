@@ -1,0 +1,29 @@
+h1 cars
+
+table#dttb-cars.responsive.nowrap.table.table-hover data-sort="true" data-source="#{url_for(format: :json)}"
+  thead
+    tr
+      th data-data="type" Cartype
+      th data-data="owner" Owner
+      th data-data="queue" Queue
+      th data-data="platnum" Platnum
+      th data-data="url" data-orderable="false" data-class-name="all" data-searchable="false" class="skip-export" width="100px"
+      th
+      th
+      
+  tbody
+    - @cars.each do |car| 
+      tr
+        td = car.cartype 
+        td = car.owner 
+        td = car.queue 
+        td = car.platnum 
+        td = link_to 'Show', car 
+        td = link_to 'Edit', edit_car_path(car) 
+        td = link_to 'Delete', car, data: { confirm: 'Are you sure?' }, method: :delete
+        
+        
+
+br
+
+= link_to 'New Car', new_car_path 

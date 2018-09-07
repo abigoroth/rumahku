@@ -1,21 +1,19 @@
 h1 Listing jeng2s
-
-form.example action="/action_page.php" 
-  input name="search" placeholder="Search.." type="text" /
   
-table.table.table-striped.table-bordered.table-hover
-  thead.thead-dark
+table#dttb-jeng2s.responsive.nowrap.table.table-hover data-sort="true" data-source="#{url_for(format: :json)}"
+  thead
     tr
-      th Name
-      th Age
-      th Parking number
-      th Phone number
-      th Number apartment
-      th Level
-      th Apartment type
+      th data-data="name" Name
+      th data-data="age" Age
+      th data-data="parking_number" Parking number
+      th data-data="phone_number" Phone number
+      th data-data="number_apartment" Number apartment
+      th data-data="level" Level
+      th data-data="apartment_type" Apartment type
+      th data-data="url" data-orderable="false" data-class-name="all" data-searchable="false" class="skip-export" width="100px"
       th 
       th
-      th
+    
 
   tbody
     - @jeng2s.each do |jeng2|
@@ -33,5 +31,5 @@ table.table.table-striped.table-bordered.table-hover
 
 br
 
-= link_to 'New Jeng2', new_jeng2_path 
+= link_to 'New Resident', new_jeng2_path 
 = link_to 'Back', pages_main_path 
