@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   devise_for :guards
   devise_for :admins
   devise_for :users
-  root to: redirect('/pages/main')
+  root to: redirect('/pages/residentlist')
   get 'pages/main'
  
   resources :users
@@ -39,10 +39,9 @@ end
 
 namespace :guard do
   resources :posts
-  root to: redirect('/pages/guard')
+  root to: redirect('/guests')
 end
 
-end
 
   resources :jeng3s
   resources :jeng2s

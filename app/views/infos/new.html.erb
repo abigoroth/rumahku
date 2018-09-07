@@ -1,7 +1,9 @@
-
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
 body {
-  width: 50%;
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
 }
@@ -28,62 +30,24 @@ body {
 .topnav a.active {
   background-color: #4CAF50;
   color: white;
-  
 }
 
-table {
-    font-family: arial, sans-serif;
-    border-collapse: collapse;
-    width: 80%;
-}
-
-td, th {
-    border: 1px solid #dddddd;
-    text-align: center;
-    padding: 8px;
-}
-
-.center {
-    text-align: center;
-    border: 3px ;
-}
-
-input[type=text], select {
-    width: 80%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-    
-}
-
-input[type=submit] {
-    width: 100%;
-    background-color: #4CAF50;
-    color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-input[type=submit]:hover {
-    background-color: #45a049;
-}
-
-div {
-    border-radius: 5px;
-    background-color: #f2f2f2;
-    padding: 20px;
-    align: center;
-}
 
 </style>
+<div class="topnav">
+  <a href="http://localhost:3000/pages/admin">Home</a>
+  <a class="active" href="hhttp://localhost:3000/infos/new">Resident Registration</a>
+  <a href="http://localhost:3000/infos">Resident List</a>
+  <a href="http://localhost:3000/cars">Car</a>
+  <a href="http://localhost:3000/pages/main">Apartment</a>
+  <a href="http://localhost:3000/park_spaces">Space Parking</a>
+   <a href="http://localhost:3000/parkspacelogs">Space Log</a>
+</div>
 
+<br>
+<br>
 <h2 style="text-align:center;"> Resident Registration </h2>
+
 
 
 <%= render 'form', info: @info %>

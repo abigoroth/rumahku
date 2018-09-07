@@ -15,7 +15,6 @@ ActiveRecord::Schema.define(version: 2018_09_05_085655) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-<<<<<<< HEAD
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -26,7 +25,8 @@ ActiveRecord::Schema.define(version: 2018_09_05_085655) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_admins_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
-=======
+  end
+
   create_table "apartments", force: :cascade do |t|
     t.string "Name"
     t.text "Age"
@@ -37,7 +37,6 @@ ActiveRecord::Schema.define(version: 2018_09_05_085655) do
     t.string "ApartmentType"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
->>>>>>> 6c0fc0d134d542fcdbd0c0602a0de364ad80eff7
   end
 
   create_table "cars", force: :cascade do |t|
@@ -49,7 +48,6 @@ ActiveRecord::Schema.define(version: 2018_09_05_085655) do
     t.datetime "updated_at", null: false
   end
 
-<<<<<<< HEAD
   create_table "guards", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -62,8 +60,6 @@ ActiveRecord::Schema.define(version: 2018_09_05_085655) do
     t.index ["reset_password_token"], name: "index_guards_on_reset_password_token", unique: true
   end
 
-=======
->>>>>>> 6c0fc0d134d542fcdbd0c0602a0de364ad80eff7
   create_table "guests", force: :cascade do |t|
     t.string "plat_number"
     t.string "block"
@@ -75,7 +71,6 @@ ActiveRecord::Schema.define(version: 2018_09_05_085655) do
     t.datetime "updated_at", null: false
   end
 
-<<<<<<< HEAD
   create_table "infos", force: :cascade do |t|
     t.string "email"
     t.string "name"
@@ -84,7 +79,10 @@ ActiveRecord::Schema.define(version: 2018_09_05_085655) do
     t.boolean "owner"
     t.string "password"
     t.string "picture"
-=======
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "jeng2s", force: :cascade do |t|
     t.string "name"
     t.text "age"
@@ -105,7 +103,6 @@ ActiveRecord::Schema.define(version: 2018_09_05_085655) do
     t.string "number_apartment"
     t.string "level"
     t.string "apartment_type"
->>>>>>> 6c0fc0d134d542fcdbd0c0602a0de364ad80eff7
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -136,7 +133,6 @@ ActiveRecord::Schema.define(version: 2018_09_05_085655) do
     t.datetime "updated_at", null: false
   end
 
-<<<<<<< HEAD
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -153,6 +149,4 @@ ActiveRecord::Schema.define(version: 2018_09_05_085655) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-=======
->>>>>>> 6c0fc0d134d542fcdbd0c0602a0de364ad80eff7
 end

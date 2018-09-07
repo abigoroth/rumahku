@@ -1,5 +1,5 @@
 
-<%= simple_form_for(@info) do |f| %>
+<%= simple_form_for @info, url: :info do |f| %>
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
@@ -9,6 +9,7 @@
     <%= f.input :aptnums %>
     <%= f.input :phonenum %>
     <%= f.input :owner %>
+    <%= f.input :password %>
 
   </div>
 

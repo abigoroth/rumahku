@@ -4,7 +4,7 @@ class InfosController < ApplicationController
   # GET /infos
   # GET /infos.json
   def index
-    @infos = Info.all
+    @infos = User.all 
   end
 
   # GET /infos/1
@@ -14,7 +14,7 @@ class InfosController < ApplicationController
 
   # GET /infos/new
   def new
-    @info = Info.new
+    @info = User.new
   end
 
   # GET /infos/1/edit
@@ -42,7 +42,7 @@ class InfosController < ApplicationController
   def update
     respond_to do |format|
       if @info.update(info_params)
-        format.html { redirect_to @info, notice: 'Info was successfully updated.' }
+        format.html { redirect_to infos_path, notice: 'Info was successfully updated.' }
         format.json { render :show, status: :ok, location: @info }
       else
         format.html { render :edit }
@@ -61,14 +61,16 @@ class InfosController < ApplicationController
     end
   end
 
+
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_info
-      @info = Info.find(params[:id])
+      @info = User.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def info_params
-      params.require(:info).permit(:email, :fullname, :aptnums, :phonenum, :owner, :password, :picture)
+      params.require(:user).permit(:email, :fullname, :aptnums, :phonenum, :owner, :password, :picture)
     end
 end

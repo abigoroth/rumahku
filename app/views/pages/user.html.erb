@@ -40,64 +40,25 @@ body {
 
 <div class="topnav">
   <a class="active" href="http://localhost:3000/pages/user">Home</a>
-  <a href="http://localhost:3000/users/sign_up">Guest Registration</a>
-  <a href="#contact">Car</a>
+  <a href="http://localhost:3000/guests/new">Guest Registration</a>
+  <a href="http://localhost:3000/cars/new">Car</a>
   <a href="#contact">Apartment</a>
   <a href="#about">Space Parking</a>
 </div>
 
 </body>
 </html>
-<h1>Admin starting page</h1>
+<h1>Resident Information</h1>
 
-<%= User.all.inspect %> 
+Email : <%= current_user.email %></h1>
+<br>
+<br>
+<%= link_to 'http://localhost:3000/users/edit', infos_path %>
 
-<h2> </h2>
 
 
-
-<h1>Resident</h1>
-
-<h1><%= current_user.email %></h1>
-<h1><%= current_user.fullname %></h1>
-<h1><%= current_user.email %></h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Email</th>
-      <th>Name</th>
-      <th>Apartmentnum</th>
-      <th>Phonenumber</th>
-      <th>Owner</th>
-      <th>Password</th>
-    
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @users= User.all %>
-    <% @users.each do |user| %>
-      <tr>
-        <td><%= user.email %></td>
-        <td><%= user.fullname %></td>
-        <td><%= user.aptnums %></td>
-        <td><%= user.phonenum %></td>
-        <td><%= user.owner %></td>
-        <td><%= user.password %></td>
-       
-        <td><%= link_to 'Show', user %></td>
-        <td><%= link_to 'Edit', edit_user_path(user) %></td>
-        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
 
 <br>
-
-<%= link_to 'New user', new_user_path %>
 
 
 
