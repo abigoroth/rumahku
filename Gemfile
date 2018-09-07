@@ -1,6 +1,11 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
+gem 'devise'
+gem 'simple_form'
+gem 'slim'
+
+
 ruby '2.5.1'
 
 gem 'bootstrap'
