@@ -1,7 +1,6 @@
 =simple_form_for @parkspacelog do |f|
+  = f.error_notification
   = f.input :parking_no
-  .field
-   = f.label :date
-    = f.date_select :date
+  = f.input :date, label: "Date Incident"
   = f.input :message
   = f.submit

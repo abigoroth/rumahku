@@ -2,10 +2,7 @@
   = f.input :plat_number 
   = f.input :block, collection:["JENG1", "JENG2", "JENG3"]
   = f.input :no_apartment
-  .field
-    = f.label :date
-    = f.date_select :date
-
+  = f.input :date, label: "Date Guest Coming"
   = f.input :phone_number 
   = f.input :purpose 
   = f.submit 
