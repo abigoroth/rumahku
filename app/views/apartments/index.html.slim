@@ -3,10 +3,9 @@ h1 Listing apartments
 table#dttb-jeng2s.responsive.nowrap.table.table-hover data-sort="true" data-source="#{url_for(format: :json)}"
   thead
     tr
-      th data-data="name" Name
-      th data-data="age" Age
-      th data-data="parking_number" Parking Number
-      th data-data="phone_number" Hp Number 
+      //th data-data="age" Age
+      //th data-data="parking_number" Parking Number
+      //th data-data="phone_number" Hp Number 
       th data-data="number_apartment" Number Apartment
       th data-data="level" Level
       th data-data="apartment_type" Apartment Type
@@ -18,10 +17,6 @@ table#dttb-jeng2s.responsive.nowrap.table.table-hover data-sort="true" data-sour
   tbody
     - @apartments.each do |apartment|
       tr
-        td = apartment.Name
-        td = apartment.Age
-        td = apartment.ParkingNumber
-        td = apartment.HpNumber
         td = apartment.NumberApartment
         td = apartment.Level
         td = apartment.ApartmentType
