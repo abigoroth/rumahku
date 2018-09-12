@@ -31,6 +31,15 @@ Rails.application.routes.draw do
   devise_for :users
   root to: redirect('/pages/residentlist')
   get 'pages/main'
+
+  resources :parkingqueues
+  resources :park_spaces
+  resources :park_spacerentals
+  get 'pages/space_rental'
+  resources :cars
+  resources :parkspacelogs
+  resources :guests
+  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
  
   resources :users
   resources :residentlists
@@ -52,6 +61,7 @@ namespace :guard do
   root to: redirect('/guests')
 end
 
+
   resources :parkingqueues
   resources :jeng3s
   resources :jeng2s
@@ -62,4 +72,6 @@ end
   resources :guests
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
+
+
 
