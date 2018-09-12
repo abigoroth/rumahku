@@ -5,11 +5,12 @@ table#dttb-jeng2s.responsive.nowrap.table.table-hover data-sort="true" data-sour
     tr
       th data-data="name" Name
       th data-data="age" Age
-      th data-data="parking_number" ParkingNumber
-      th data-data="phone_number" HpNumber 
-      th data-data="number_apartment" NumberApartment
+      th data-data="parking_number" Parking Number
+      th data-data="phone_number" Hp Number 
+      th data-data="number_apartment" Number Apartment
       th data-data="level" Level
-      th data-data="apartment_type" ApartmentType
+      th data-data="apartment_type" Apartment Type
+      th data-data="parking_queue" Parking Queue
       th data-data="url" data-orderable="false" data-class-name="all" data-searchable="false" class="skip-export" width="100px"
       th 
       th
@@ -24,6 +25,7 @@ table#dttb-jeng2s.responsive.nowrap.table.table-hover data-sort="true" data-sour
         td = apartment.NumberApartment
         td = apartment.Level
         td = apartment.ApartmentType
+        td = apartment.parking_queue
         td = link_to 'Show', apartment
         td = link_to 'Edit', edit_apartment_path(apartment)
         td = link_to 'Destroy', apartment, data: { confirm: 'Are you sure?' }, method: :delete

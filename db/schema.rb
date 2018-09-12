@@ -10,10 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_06_080930) do
+ActiveRecord::Schema.define(version: 2018_09_12_030448) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "admins", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_admins_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
+  end
 
   create_table "apartments", force: :cascade do |t|
     t.string "Name"
@@ -26,6 +38,7 @@ ActiveRecord::Schema.define(version: 2018_09_06_080930) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "resident_id"
+    t.date "parking_queue"
   end
 
   create_table "cars", force: :cascade do |t|
@@ -37,13 +50,26 @@ ActiveRecord::Schema.define(version: 2018_09_06_080930) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "guests", force: :cascade do |t|
-    t.string "plat_number"
-    t.string "block"
-    t.string "no_apartment"
-    t.date "date"
-    t.string "phone_number"
-    t.text "purpose"
+  create_table "guards", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_guards_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_guards_on_reset_password_token", unique: true
+  end
+
+  create_table "infos", force: :cascade do |t|
+    t.string "email"
+    t.string "name"
+    t.string "apartmentnum"
+    t.string "phonenumber"
+    t.boolean "owner"
+    t.string "password"
+    t.string "picture"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -91,20 +117,36 @@ ActiveRecord::Schema.define(version: 2018_09_06_080930) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "parkingqueues", force: :cascade do |t|
-    t.string "name"
-    t.string "apartment_number"
-    t.date "date"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "parkspacelogs", force: :cascade do |t|
     t.string "parking_no"
     t.date "date"
     t.text "message"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "residents", force: :cascade do |t|
+    t.string "name"
+    t.string "phonenum"
+    t.boolean "owner"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "fname"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.boolean "owner"
+    t.string "fullname"
+    t.string "aptnums"
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
 end
