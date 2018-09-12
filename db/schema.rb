@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_06_085822) do
+ActiveRecord::Schema.define(version: 2018_09_10_065240) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,7 +47,7 @@ ActiveRecord::Schema.define(version: 2018_09_06_085822) do
     t.string "platnum"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "apt_id"
+    t.string "apartment_id"
   end
 
   create_table "guards", force: :cascade do |t|
@@ -60,17 +60,6 @@ ActiveRecord::Schema.define(version: 2018_09_06_085822) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_guards_on_email", unique: true
     t.index ["reset_password_token"], name: "index_guards_on_reset_password_token", unique: true
-  end
-
-  create_table "guests", force: :cascade do |t|
-    t.string "plat_number"
-    t.string "block"
-    t.string "no_apartment"
-    t.date "date"
-    t.string "phone_number"
-    t.text "purpose"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "infos", force: :cascade do |t|
@@ -117,7 +106,7 @@ ActiveRecord::Schema.define(version: 2018_09_06_085822) do
     t.string "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "apt_id"
+    t.string "apartment_id"
   end
 
   create_table "park_spaces", force: :cascade do |t|
@@ -144,6 +133,15 @@ ActiveRecord::Schema.define(version: 2018_09_06_085822) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "residents", force: :cascade do |t|
+    t.string "name"
+    t.string "phonenum"
+    t.boolean "owner"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "fname"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -155,7 +153,6 @@ ActiveRecord::Schema.define(version: 2018_09_06_085822) do
     t.boolean "owner"
     t.string "fullname"
     t.string "aptnums"
-    t.string "phonenum"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

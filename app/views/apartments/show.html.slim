@@ -1,0 +1,36 @@
+p#notice
+  = notice
+p
+  strong
+    | Name:
+  = @apartment.Name
+p
+  strong
+    | Age:
+  = @apartment.Age
+p
+  strong
+    | Parkingnumber:
+  = @apartment.ParkingNumber
+p
+  strong
+    | Hpnumber:
+  = @apartment.HpNumber
+p
+  strong
+    | Numberapartment:
+  = @apartment.NumberApartment
+p
+  strong
+    | Level:
+  = @apartment.Level
+p
+  strong
+    | Apartmenttype:
+  = @apartment.ApartmentType
+  
+ 
+
+= link_to 'Edit', edit_apartment_path(@apartment)
+|  | 
+= link_to 'Back', apartments_path
