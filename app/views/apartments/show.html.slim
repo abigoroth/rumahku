@@ -1,21 +1,6 @@
 p#notice
   = notice
-p
-  strong
-    | Name:
-  = @apartment.Name
-p
-  strong
-    | Age:
-  = @apartment.Age
-p
-  strong
-    | Parkingnumber:
-  = @apartment.ParkingNumber
-p
-  strong
-    | Hpnumber:
-  = @apartment.HpNumber
+
 p
   strong
     | Numberapartment:
@@ -28,6 +13,10 @@ p
   strong
     | Apartmenttype:
   = @apartment.ApartmentType
+p
+  strong
+    | ParkingQueue:
+  = @apartment.parking_queue 
   
  
 
