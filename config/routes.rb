@@ -8,6 +8,16 @@ Rails.application.routes.draw do
   resources :guests
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   
+  resources :parkingqueues
+  resources :park_spaces
+  resources :park_spacerentals
+  get 'pages/space_rental'
+  resources :cars
+  resources :parkspacelogs
+  resources :guests
+  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+
   get 'pages/residentlist'
   resources :infos
   resources :res

@@ -10,6 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+ActiveRecord::Schema.define(version: 2018_09_12_030448) do
 ActiveRecord::Schema.define(version: 2018_09_10_065240) do
 
   # These are extensions that must be enabled in order to support this database
@@ -38,6 +39,7 @@ ActiveRecord::Schema.define(version: 2018_09_10_065240) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "resident_id"
+    t.date "parking_queue"
   end
 
   create_table "cars", force: :cascade do |t|
@@ -117,20 +119,21 @@ ActiveRecord::Schema.define(version: 2018_09_10_065240) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "parkingqueues", force: :cascade do |t|
-    t.string "name"
-    t.string "apartment_number"
-    t.date "date"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "parkspacelogs", force: :cascade do |t|
     t.string "parking_no"
     t.date "date"
     t.text "message"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "residents", force: :cascade do |t|
+    t.string "name"
+    t.string "phonenum"
+    t.boolean "owner"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "fname"
   end
 
   create_table "residents", force: :cascade do |t|
