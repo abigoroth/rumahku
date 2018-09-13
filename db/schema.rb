@@ -91,14 +91,6 @@ ActiveRecord::Schema.define(version: 2018_09_13_035313) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "parkingqueues", force: :cascade do |t|
-    t.string "name"
-    t.string "apartment_number"
-    t.date "date"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "parkspacelogs", force: :cascade do |t|
     t.string "parking_no"
     t.date "date"
