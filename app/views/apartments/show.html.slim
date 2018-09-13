@@ -3,7 +3,12 @@ p#notice
 
 p
   strong
-    | Numberapartment:
+    | Resident ID :
+  = link_to @apartment.user .aptnums, info_path(@apartment.user) 
+
+p
+  strong
+    | Number Apartment:
   = @apartment.NumberApartment
 p
   strong
@@ -11,7 +16,7 @@ p
   = @apartment.Level
 p
   strong
-    | Apartmenttype:
+    | Apartment Type:
   = @apartment.ApartmentType
 p
   strong
