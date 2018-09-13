@@ -14,6 +14,13 @@ p
 '|
 =< link_to 'Back', park_spaces_path
 
+
+- park_spacerentals = @park_space.park_spacerentals.where("end_rent > '#{Date.today}'")
+- if park_spacerentals.length > 0
+  h1 Not Available 
+- else 
+  h1 Available
+
 table.table 
   thead
     tr 
@@ -30,4 +37,10 @@ table.table
         td = psr.end_rent
         
 
+
+/form
+  input onclick="window.location.href='http://localhost:3000/park_spaces'" type="button" value=("List Park Space") /
+
+form
+    input onclick="window.location.href='http://localhost:3000/park_spaces'" style=("width: 300px; padding: 20px; cursor: pointer; box-shadow: 6px 6px 5px; #999; -webkit-box-shadow: 6px 6px 5px #999; -moz-box-shadow: 6px 6px 5px #999; font-weight: bold; background: #FA8072 ; color: #000; border-radius: 10px; border: 1px solid #999; font-size: 150%;") type="button" value=("List Park Space") /
 
