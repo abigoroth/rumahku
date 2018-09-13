@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 2018_09_12_065307) do
   end
 
   create_table "apartments", force: :cascade do |t|
+    t.text "Age"
     t.text "NumberApartment"
     t.text "Level"
     t.string "ApartmentType"
