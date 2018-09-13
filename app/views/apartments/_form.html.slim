@@ -1,7 +1,8 @@
+=@apartment.errors.inspect if @apartment.errors.any?
 =simple_form_for @apartment do |f|
   = f.input :NumberApartment
   = f.input :Level, collection:["1", "2", "3"]
   = f.input :ApartmentType, collection:["house", "shop"]
   //= f.input :resident_id
-  = f.input :parking_queue
+  //= f.input :parking_queue
   = f.submit
