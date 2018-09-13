@@ -1,5 +1,6 @@
 =@apartment.errors.inspect if @apartment.errors.any?
 =simple_form_for @apartment do |f|
+  = f.association :user, label_method: :aptnums
   = f.input :NumberApartment
   = f.association :info, label_method: :aptnums
   = f.input :Level, collection:["1", "2", "3"]
