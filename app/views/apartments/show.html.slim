@@ -1,0 +1,25 @@
+p#notice
+  = notice
+
+p
+  strong
+    | Numberapartment:
+  = @apartment.NumberApartment
+p
+  strong
+    | Level:
+  = @apartment.Level
+p
+  strong
+    | Apartmenttype:
+  = @apartment.ApartmentType
+p
+  strong
+    | ParkingQueue:
+  = @apartment.parking_queue 
+  
+ 
+
+= link_to 'Edit', edit_apartment_path(@apartment)
+|  | 
+= link_to 'Back', apartments_path

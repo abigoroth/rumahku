@@ -24,11 +24,11 @@ class InfosController < ApplicationController
   # POST /infos
   # POST /infos.json
   def create
-    @info = Info.new(info_params)
+    @info = User.new(info_params)
 
     respond_to do |format|
       if @info.save
-        format.html { redirect_to @info, notice: 'Info was successfully created.' }
+        format.html { redirect_to infos_path, notice: 'Info was successfully created.' }
         format.json { render :show, status: :created, location: @info }
       else
         format.html { render :new }
@@ -61,7 +61,9 @@ class InfosController < ApplicationController
     end
   end
 
-
+  def request_parking_queue
+    render plain: "hooray"
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -73,4 +75,6 @@ class InfosController < ApplicationController
     def info_params
       params.require(:user).permit(:email, :fullname, :aptnums, :phonenum, :owner, :password, :picture)
     end
+
+
 end

@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_06_080930) do
-ActiveRecord::Schema.define(version: 2018_09_06_074036) do
+ActiveRecord::Schema.define(version: 2018_09_12_065307) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,16 +28,15 @@ ActiveRecord::Schema.define(version: 2018_09_06_074036) do
   end
 
   create_table "apartments", force: :cascade do |t|
-    t.string "Name"
     t.text "Age"
-    t.text "ParkingNumber"
-    t.text "HpNumber"
     t.text "NumberApartment"
     t.text "Level"
     t.string "ApartmentType"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "resident_id"
+    t.date "ParkingQueue"
+    t.date "parking_queue"
   end
 
   create_table "cars", force: :cascade do |t|
@@ -48,6 +46,7 @@ ActiveRecord::Schema.define(version: 2018_09_06_074036) do
     t.string "platnum"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "apartment_id"
   end
 
   create_table "guards", force: :cascade do |t|
@@ -85,30 +84,6 @@ ActiveRecord::Schema.define(version: 2018_09_06_074036) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "jeng2s", force: :cascade do |t|
-    t.string "name"
-    t.text "age"
-    t.text "parking_number"
-    t.text "phone_number"
-    t.text "number_apartment"
-    t.text "level"
-    t.string "apartment_type"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "jeng3s", force: :cascade do |t|
-    t.string "name"
-    t.string "age"
-    t.string "parking_number"
-    t.string "phone_number"
-    t.string "number_apartment"
-    t.string "level"
-    t.string "apartment_type"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "park_spacerentals", force: :cascade do |t|
     t.string "park_space_id"
     t.string "car_id"
@@ -117,7 +92,7 @@ ActiveRecord::Schema.define(version: 2018_09_06_074036) do
     t.string "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "apt_id"
+    t.string "apartment_id"
   end
 
   create_table "park_spaces", force: :cascade do |t|

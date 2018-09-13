@@ -42,8 +42,8 @@ body {
   <a class="active" href="http://localhost:3000/pages/user">Home</a>
   <a href="http://localhost:3000/guests/new">Guest Registration</a>
   <a href="http://localhost:3000/cars/new">Car</a>
-  <a href="#contact">Apartment</a>
-  <a href="#about">Space Parking</a>
+  
+  
 </div>
 
 </body>
@@ -53,7 +53,12 @@ body {
 Email : <%= current_user.email %></h1>
 <br>
 <br>
-<%= link_to 'http://localhost:3000/users/edit', infos_path %>
+
+<form><center>
+<input type="button" value="Request Parking Queue" onclick="window.location.href='http://localhost:3000/parkingqueues'" />
+</center></form>
+
+
 
 
 

@@ -1,8 +1,8 @@
 =simple_form_for @park_spacerental do |f|  
   = f.association :park_space, label_method: :parknum
-  = f.association :car, label_method: :platnum    
-  = f.input :apt_id
+  = f.association :car, label_method: :platnum  
+  = f.association :apartment, label_method: :NumberApartment  
   = f.input :start_rent   
   = f.input :end_rent   
-  = f.input :price   
+  = f.input :price  
   = f.submit

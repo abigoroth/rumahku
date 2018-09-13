@@ -76,7 +76,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.5.1'
 
-gem 'bootstrap'
+
 gem 'simple_form'
 gem "slim-rails"
 gem 'jquery-rails'
@@ -139,6 +139,5 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'simple_form'
 gem "slim-rails"
-gem 'bootstrap'
 gem 'jquery-rails'
 gem 'jquery-datatables'
