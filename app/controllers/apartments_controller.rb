@@ -68,6 +68,12 @@ class ApartmentsController < ApplicationController
     @apartments = @apartments.starts_with(params[:starts_with]) if params[:starts_with].present?
   end
 
+  def request_parking_queue
+     current_user.apartments.first.update_column(:parking_queue, Date.today)
+     redirect_to '/apartments'
+
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_apartment
@@ -76,6 +82,8 @@ class ApartmentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def apartment_params
-      params.require(:apartment).permit(:Name, :Age, :ParkingNumber, :HpNumber, :NumberApartment, :Level, :ApartmentType, :resident_id)
+      params.require(:apartment).permit(:Age, :ParkingNumber, :HpNumber, :NumberApartment, :Level, :ApartmentType, :parking_queue, :info_id, :user_id)
     end
+
+
 end

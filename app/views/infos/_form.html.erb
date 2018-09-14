@@ -1,5 +1,10 @@
+<% if @info.id %>
+<% path= info_path(@info) %>
+<% else %>
+<% path= infos_path %>
+<%end%>
 
-<%= simple_form_for @info, url: :info do |f| %>
+<%= simple_form_for @info, url:path do |f| %>
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 

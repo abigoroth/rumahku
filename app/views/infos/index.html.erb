@@ -90,8 +90,9 @@ input[type=submit]:hover {
   <a class="active" href="http://localhost:3000/infos">Resident List</a>
   <a href="http://localhost:3000/cars">Car</a>
   <a href="http://localhost:3000/pages/main">Apartment</a>
-  <a href="http://localhost:3000/park_spaces">Space Parking</a>
+  <a href="http://localhost:3000/park_spaces/new">Park Space</a>
    <a href="http://localhost:3000/parkspacelogs">Space Log</a>
+    <a href="http://localhost:3000/parkingqueues">Parking Queue</a>
 </div>
 
 
@@ -120,9 +121,9 @@ input[type=submit]:hover {
         <td><%= info.aptnums %></td>
         <td><%= info.phonenum %></td>
         <td><%= info.owner %></td>
-        <td><%= link_to 'Show', info %></td>
+        <td><%= link_to 'Show',  info_path(info) %></td>
         <td><%= link_to 'Edit', edit_info_path(info) %></td>
-        <td><%= link_to 'Destroy', info, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Destroy', info_path(info), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

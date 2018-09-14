@@ -1,24 +1,14 @@
 p#notice
   = notice
+
 p
   strong
-    | Name:
-  = @apartment.Name
+    | Resident ID :
+  = link_to @apartment.user .aptnums, info_path(@apartment.user) 
+
 p
   strong
-    | Age:
-  = @apartment.Age
-p
-  strong
-    | Parkingnumber:
-  = @apartment.ParkingNumber
-p
-  strong
-    | Hpnumber:
-  = @apartment.HpNumber
-p
-  strong
-    | Numberapartment:
+    | Number Apartment:
   = @apartment.NumberApartment
 p
   strong
@@ -26,8 +16,12 @@ p
   = @apartment.Level
 p
   strong
-    | Apartmenttype:
+    | Apartment Type:
   = @apartment.ApartmentType
+p
+  strong
+    | ParkingQueue:
+  = @apartment.parking_queue 
   
  
 
