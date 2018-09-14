@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(version: 2018_09_13_064658) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "resident_id"
+    t.date "ParkingQueue"
     t.date "parking_queue"
     t.string "info_id"
     t.string "user_id"
@@ -88,6 +89,14 @@ ActiveRecord::Schema.define(version: 2018_09_13_064658) do
     t.string "parknum"
     t.string "spacetype"
     t.boolean "available"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "parkingqueues", force: :cascade do |t|
+    t.string "name"
+    t.string "apartment_number"
+    t.date "date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

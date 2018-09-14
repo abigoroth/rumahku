@@ -72,8 +72,6 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-<<<<<<< HEAD
-=======
 
 
 source 'https://rubygems.org'
@@ -146,4 +144,3 @@ gem 'simple_form'
 gem "slim-rails"
 gem 'jquery-rails'
 gem 'jquery-datatables'
->>>>>>> d146cd2e3c8e96849e609a9b2183124269902157
