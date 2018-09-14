@@ -1,0 +1,9 @@
+= simple_form_for @car do |f|
+  = f.input :cartype, collection:["Normal","Electric"]
+  = f.input :owner 
+  = f.input :queue, collection:["Yes","No"]
+  = f.input :platnum
+  = f.association :apartment, label_method: :NumberApartment
+  = f.button :submit
+
+  

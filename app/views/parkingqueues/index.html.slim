@@ -1,0 +1,12 @@
+h1 Listing Parkingqueues
+
+table#dttb-parkingqueues.responsive.nowrap.table.table-hover data-sort="true" data-source="#{url_for(format: :json)}"
+  thead
+    tr
+      th data-data="name" Name
+      th data-data="apartment_number" Apartment number
+      th data-data="date" Date
+      th data-data="url" data-orderable="false" data-class-name="all" data-searchable="false" class="skip-export" width="100px"
+
+
+= link_to 'New Parkingqueue', new_parkingqueue_path

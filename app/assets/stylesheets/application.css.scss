@@ -12,45 +12,50 @@
  * It is generally better to create a new file per style scope.
  *
  */
- @import "bootstrap";
+@import "bootstrap";
+@import 'datatables';
+@import 'datatables/dataTables.bootstrap4';
+@import 'datatables/extensions/Responsive/responsive.bootstrap4';
+@import 'datatables/extensions/Buttons/buttons.bootstrap4';
 
- .input-container {
-     display: -ms-flexbox; /* IE10 */
-     display: flex;
-     width: 100%;
-     margin-bottom: 15px;
- }
- 
- .icon {
-     padding: 10px;
-     background: dodgerblue;
-     color: white;
-     min-width: 50px;
-     text-align: center;
- }
- 
- .input-field {
-     width: 100%;
-     padding: 10px;
-     outline: none;
- }
- 
- .input-field:focus {
-     border: 2px solid dodgerblue;
- }
- 
- /* Set a style for the submit button */
- .btn {
-     background-color:dodgerblue;
-     color: white;
-     padding: 15px 20px;
-     border: none;
-     cursor: pointer;
-     width: 100%;
-     opacity: 0.9;
- }
- 
- .btn:hover {
-     opacity: 1;
- }
- 
+.input-container {
+    display: -ms-flexbox; /* IE10 */
+    display: flex;
+    width: 100%;
+    margin-bottom: 15px;
+    
+}
+
+.icon {
+    padding: 10px;
+    background: rgb(30, 203, 255);
+    color: white;
+    min-width: 50px;
+    text-align: center;
+    
+}
+
+.input-field {
+    width: 100%;
+    padding: 10px;
+    outline: none;
+}
+
+.input-field:focus {
+    border: 2px solid dodgerblue;
+}
+
+/* Set a style for the submit button */
+.btn {
+    background-color: dodgerblue;
+    color: white;
+    padding: 15px 20px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    opacity: 0.9;
+}
+
+.btn:hover {
+    opacity: 1;
+}

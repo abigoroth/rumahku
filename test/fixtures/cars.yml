@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  type: 
+  owner: MyString
+  queue: MyString
+  platnum: MyString
+
+two:
+  type: 
+  owner: MyString
+  queue: MyString
+  platnum: MyString
