@@ -4,7 +4,7 @@ one:
   plat_number: MyString
   block: MyString
   no_apartment: MyString
-  date: MyString
+  date: 2018-09-14
   phone_number: MyString
   purpose: MyText
 
@@ -12,6 +12,6 @@ two:
   plat_number: MyString
   block: MyString
   no_apartment: MyString
-  date: MyString
+  date: 2018-09-14
   phone_number: MyString
   purpose: MyText

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_13_064658) do
+ActiveRecord::Schema.define(version: 2018_09_14_082142) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -62,6 +62,16 @@ ActiveRecord::Schema.define(version: 2018_09_13_064658) do
     t.index ["reset_password_token"], name: "index_guards_on_reset_password_token", unique: true
   end
 
+  create_table "guests", force: :cascade do |t|
+    t.string "plat_number"
+    t.string "block"
+    t.date "date"
+    t.string "phone_number"
+    t.text "purpose"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "infos", force: :cascade do |t|
     t.string "email"
     t.string "name"
@@ -93,12 +103,21 @@ ActiveRecord::Schema.define(version: 2018_09_13_064658) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "parkingqueues", force: :cascade do |t|
+    t.string "name"
+    t.string "apartment_number"
+    t.date "date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "parkspacelogs", force: :cascade do |t|
     t.string "parking_no"
     t.date "date"
     t.text "message"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "park_space_id"
   end
 
   create_table "residents", force: :cascade do |t|

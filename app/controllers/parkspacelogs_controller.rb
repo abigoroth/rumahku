@@ -69,6 +69,6 @@ class ParkspacelogsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def parkspacelog_params
-      params.require(:parkspacelog).permit(:parking_no, :date, :message)
+      params.require(:parkspacelog).permit(:parking_no, :date, :message, :park_space_id)
     end
 end

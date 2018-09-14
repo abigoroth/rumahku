@@ -8,8 +8,11 @@ gem 'slim'
 
 ruby '2.5.1'
 
+gem 'bootswatch-rails'
 gem 'bootstrap'
+gem 'alertifyjs-rails'
 gem 'simple_form'
+gem 'jquery-datatables'
 gem "slim-rails"
 gem 'jquery-rails'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

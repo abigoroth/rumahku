@@ -1,12 +1,8 @@
 p#notice = notice
-row
-  col-md-9
-    
-  col-md-3
 
 p
   strong Parking no:
-  = @parkspacelog.parking_no
+  = link_to @parkspacelog.park_space.parknum, @parkspacelog.park_space
 p
   strong Date:
   = @parkspacelog.date
