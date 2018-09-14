@@ -72,3 +72,4 @@ class GuestsController < ApplicationController
       params.require(:guest).permit(:plat_number, :block,  :date, :phone_number, :purpose)
     end
 end
+

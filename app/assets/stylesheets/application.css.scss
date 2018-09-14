@@ -17,6 +17,9 @@
 @import 'datatables/dataTables.bootstrap4';
 @import 'datatables/extensions/Responsive/responsive.bootstrap4';
 @import 'datatables/extensions/Buttons/buttons.bootstrap4';
+@import "alertify";
+@import "alertify/default";
+@import "alertify/bootstrap";
 
 .input-container {
     display: -ms-flexbox; /* IE10 */

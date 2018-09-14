@@ -1,5 +1,8 @@
 class CarsController < ApplicationController
+  #before_action :authenticate
+  before_action -> { authenticate(['admin', 'user']) } #modifyuser
   before_action :set_car, only: [:show, :edit, :update, :destroy]
+
 
 
   # GET /cars
@@ -74,3 +77,4 @@ class CarsController < ApplicationController
       params.require(:car).permit(:cartype, :owner, :queue, :platnum, :apartment_id)
     end
 end
+
