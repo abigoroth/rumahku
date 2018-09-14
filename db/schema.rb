@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(version: 2018_09_13_064658) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "resident_id"
+    t.date "ParkingQueue"
     t.date "parking_queue"
     t.string "info_id"
     t.string "user_id"
