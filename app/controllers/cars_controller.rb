@@ -1,4 +1,4 @@
-class CarsController < ApplicationController
+class CarsController < AdminController
   before_action :set_car, only: [:show, :edit, :update, :destroy]
 
 
@@ -74,3 +74,4 @@ class CarsController < ApplicationController
       params.require(:car).permit(:cartype, :owner, :queue, :platnum, :apartment_id)
     end
 end
+
