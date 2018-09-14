@@ -81,16 +81,39 @@ html
         .topnav
           a href="http://localhost:3000/pages/admin"  Home
           a href="http://localhost:3000/infos/new"  Resident Registration
-          a href="http://localhost:3000/infos"  Resident List
+          a.active href="http://localhost:3000/infos"  Resident List
           a href="http://localhost:3000/cars"  Car
           a href="http://localhost:3000/pages/main"  Apartment
-          a.active href="http://localhost:3000/park_spaces/new"  Park Space
+          a href="http://localhost:3000/park_spaces/new"  Park Space
           a href="http://localhost:3000/parkspacelogs"  Space Log
-         
+        
 
-
-
-== render 'form'
-
-br
-= link_to 'Back', pages_admin_path
+        table#dttb-infos.responsive.nowrap.table.table-hover data-sort="true" data-source="#{url_for(format: :json)}"
+          thead
+            tr
+              th data-data="Email" Email
+              th data-data="Name" Name
+              th data-data="apartment_number" Apartment Number
+              th data-data="phone_number" Phone Number
+              th data-data="owner" Owner
+              th 
+              th 
+              th 
+              
+          tbody
+            - @infos.each do |info| 
+              tr
+                td = info.email 
+                td = info.fullname 
+                td = info.aptnums 
+                td = info.phonenum 
+                td = info.owner 
+                td = link_to 'Show',  info_path(info) 
+                td = link_to 'Edit', edit_info_path(info) 
+                td = link_to 'Delete', info, data: { confirm: 'Are you sure?' }, method: :delete
+        br
+         = link_to 'New Info', new_info_path 
+         br
+         = link_to 'Back', pages_admin_path
+         <style>
+      
