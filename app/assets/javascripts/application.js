@@ -17,4 +17,5 @@
 //= require activestorage
 //= require turbolinks
 //= require datatables
+//= require alertify
 // require_tree .
