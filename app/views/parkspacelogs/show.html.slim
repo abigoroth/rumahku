@@ -2,7 +2,7 @@ p#notice = notice
 
 p
   strong Parking no:
-  = @parkspacelog.parking_no
+  = link_to @parkspacelog.park_space.parknum, @parkspacelog.park_space
 p
   strong Date:
   = @parkspacelog.date

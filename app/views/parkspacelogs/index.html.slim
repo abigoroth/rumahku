@@ -60,7 +60,7 @@ table#dttb-parkspacelogs.responsive.nowrap.table.table-hover data-sort="true" da
   tbody
     - @parkspacelogs.each do |parkspacelog|
       tr
-        td = parkspacelog.parking_no
+        td = parkspacelog.park_space.parknum
         td = parkspacelog.date
         td = parkspacelog.message
         td = link_to 'View', parkspacelog
