@@ -141,3 +141,4 @@ gem 'simple_form'
 gem "slim-rails"
 gem 'jquery-rails'
 gem 'jquery-datatables'
+gem 'alertifyjs-rails'
