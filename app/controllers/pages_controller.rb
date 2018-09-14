@@ -7,4 +7,16 @@ class PagesController < ApplicationController
   
   def space_rental
   end
+
+  def admin
+    render layout: "admin"
+  end
+
+  def user
+    render layout: "user"
+  end
+
+  def guard
+    render layout: "guard"
+  end
 end
