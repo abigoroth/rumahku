@@ -19,11 +19,7 @@ Rails.application.routes.draw do
 
 
   get 'pages/residentlist'
-  resources :infos do
-    member do
-      get "request_parking_queue"
-    end
-  end
+  resources :infos 
   resources :res
   resources :guests
   get 'pages/guestregister'
@@ -60,7 +56,11 @@ Rails.application.routes.draw do
   resources :jeng2s
   get 'pages/main'
   get 'pages/jeng2'
-  resources :apartments
+  resources :apartments do
+    member do
+      get "request_parking_queue"
+    end
+  end
   resources :parkspacelogs
   resources :guests
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
