@@ -1,0 +1,21 @@
+p#notice = notice
+
+p
+  b Plat number:
+  = @guest.plat_number
+p
+  b Block:
+  = @guest.block
+p
+  b Date:
+  = @guest.date
+p
+  b Phone number:
+  = @guest.phone_number
+p
+  b Purpose:
+  = @guest.purpose
+
+= link_to 'Edit', edit_guest_path(@guest)
+'|
+= link_to 'Back', guests_path

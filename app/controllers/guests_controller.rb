@@ -69,6 +69,6 @@ class GuestsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def guest_params
-      params.require(:guest).permit(:plat_number, :block, :no_apartment, :date, :phone_number, :purpose)
+      params.require(:guest).permit(:plat_number, :block,  :date, :phone_number, :purpose)
     end
 end

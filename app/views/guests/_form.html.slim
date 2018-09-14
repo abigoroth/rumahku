@@ -1,9 +1,13 @@
-= simple_form_for @guest do |f| 
-  = f.input :plat_number 
-  = f.input :block, collection:["JENG1", "JENG2", "JENG3"]
-  = f.input :no_apartment
-  = f.input :date, label: "Date Guest Coming"
-  = f.input :phone_number 
-  = f.input :purpose 
-  = f.submit 
-  
+= simple_form_for(@guest) do |f|
+  = f.error_notification
+  = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
+
+  .form-inputs
+    = f.input :plat_number
+    = f.input :block
+    = f.input :date
+    = f.input :phone_number
+    = f.input :purpose
+
+  .form-actions
+    = f.button :submit
