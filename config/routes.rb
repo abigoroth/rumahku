@@ -80,7 +80,7 @@ end
 
 namespace :guard do
   resources :posts
-  root to: redirect('/guests')
+  root to: redirect('http://localhost:3000/guests')
 end
 
 

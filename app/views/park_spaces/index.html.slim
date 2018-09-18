@@ -81,7 +81,7 @@ html
         .topnav
           a href="http://localhost:3000/pages/admin"  Home
           a href="http://localhost:3000/infos/new"  Resident Registration
-          a.active href="http://localhost:3000/infos"  Resident List
+          a href="http://localhost:3000/infos"  Resident List
           a href="http://localhost:3000/cars"  Car
           a href="http://localhost:3000/pages/main"  Apartment
           a href="http://localhost:3000/park_spaces/new"  Park Space
@@ -89,15 +89,15 @@ html
           a href="http://localhost:3000/parkingqueues"  Parking Queue
 
 
-         table#dttb-infos.responsive.nowrap.table.table-hover data-sort="true" data-source="#{url_for(format: :json)}"
-          thead
-            tr
-              th data_data="park_number" Park Number
-              th data_data="space_type" Space Type
-              th data_data="available" Available
-              th  
-              th
-              th
+table#dttb-infos.responsive.nowrap.table.table-hover data-sort="true" data-source="#{url_for(format: :json)}"
+  thead
+     tr
+     th data_data="park_number" Park Number
+     th data_data="space_type" Space Type
+     th data_data="available" Available
+     th  
+     th
+     th
 
   tbody
     - @park_spaces.each do |park_space|
@@ -111,10 +111,6 @@ html
 
 br
 
-<<<<<<< HEAD
-= link_to 'New Park space', new_park_space_path
-=======
 = link_to 'New Park space', new_park_space_path
 br
 = link_to 'Back', pages_admin_path
->>>>>>> 6736a1f10a12a71acf3f76f7f660acfa3508b5fe

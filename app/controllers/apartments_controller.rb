@@ -1,4 +1,5 @@
-class ApartmentsController < AdminController
+class ApartmentsController < ApplicationController
+  before_action -> { authenticate(['admin']) } #modifyuser
   before_action :set_apartment, only: [:show, :edit, :update, :destroy]
 
   # GET /apartments
