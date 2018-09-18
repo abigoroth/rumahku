@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :guests
   resources :park_spaces
   resources :park_spacerentals
   get 'pages/space_rental'
@@ -79,7 +80,7 @@ end
 
 namespace :guard do
   resources :posts
-  root to: redirect('/guests')
+  root to: redirect('http://localhost:3000/guests')
 end
 
 
