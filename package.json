@@ -1,5 +1,11 @@
 {
   "name": "rumahku",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "jquery-imagemapster": "^1.2.10"
+  },
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/abigoroth/rumahku.git",
+  "license": "MIT"
 }

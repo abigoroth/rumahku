@@ -1,4 +1,5 @@
 class ParkSpacesController < ApplicationController
+  before_action -> { authenticate(['admin','user']) } #modifyuser
   before_action :set_park_space, only: [:show, :edit, :update, :destroy]
 
   # GET /park_spaces

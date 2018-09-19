@@ -6,7 +6,7 @@ p
 p
   strong Space Type:
   = @park_space.spacetype
-p
+/p
   strong Available:
   = @park_space.available
 
@@ -14,13 +14,16 @@ p
 '|
 =< link_to 'Back', park_spaces_path
 
+br 
 
 - park_spacerentals = @park_space.park_spacerentals.where("end_rent > '#{Date.today}'")
 - if park_spacerentals.length > 0
-  h1 Not Available 
+  br
+  h3 Not Available 
 - else 
-  h1 Available
+  h3 Available
 
+br
 table.table 
   thead
     tr 

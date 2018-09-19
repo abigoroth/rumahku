@@ -1,5 +1,5 @@
 class ApartmentsController < ApplicationController
-  before_action -> { authenticate(['admin']) } #modifyuser
+  before_action -> { authenticate(['admin','user']) } #modifyuser
   before_action :set_apartment, only: [:show, :edit, :update, :destroy]
 
   # GET /apartments
@@ -71,7 +71,7 @@ class ApartmentsController < ApplicationController
 
   def request_parking_queue
      current_user.apartments.first.update_column(:parking_queue, Date.today)
-     redirect_to '/apartments'
+     redirect_to '/pages/floor_plan'
 
   end
 

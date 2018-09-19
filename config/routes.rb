@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  get 'pages/floor_plan'
   resources :guests
   resources :park_spaces
   resources :park_spacerentals
