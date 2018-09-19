@@ -62,9 +62,6 @@ class InfosController < ApplicationController
     end
   end
 
-  def request_parking_queue
-    render plain: "hooray"
-  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
