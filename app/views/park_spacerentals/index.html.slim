@@ -99,6 +99,7 @@ table class="table table-striped table-bordered table-hover"
       th End Rent
       th Price
       /th Apartment ID
+      th Receipt
       th
       th
       th
@@ -113,7 +114,7 @@ table class="table table-striped table-bordered table-hover"
         td = park_spacerental.start_rent
         td = park_spacerental.end_rent
         td = park_spacerental.price
-        
+        td = image_tag park_spacerental.picture_url, width: '20%' if park_spacerental.picture.present?
         /td = park_spacerental.apartment_id
         td = link_to 'Show', park_spacerental
         td = link_to 'Edit', edit_park_spacerental_path(park_spacerental)

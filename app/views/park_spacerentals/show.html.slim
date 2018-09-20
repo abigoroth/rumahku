@@ -1,5 +1,10 @@
 p#notice = notice
 
+
+p
+  strong Receipt:
+  = image_tag(@park_spacerental.picture_url, width: 200) if @park_spacerental.picture.present?
+
 p
   strong Park Space:
   = link_to @park_spacerental.park_space.parknum, @park_spacerental.park_space

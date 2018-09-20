@@ -15,6 +15,7 @@ gem 'simple_form'
 gem 'jquery-datatables'
 gem "slim-rails"
 gem 'jquery-rails'
+gem 'carrierwave'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.1'
 # Use postgresql as the database for Active Record
