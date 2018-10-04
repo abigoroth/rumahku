@@ -146,3 +146,6 @@ gem "slim-rails"
 gem 'jquery-rails'
 gem 'jquery-datatables'
 gem 'alertifyjs-rails'
+gem "cocoon"
+gem 'redis-rails', '~> 5.0', '>= 5.0.1'
+gem 'pry'

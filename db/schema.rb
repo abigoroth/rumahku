@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_19_102905) do
+ActiveRecord::Schema.define(version: 2018_10_03_095415) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,6 +50,32 @@ ActiveRecord::Schema.define(version: 2018_09_19_102905) do
     t.string "apartment_id"
   end
 
+  create_table "chat_rooms", force: :cascade do |t|
+    t.string "title"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "admin_id"
+    t.bigint "guard_id"
+    t.index ["user_id"], name: "index_chat_rooms_on_user_id"
+  end
+
+  create_table "clusters", force: :cascade do |t|
+    t.string "apartment_name"
+    t.string "apartment_address"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "floorplans", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "cluster_id"
+    t.string "picture"
+  end
+
   create_table "guards", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -84,6 +110,37 @@ ActiveRecord::Schema.define(version: 2018_09_19_102905) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "map_areas", force: :cascade do |t|
+    t.string "description"
+    t.string "coordinate"
+    t.bigint "floorplan_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["floorplan_id"], name: "index_map_areas_on_floorplan_id"
+  end
+
+  create_table "mapareas", force: :cascade do |t|
+    t.string "description"
+    t.string "coordinate"
+    t.bigint "floorplan_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "picture"
+    t.index ["floorplan_id"], name: "index_mapareas_on_floorplan_id"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.text "body"
+    t.bigint "user_id"
+    t.bigint "chat_room_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "admin_id"
+    t.bigint "guard_id"
+    t.index ["chat_room_id"], name: "index_messages_on_chat_room_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
+  end
+
   create_table "park_spacerentals", force: :cascade do |t|
     t.string "park_space_id"
     t.string "car_id"
@@ -102,6 +159,7 @@ ActiveRecord::Schema.define(version: 2018_09_19_102905) do
     t.boolean "available"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "parkspacelog_id"
   end
 
   create_table "parkspacelogs", force: :cascade do |t|
@@ -134,8 +192,14 @@ ActiveRecord::Schema.define(version: 2018_09_19_102905) do
     t.string "fullname"
     t.string "aptnums"
     t.string "phonenum"
+    t.string "confirmation_token", limit: 128
+    t.string "remember_token", limit: 128
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["remember_token"], name: "index_users_on_remember_token"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "chat_rooms", "users"
+  add_foreign_key "messages", "chat_rooms"
+  add_foreign_key "messages", "users"
 end

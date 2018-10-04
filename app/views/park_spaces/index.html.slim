@@ -78,21 +78,29 @@ html
                background-color: #45a049;
            }
       
-        .topnav
+        .topnav          
           a href="http://localhost:3000/pages/admin"  Home
           a href="http://localhost:3000/infos/new"  Resident Registration
           a href="http://localhost:3000/infos"  Resident List
           a href="http://localhost:3000/cars"  Car
           a href="http://localhost:3000/apartments"  Apartment
-          a href="http://localhost:3000/park_spaces"  Park Space
-          a href="http://localhost:3000/parkspacelogs"  Space Log
-          a href="http://localhost:3000/park_spacerentals"  Park Space Rental
+          a.active href="http://localhost:3000/park_spaces"  Park Space Rental
+          /a href="http://localhost:3000/parkspacelogs"  Space Log
+          /a href="http://localhost:3000/park_spacerentals"  Park Space Rental
+          a href="http://localhost:3000/floorplans"  Floor Plan
+          a href="http://localhost:3000/clusters" Cluster
+
+
+      
 br 
+
+
+
 center/
 h3 Lower Ground Floor
 center/
-img alt="Planets" src="http://oi68.tinypic.com/j0w39z.jpg" usemap="#planetmap" /
-map name="planetmap" 
+img alt="S" src="http://i68.tinypic.com/j0w39z.jpg" usemap="#s" /
+map name="s" 
   area alt="1" coords="113,548,163,657" href="http://localhost:3000/park_spaces/47" shape="rect" class="not-available" parkinglot="1"/
   area alt="2" coords="165,548,217,656" href="http://localhost:3000/park_spaces/48" shape="rect" parkinglot="2" /
   area alt="3" coords="235,547,296,658" href="http://localhost:3000/park_spaces/49" shape="rect" parkinglot="3" /
@@ -207,6 +215,7 @@ table#dttb-infos.responsive.nowrap.table.table-hover data-sort="true" data-sourc
 = link_to 'New Park space', new_park_space_path
 br
 = link_to 'Back', pages_admin_path
+
 
 css:
     .not-available { background-color:#0F0 }

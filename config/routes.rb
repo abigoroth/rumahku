@@ -1,5 +1,21 @@
 Rails.application.routes.draw do
 
+  resources :chat_rooms, only: [:new, :create, :show, :index]
+  #root 'chat_rooms#index'
+
+  mount ActionCable.server => '/cable'
+
+  get 'chat_rooms/show'
+  get 'chat_rooms/new'
+  get 'chat_rooms/_chat_room'
+  get 'chat_rooms/index'
+  get 'messages/_message'
+ 
+  resources :clusters
+  get 'floorplans/_maparea_field'
+  get 'floorplans/_map_area_fields'
+  get 'floorplan/_map_area_fields'
+  resources :floorplans
   get 'pages/floor_plan'
   resources :guests
   resources :park_spaces
@@ -94,6 +110,11 @@ end
   resources :parkspacelogs
   resources :guests
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+ 
+
+  
+
 end
 
 

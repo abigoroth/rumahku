@@ -1,3 +1,102 @@
+br
+br
+br
+br
+doctype html
+html
+  head
+        meta content="width=device-width, initial-scale=1" name="viewport" 
+        css:
+           body {
+             margin: 0;
+             font-family: Arial, Helvetica, sans-serif;
+           }
+          
+          .topnav {
+             overflow: hidden;
+             background-color: #333;
+           }
+          
+          .topnav a {
+             float: left;
+             color: #f2f2f2;
+             text-align: center;
+             padding: 14px 16px;
+             text-decoration: none;
+             font-size: 17px;
+           }
+          
+          .topnav a:hover {
+             background-color: #ddd;
+             color: black;
+           }
+          
+          .topnav a.active {
+             background-color: #4CAF50;
+             color: white;
+           }
+          
+           table {
+               font-family: arial, sans-serif;
+               border-collapse: collapse;
+               width: 100;
+           }
+          
+           td, th {
+               border: 1px solid #dddddd;
+               text-align: left;
+               padding: 8px;
+           }
+          
+           tr:nth-child(even) {
+               background-color: #dddddd;
+           }
+          
+          .center {
+               text-align: center;
+               border: 3px ;
+           }
+          
+           input[type=text], select {
+               width: 100;
+               padding: 12px 20px;
+               margin: 8px 0;
+               display: inline-block;
+               border: 1px solid #ccc;
+               border-radius: 4px;
+               box-sizing: border-box;
+           }
+          
+           input[type=submit] {
+               width: 100;
+               background-color: #4CAF50;
+               color: white;
+               padding: 14px 20px;
+               margin: 8px 0;
+               border: none;
+               border-radius: 4px;
+               cursor: pointer;
+           }
+          
+           input[type=submit]:hover {
+               background-color: #45a049;
+           }
+      
+        .topnav
+          a href="http://localhost:3000/pages/admin"  Home
+          a href="http://localhost:3000/infos/new"  Resident Registration
+          a href="http://localhost:3000/infos"  Resident List
+          a href="http://localhost:3000/cars"  Car
+          a href="http://localhost:3000/apartments"  Apartment
+          a.active href="http://localhost:3000/park_spaces"  Park Space Rental
+          /a href="http://localhost:3000/parkspacelogs"  Space Log
+          /a href="http://localhost:3000/park_spacerentals"  Park Space Rental
+          a href="http://localhost:3000/floorplans"  Floor Plan
+          a href="http://localhost:3000/clusters" Cluster
+br
+br
+br          
+
 p#notice = notice
 
 p
@@ -10,27 +109,65 @@ p
   strong Available:
   = @park_space.available
 
+p
+  strong Space Log:
+  /= link_to @park_space.parkspacelog.parking_no, @park_space.parkspacelog
+
 => link_to 'Edit', edit_park_space_path(@park_space)
 '|
-=< link_to 'Back', park_spaces_path
+=< link_to 'Back', park_spaces_path 
+br
 
+br
+doctype html
+html lang="en" 
+  head
+    
+    meta charset="utf-8" /
+    meta content="width=device-width, initial-scale=1" name="viewport" /
+    link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" /
+    script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" 
+    script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" 
+  body
+    .container
+      
+      ul.nav.nav-tabs
+        li.active
+          a data-toggle="tab" href="#parkspace"  Park Space Rental
+        li
+          a data-toggle="tab" href="#spacelog"  Space Log
+        
+      .tab-content   
+                 
+br 
 br 
 
 - park_spacerentals = @park_space.park_spacerentals.where("end_rent > '#{Date.today}'")
 - if park_spacerentals.length > 0
-  br
-  h3 Not Available 
+  p
+  font[size="5" face="bold-tahoma" color="Red"]
+    | Not Available
+    
 - else 
-  h3 Available
+  p
+  font[size="5" face="-bold-tahoma" color="#5EFF00"]
+    | Available
 
 br
-table.table 
-  thead
+
+br
+/table#dttb-jeng2s.responsive.nowrap.table.table-hover data-sort="true" data-source="#{url_for(format: :json)}" 
+table.table id="parkspace" class="tab-pane fade in active"
+  thead     
     tr 
       th No 
       th Car 
       th Start Date
       th End Date
+      th
+      
+      
+
   tbody
     - @park_space.park_spacerentals.each_with_index do |psr,index| 
       tr 
@@ -38,12 +175,46 @@ table.table
         td = psr.car.platnum
         td = psr.start_rent
         td = psr.end_rent
-        
+        td = link_to "Edit", edit_park_spacerental_path(psr)
+br 
+br 
+br
+      
+/table#dttb-jeng2s.responsive.nowrap.table.table-hover data-sort="true" data-source="#{url_for(format: :json)}" 
+table.table id="spacelog" class="tab-pane fade"
+  thead     
+    tr
+      /th data-data="parking_no" Parking no
+      th data-data="date" Date
+      th data-data="message" Message
+      th data-data="url" data-orderable="false" data-class-name="all" data-searchable="false" class="skip-export" width="100px"
+      th
+      th
 
+  tbody
+    - @park_space.parkspacelogs.where(park_space_id: @park_space.id).each_with_index do |parkspacelog|
+      tr
+        /td = parkspacelog.parking_no
+        td = parkspacelog.date
+        td = parkspacelog.message
+        td = link_to 'View', parkspacelog
+        td = link_to 'Edit', edit_parkspacelog_path(parkspacelog)
+        td = link_to 'Delete', parkspacelog, data: { confirm: 'Are you sure?' }, method: :delete       
+
+     
 
 /form
   input onclick="window.location.href='http://localhost:3000/park_spaces'" type="button" value=("List Park Space") /
-
+br
+br
+br
 form
-    input onclick="window.location.href='http://localhost:3000/park_spaces'" style=("width: 300px; padding: 20px; cursor: pointer; box-shadow: 6px 6px 5px; #999; -webkit-box-shadow: 6px 6px 5px #999; -moz-box-shadow: 6px 6px 5px #999; font-weight: bold; background: #FA8072 ; color: #000; border-radius: 10px; border: 1px solid #999; font-size: 150%;") type="button" value=("List Park Space") /
+    input onclick="window.location.href='http://localhost:3000/park_spaces'" style=("width: 200px; padding: 10px; cursor: pointer; box-shadow: 6px 6px 5px; #999; -webkit-box-shadow: 6px 6px 5px #999; -moz-box-shadow: 6px 6px 5px #999; font-weight: bold; background: #FA8072 ; color: #000; border-radius: 10px; border: 1px solid #999; font-size: 150%;") type="button" value=("List Park Space") /
 
+
+
+/form
+      input onclick="window.location.href=' http://localhost:3000/park_spacerentals'" style=("width: 200px; padding: 10px; cursor: pointer; box-shadow: 6px 6px 5px; #999; -webkit-box-shadow: 6px 6px 5px #999; -moz-box-shadow: 6px 6px 5px #999; font-weight: bold; background: #FA8072 ; color: #000; border-radius: 10px; border: 1px solid #999; font-size: 150%;") type="button" value=("Update kot") /
+
+
+     
