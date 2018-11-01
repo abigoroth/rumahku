@@ -57,7 +57,7 @@ class InfosController < ApplicationController
   def destroy
     @info.destroy
     respond_to do |format|
-      format.html { redirect_to infos_url, notice: 'Info was successfully destroyed.' }
+      format.html { redirect_to infos_path, notice: 'Info was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -71,7 +71,7 @@ class InfosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def info_params
-      params.require(:user).permit(:email, :fullname, :aptnums, :phonenum, :owner, :password, :picture)
+      params.require(:user).permit(:email, :fullname, :aptnums, :phonenum, :owner, :password)
     end
 
 

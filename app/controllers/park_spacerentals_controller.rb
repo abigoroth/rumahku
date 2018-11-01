@@ -1,4 +1,5 @@
 class ParkSpacerentalsController < ApplicationController
+  before_action -> { authenticate(['admin']) }
   before_action :set_park_spacerental, only: [:show, :edit, :update, :destroy]
 
   # GET /park_spacerentals
