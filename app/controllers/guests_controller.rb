@@ -1,5 +1,7 @@
 class GuestsController < ApplicationController
+  before_action -> { authenticate(['guard', 'user']) } #modifyuser
   before_action :set_guest, only: [:show, :edit, :update, :destroy]
+  before_action -> { authenticate(['guard', 'user']) } #modifyuser
 
   # GET /guests
   # GET /guests.json
@@ -69,7 +71,7 @@ class GuestsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def guest_params
-      params.require(:guest).permit(:plat_number, :block, :no_apartment, :date, :phone_number, :purpose)
+      params.require(:guest).permit(:plat_number, :block,  :date, :phone_number, :purpose)
     end
 end
 

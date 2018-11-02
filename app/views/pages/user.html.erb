@@ -48,15 +48,17 @@ body {
 
 </body>
 </html>
-<h1>Resident Information</h1>
+<br>
+<br>
+Welcome, <%= current_user.email %>
 
-Email : <%= current_user.email %></h1>
+
 <br>
 <br>
 
-<form><center>
+<form>
 <input type="button" value="Request Parking Queue" onclick="window.location.href='http://localhost:3000/apartments/:id/request_parking_queue'" />
-</center></form>
+</form>
 
 
 

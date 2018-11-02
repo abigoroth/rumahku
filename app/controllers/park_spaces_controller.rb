@@ -1,5 +1,7 @@
 class ParkSpacesController < ApplicationController
+  before_action -> { authenticate(['admin','user']) } #modifyuser
   before_action :set_park_space, only: [:show, :edit, :update, :destroy]
+  before_action -> { authenticate(['admin']) } #modifyuser
 
   # GET /park_spaces
   # GET /park_spaces.json
@@ -65,6 +67,7 @@ class ParkSpacesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_park_space
       @park_space = ParkSpace.find(params[:id])
+      
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

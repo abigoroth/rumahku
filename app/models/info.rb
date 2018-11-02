@@ -1,5 +1,7 @@
 class Info < ApplicationRecord
-  
-     self.table_name = "users"
-    
+
+    #acts_as_tree order: "name"
+    self.table_name = "users"
+    has_many :guests   
 end
+

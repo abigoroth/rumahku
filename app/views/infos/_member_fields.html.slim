@@ -1,0 +1,9 @@
+
+ 
+  .nested-fields
+    = f.input :member_name
+    = f.input :member_age
+    = f.input :member_relationship, collection:["Family","Tenant","Other"]
+    = link_to_remove_association "remove member ", f
+  
+

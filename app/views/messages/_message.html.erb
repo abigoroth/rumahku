@@ -1,0 +1,29 @@
+<div class="card">
+  <div class="card-block">
+    <div class="row">
+      <div class="col-md-1">
+
+        <% if message.try(:user) %>
+          <%= gravatar_for message.user %>
+          <% user = message.user %>
+
+        <% elsif message.try(:admin) %>
+          <%= gravatar_for message.admin %>
+          <% user = message.admin %>
+
+        <% elsif message.try(:guard) %>
+          <%= gravatar_for message.guard %>
+          <% user = message.guard %>    
+        <% end %>
+       
+
+      </div>
+      <div class="col-md-11">
+        <p class="card-text">
+          <span class="text-muted"><%= user.name %> at <%= message.timestamp %> says</span><br>
+          <%= message.body %>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

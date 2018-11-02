@@ -1,0 +1,12 @@
+/= simple_form_for @maparea do |f|  
+  
+
+.nested-fields
+  = f.input :description 
+  = f.input :coordinate
+  /= f.file_field :picture
+   
+  br
+  = link_to_remove_association "Remove map area", f
+  
+  

@@ -1,10 +1,8 @@
 require 'test_helper'
 
 class PagesControllerTest < ActionDispatch::IntegrationTest
-  test "should get main" do
-    get pages_main_url
-  test "should get space_rental" do
-    get pages_space_rental_url
+  test "should get floor_plan" do
+    get pages_floor_plan_url
     assert_response :success
   end
 

@@ -1,11 +1,10 @@
-h1 Guests
+h1 Listing Guests
 
-table#dttb-jeng2s.responsive.nowrap.table.table-hover data-sort="true" data-source="#{url_for(format: :json)}"
+table#dttb-guests.responsive.nowrap.table.table-hover data-sort="true" data-source="#{url_for(format: :json)}"
   thead
     tr
       th data-data="plat_number" Plat number
       th data-data="block" Block
-      th data-data="no_apartment" No apartment
       th data-data="date" Date
       th data-data="phone_number" Phone number
       th data-data="purpose" Purpose
@@ -14,18 +13,16 @@ table#dttb-jeng2s.responsive.nowrap.table.table-hover data-sort="true" data-sour
       th
 
   tbody
-    - @guests.each do |guest| 
+    - @guests.each do |guest|
       tr
-        td = guest.plat_number 
-        td = guest.block 
-        td = guest.no_apartment 
-        td = guest.date 
-        td = guest.phone_number 
-        td = guest.purpose 
-        td = link_to 'View', guest 
-        td = link_to 'Edit', edit_guest_path(guest) 
+        td = guest.plat_number
+        td = guest.block
+        td = guest.date
+        td = guest.phone_number
+        td = guest.purpose
+        td = link_to 'Show', guest
+        td = link_to 'Edit', edit_guest_path(guest)
         td = link_to 'Destroy', guest, data: { confirm: 'Are you sure?' }, method: :delete
-      
 
-br
-   = link_to 'New Guest', new_guest_path 
+
+= link_to 'New Guest', new_guest_path

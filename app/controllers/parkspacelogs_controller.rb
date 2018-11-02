@@ -1,5 +1,6 @@
 class ParkspacelogsController < ApplicationController
   before_action :set_parkspacelog, only: [:show, :edit, :update, :destroy]
+  before_action -> { authenticate(['admin']) } #modifyuser
 
   # GET /parkspacelogs
   # GET /parkspacelogs.json
@@ -69,6 +70,6 @@ class ParkspacelogsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def parkspacelog_params
-      params.require(:parkspacelog).permit(:parking_no, :date, :message)
+      params.require(:parkspacelog).permit(:parking_no, :date, :message, :park_space_id)
     end
 end
