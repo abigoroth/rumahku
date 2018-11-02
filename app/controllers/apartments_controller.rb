@@ -71,7 +71,8 @@ class ApartmentsController < ApplicationController
 
   def request_parking_queue
      current_user.apartments.first.update_column(:parking_queue, Date.today)
-     redirect_to '/pages/floor_plan'
+     #redirect_to '/pages/floor_plan'
+     redirect_to '/park_spaces'
   end
 
   private
