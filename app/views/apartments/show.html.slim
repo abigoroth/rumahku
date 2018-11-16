@@ -4,22 +4,33 @@ p#notice
 p
   strong
     | Resident ID :
-  = link_to @apartment.user.aptnums, info_path(@apartment.user) 
+  /= link_to @apartment.user.aptnums, info_path(@apartment.user) 
 
 p
   strong
     | Number Apartment:
-  = @apartment.NumberApartment
+  = @apartment.number_apartment
 p
   strong
     | Level:
-  = @apartment.Level
+  = @apartment.level
 p
   strong
     | Apartment Type:
-  = @apartment.ApartmentType
+  = @apartment.apartment_type
+
+p
+  strong
+    | Start Rent:
+  = @apartment.requested_start_rent
+
+p
+  strong
+    | End Rent:
+  = @apartment.requested_end_rent
  
-  
+
+
  
 
 = link_to 'Edit', edit_apartment_path(@apartment)

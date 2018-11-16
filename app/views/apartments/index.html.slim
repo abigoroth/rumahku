@@ -102,17 +102,21 @@ table#dttb-apartments.responsive.nowrap.table.table-hover data-sort="true" data-
       th data-data="level" Level
       th data-data="apartment_type" Apartment Type
       th data-data="parking_queue" Parking Queue
-      th 
-      th 
+      th data-data="start_rent" Start Rent
+      th data-data="end_rent" End Rent
+      th
+      th
       th
 
   tbody
     - @apartments.each do |apartment|
       tr
-        td = apartment.NumberApartment
-        td = apartment.Level
-        td = apartment.ApartmentType
+        td = apartment.number_apartment
+        td = apartment.level
+        td = apartment.apartment_type
         td = apartment.parking_queue
+        td = apartment.start_rent
+        td = apartment.end_rent
         td = link_to 'Show', apartment
         td = link_to 'Edit', edit_apartment_path(apartment)
         td = link_to 'Destroy', apartment, data: { confirm: 'Are you sure?' }, method: :delete
