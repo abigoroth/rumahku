@@ -28,9 +28,8 @@ class ParkSpacesController < ApplicationController
 
   def request_parking_queue   
 
-    @park_space = ParkSpace.find(params[:id])   
-    @apartment = @park_space.apartments.first
-    current_user.apartments.first.update(park_space_id: params[:id], parking_queue: DateTime.now, start_rent: @apartment.requested_start_rent, end_rent: @apartment.requested_end_rent)
+   
+    current_user.apartments.first.update(park_space_id: params[:id], parking_queue: DateTime.now)
     
     redirect_to '/pages/floor_plan'
     #redirect_to '/park_spaces'

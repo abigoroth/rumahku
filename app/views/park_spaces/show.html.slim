@@ -102,22 +102,14 @@ p
   strong Space Type:
   = @park_space.spacetype
 
+
+-if cookies.signed['user.id'] 
   = simple_form_for current_user.apartments.first do |f|
      = render 'apartment_fields', f: f
      = f.submit
 
-  /form      
-    -if cookies.signed['user.id'] 
-      = simple_form_for @park_space do |f|
-       
-        #apartments
-          = f.simple_fields_for current_user.apartments.first  do |apartment|
-            = render 'apartment_fields', f: apartment
-          /.links
-            = link_to_add_association 'add task', f, :tasks
-        = f.submit
-              
-      input[type="button" value="Request Parking Queue" onclick="window.location.href='http://localhost:3000/park_spaces/#{params[:id]}/request_parking_queue'"]
+  
+  input[type="button" value="Request Parking Queue" onclick="window.location.href='http://localhost:3000/park_spaces/#{params[:id]}/request_parking_queue'"]
       
 
   br
@@ -135,8 +127,9 @@ p
       | Available
 
     br
+
   h5 Park Space 
-  table.table
+  table.table 
     thead     
       tr 
         th No 
