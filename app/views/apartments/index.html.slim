@@ -85,8 +85,6 @@ html
           a href="http://localhost:3000/cars"  Car
           a.active href="http://localhost:3000/apartments"  Apartment
           a href="http://localhost:3000/park_spaces"  Park Space Rental
-          /a href="http://localhost:3000/parkspacelogs"  Space Log
-          /a href="http://localhost:3000/park_spacerentals"  Park Space Rental
           a href="http://localhost:3000/floorplans"  Floor Plan
           a href="http://localhost:3000/clusters" Cluster
           a href="http://localhost:3000/chat_rooms" Chat Rooms
@@ -95,9 +93,6 @@ html
 table#dttb-apartments.responsive.nowrap.table.table-hover data-sort="true" data-source="#{url_for(format: :json)}"
   thead
     tr
-      //th data-data="age" Age
-      //th data-data="parking_number" Parking Number
-      //th data-data="phone_number" Hp Number 
       th data-data="number_apartment" Number Apartment
       th data-data="level" Level
       th data-data="apartment_type" Apartment Type

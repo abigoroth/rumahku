@@ -20,7 +20,10 @@ Rails.application.routes.draw do
   resources :floorplans
   get 'pages/floor_plan'
   resources :guests
-  resources :park_spaces
+  
+  resources :park_spaces do
+    resources :park_spacerentals
+  end
   resources :park_spacerentals
   get 'pages/space_rental'
   resources :cars
