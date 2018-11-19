@@ -296,22 +296,8 @@ html
               th data-data="url" data-orderable="false" data-class-name="all" data-searchable="false" class="skip-export" width="100px"
               th
               th
-              
-
-
-br
-/table#dttb-jeng2s.responsive.nowrap.table.table-hover data-sort="true" data-source="#{url_for(format: :json)}" 
-/table.table id="parkspace" class="tab-pane fade in active"
-table.table
-  thead     
-    tr 
-      th No 
-      th Car 
-      th Start Date
-      th End Date
-      th
-      
-      
+            
+            
 
           tbody
             - @park_space.parkspacelogs.where(park_space_id: @park_space.id).each_with_index do |parkspacelog|
