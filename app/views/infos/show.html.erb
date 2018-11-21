@@ -201,7 +201,7 @@ body {
 
   <p>
     <strong>Apartment Number :</strong>
-    <%= @info.aptnums %>
+    <%= @info&.apartment.NumberApartment %>
   </p>
 
   <p>
@@ -260,6 +260,41 @@ body {
   <% end %>
 </div>
 </center>
+
+<br>
+
+<center>
+<div>
+<button class="collapsible">Car</button>
+<div class="content">
+  <p>
+    <strong>Number of cars :</strong>
+    <%= @info.cars.count %> cars
+
+  <% @info.cars.each do |car| %> 
+    <p>
+      <strong>Car Type :</strong>
+      <td><%= car.cartype %></td>
+      
+    </p>
+
+    <p>
+      <strong>Owner Name :</strong>
+      <td><%= car.owner %></td>
+      
+    </p>
+
+    <p>
+      <strong>Plat Number :</strong>
+      <td><%= car.platnum %></td>
+      
+    </p>
+    <hr>
+
+  <% end %>
+</div>
+</center>
+
 
 <script>
   var coll = document.getElementsByClassName("collapsible");

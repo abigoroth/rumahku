@@ -93,6 +93,7 @@ html
           /a href="http://localhost:3000/park_spacerentals"  Park Space Rental
           a href="http://localhost:3000/floorplans"  Floor Plan
           a href="http://localhost:3000/clusters" Cluster
+          a href="http://localhost:3000/chat_rooms" Chat Rooms
 br
 br
 br          
@@ -109,16 +110,14 @@ p
   strong Available:
   = @park_space.available
 
-p
+/p
   strong Space Log:
   /= link_to @park_space.parkspacelog.parking_no, @park_space.parkspacelog
 
-=> link_to 'Edit', edit_park_space_path(@park_space)
-'|
-=< link_to 'Back', park_spaces_path 
-br
 
-br
+
+
+
 doctype html
 html lang="en" 
   head
@@ -131,7 +130,7 @@ html lang="en"
   body
     .container
       
-      ul.nav.nav-tabs
+     / ul.nav.nav-tabs
         li.active
           a data-toggle="tab" href="#parkspace"  Park Space Rental
         li
@@ -140,7 +139,7 @@ html lang="en"
       .tab-content   
                  
 br 
-br 
+
 
 - park_spacerentals = @park_space.park_spacerentals.where("end_rent > '#{Date.today}'")
 - if park_spacerentals.length > 0
@@ -157,7 +156,8 @@ br
 
 br
 /table#dttb-jeng2s.responsive.nowrap.table.table-hover data-sort="true" data-source="#{url_for(format: :json)}" 
-table.table id="parkspace" class="tab-pane fade in active"
+/table.table id="parkspace" class="tab-pane fade in active"
+table.table
   thead     
     tr 
       th No 
@@ -177,11 +177,12 @@ table.table id="parkspace" class="tab-pane fade in active"
         td = psr.end_rent
         td = link_to "Edit", edit_park_spacerental_path(psr)
 br 
-br 
-br
+h5 Park Space Log 
+
       
 /table#dttb-jeng2s.responsive.nowrap.table.table-hover data-sort="true" data-source="#{url_for(format: :json)}" 
-table.table id="spacelog" class="tab-pane fade"
+/table.table id="spacelog" class="tab-pane fade"
+table.table
   thead     
     tr
       /th data-data="parking_no" Parking no
@@ -208,13 +209,14 @@ table.table id="spacelog" class="tab-pane fade"
 br
 br
 br
+<center>
 form
-    input onclick="window.location.href='http://localhost:3000/park_spaces'" style=("width: 200px; padding: 10px; cursor: pointer; box-shadow: 6px 6px 5px; #999; -webkit-box-shadow: 6px 6px 5px #999; -moz-box-shadow: 6px 6px 5px #999; font-weight: bold; background: #FA8072 ; color: #000; border-radius: 10px; border: 1px solid #999; font-size: 150%;") type="button" value=("List Park Space") /
+    input onclick="window.location.href='http://localhost:3000/park_spaces'" style=("width: 350px; padding: 10px; cursor: pointer; box-shadow: 6px 6px 5px; #999; -webkit-box-shadow: 6px 6px 5px #999; -moz-box-shadow: 6px 6px 5px #999; font-weight: background: #FA8072 ; color: #000; border-radius: 10px; border: 1px solid #999; font-size: 150%;") type="button" value=("List Park Space") /
+
+    |   
 
 
-
-/form
-      input onclick="window.location.href=' http://localhost:3000/park_spacerentals'" style=("width: 200px; padding: 10px; cursor: pointer; box-shadow: 6px 6px 5px; #999; -webkit-box-shadow: 6px 6px 5px #999; -moz-box-shadow: 6px 6px 5px #999; font-weight: bold; background: #FA8072 ; color: #000; border-radius: 10px; border: 1px solid #999; font-size: 150%;") type="button" value=("Update kot") /
-
+    input onclick="window.location.href=' http://localhost:3000/park_spacerentals/new'" style=("width: 350px; padding: 10px; cursor: pointer; box-shadow: 6px 6px 5px; #999; -webkit-box-shadow: 6px 6px 5px #999; -moz-box-shadow: 6px 6px 5px #999; font-weight: background: #FA8072 ; color: #000; border-radius: 10px; border: 1px solid #999; font-size: 150%;") type="button" value=("New Park Space Rental") /
+</center>
 
      

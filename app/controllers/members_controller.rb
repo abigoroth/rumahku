@@ -50,7 +50,7 @@ class MembersController < ApplicationController
       end
     end
   end
-
+ 
   # DELETE /members/1
   # DELETE /members/1.json
   def destroy

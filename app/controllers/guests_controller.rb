@@ -1,7 +1,6 @@
 class GuestsController < ApplicationController
   before_action -> { authenticate(['guard', 'user']) } #modifyuser
   before_action :set_guest, only: [:show, :edit, :update, :destroy]
-  before_action -> { authenticate(['guard', 'user']) } #modifyuser
 
   # GET /guests
   # GET /guests.json

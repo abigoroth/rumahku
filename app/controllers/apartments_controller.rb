@@ -1,7 +1,6 @@
 class ApartmentsController < ApplicationController
   before_action -> { authenticate(['admin','user']) } #modifyuser
   before_action :set_apartment, only: [:show, :edit, :update, :destroy]
-  
 
   # GET /apartments
   # GET /apartments.json
@@ -75,11 +74,6 @@ class ApartmentsController < ApplicationController
      redirect_to '/pages/floor_plan'
   end
 
-  def filter_queue
-    current_user.apartments.first.update_column(:parking_queue, nil)
-    redirect_to '/apartments'
- end
-
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_apartment
@@ -93,3 +87,4 @@ class ApartmentsController < ApplicationController
 
 
 end
+ 

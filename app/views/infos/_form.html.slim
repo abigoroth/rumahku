@@ -9,6 +9,7 @@
 = simple_form_for @info, url:path do |f|
   = f.error_notification
   = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
+  
   .form-inputs
     = f.input :email
     = f.input :fullname
@@ -17,7 +18,7 @@
     = f.input :races, collection:["Malay","Chinese","Indian","Others"]
     = f.input :occupation
     = f.input :phonenum
-    = f.input :aptnums
+    = f.association :apartment, label_method: :NumberApartment
     = f.input :owner
     br
     hr
@@ -38,7 +39,13 @@
         = render 'member_fields', f: member
       .links
         = link_to_add_association 'add member', f, :members
-      
-      
-    .form-actions
+
+    #cars
+      - @info.cars.build
+      = f.simple_fields_for :cars do |car|
+        = render 'car_fields', f: car
+      .links
+        = link_to_add_association 'add car', f, :cars
+
+    .form-actions 
       = f.button :submit

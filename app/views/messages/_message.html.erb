@@ -4,11 +4,11 @@
       <div class="col-md-1">
 
         <% if message.try(:user) %>
-          <%= gravatar_for message.user %>
+          <%= gravatar_for_user message.user %>
           <% user = message.user %>
 
         <% elsif message.try(:admin) %>
-          <%= gravatar_for message.admin %>
+          <%= gravatar_for_admin message.admin %>
           <% user = message.admin %>
 
         <% elsif message.try(:guard) %>

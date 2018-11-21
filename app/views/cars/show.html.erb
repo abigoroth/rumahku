@@ -4,17 +4,7 @@
 
 <p>
   <strong>Type:</strong>
-  <%= @car.cartype %>             
-</p>
-
-<p>
-  <strong>Owner:</strong>
-  <%= @car.owner %>
-</p>
-
-<p>
-  <strong>Queue:</strong>
-  <%= @car.queue %>
+  <%= @car.cartype %>
 </p>
 
 <p>
@@ -24,7 +14,11 @@
 
 <p>
   <strong>Apartment Number:</strong>
-  <%= link_to @car.apartment.NumberApartment, @car.apartment %>  
+ 
+  <%= link_to @car.apartment&.NumberApartment, info_path(params[:id]) %>
+
+ 
+  
 </p>
 
 <%= link_to 'Edit', edit_car_path(@car) %> |

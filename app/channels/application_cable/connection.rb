@@ -1,6 +1,5 @@
 module ApplicationCable
-  class Conne ionCable::Connection::Base
-    
+  
   class Connection < ActionCable::Connection::Base
     identified_by :current_user
 
@@ -21,12 +20,12 @@ module ApplicationCable
         verified_user = Guard.find_by(id: cookies.signed['guard.id'])
       end
 
-
       if verified_user
        return verified_user
       else
         reject_unauthorized_connection
       end
     end
+
   end
 end

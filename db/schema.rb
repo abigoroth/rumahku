@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_03_095415) do
+ActiveRecord::Schema.define(version: 2018_11_12_044603) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(version: 2018_10_03_095415) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "apartment_id"
+    t.integer "user_id"
   end
 
   create_table "chat_rooms", force: :cascade do |t|
@@ -153,11 +154,13 @@ ActiveRecord::Schema.define(version: 2018_10_03_095415) do
     t.text "body"
     t.bigint "user_id"
     t.bigint "chat_room_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.bigint "admin_id"
     t.bigint "guard_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["admin_id"], name: "index_messages_on_admin_id"
     t.index ["chat_room_id"], name: "index_messages_on_chat_room_id"
+    t.index ["guard_id"], name: "index_messages_on_guard_id"
     t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
@@ -233,6 +236,8 @@ ActiveRecord::Schema.define(version: 2018_10_03_095415) do
     t.string "parent_id"
     t.string "confirmation_token", limit: 128
     t.string "remember_token", limit: 128
+    t.integer "apartment_id"
+    t.integer "car_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["remember_token"], name: "index_users_on_remember_token"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
@@ -240,6 +245,8 @@ ActiveRecord::Schema.define(version: 2018_10_03_095415) do
 
   add_foreign_key "chat_rooms", "users"
   add_foreign_key "members", "infos"
+  add_foreign_key "messages", "admins"
   add_foreign_key "messages", "chat_rooms"
+  add_foreign_key "messages", "guards"
   add_foreign_key "messages", "users"
 end

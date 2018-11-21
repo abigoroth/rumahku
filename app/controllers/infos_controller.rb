@@ -1,15 +1,9 @@
-
 class InfosController < ApplicationController
   before_action -> { authenticate(['admin','user']) } #modifyuser
   before_action :set_info, only: [:show, :edit, :update, :destroy]
-  before_action -> { authenticate(['admin','user']) } #modifyuser
 
   # GET /infos
   # GET /infos.json
-  
-  def _member_fields
-  end
-
   def index
     @infos = User.all 
   end
@@ -22,12 +16,18 @@ class InfosController < ApplicationController
   # GET /infos/new
   def new
     @info = User.new
-    
   end
 
   # GET /infos/1/edit
   def edit
   end
+  
+  def _member_fields
+  end
+
+  def _car_fields
+  end
+
 
   # POST /infos
   # POST /infos.json
@@ -42,7 +42,7 @@ class InfosController < ApplicationController
         format.html { render :new }
         format.json { render json: @info.errors, status: :unprocessable_entity }
       end
-    end
+    end 
   end
 
   # PATCH/PUT /infos/1
@@ -64,7 +64,7 @@ class InfosController < ApplicationController
   def destroy
     @info.destroy
     respond_to do |format|
-      format.html { redirect_to infos_url, notice: 'Info was successfully destroyed.' }
+      format.html { redirect_to infos_path, notice: 'Info was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -78,9 +78,11 @@ class InfosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def info_params
-      params.require(:user).permit(:email, :fullname, :IC_number, :age, :races, :occupation, :phonenum, :aptnums, :owner, :emergency_name, :emergency_contact, :house_member, :house_member_name, :house_member_age, :house_member_relationship, :password, :picture, members_attributes: [:id, :member_name, :member_age, :member_relationship, :_destroy])
+      params.require(:user).permit(:email, :fullname, :IC_number, :age, :races, :occupation, :phonenum, :aptnums, :owner, :emergency_name, :emergency_contact, :house_member, :house_member_name, :house_member_age, :house_member_relationship, :password, :picture, :apartment_id , members_attributes: [:id, :member_name, :member_age, :member_relationship, :_destroy], cars_attributes: [:id, :cartype, :owner, :queue, :platnum, :apartment_id, :_destroy])
+      
+   
     end
- 
-  
 
-end
+
+
+  end

@@ -20,6 +20,6 @@
 //= require alertify
 //= require jquery-imagemapster/dist/jquery.imagemapster.min.js
 // require_tree .
-//= require jquery_nested_form
 //= require cocoon
 //= require cable
+//= require jquery_nested_form
