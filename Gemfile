@@ -5,9 +5,9 @@ gem 'devise'
 gem 'simple_form'
 gem 'slim'
 
-
 ruby '2.5.1'
 
+gem 'rails-ujs' , '~> 0.1.0'
 gem 'bootswatch-rails'
 gem 'bootstrap'
 gem 'alertifyjs-rails'
@@ -141,12 +141,9 @@ group :test do
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
+
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-gem 'simple_form'
 gem "slim-rails"
-gem 'jquery-rails'
-gem 'jquery-datatables'
-gem 'alertifyjs-rails'
 gem "cocoon"
 gem 'redis-rails', '~> 5.0', '>= 5.0.1'
 gem 'pry'
