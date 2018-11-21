@@ -11,16 +11,14 @@
 // about supported directives.
 //
 //= require jquery3
+// require popper
 //= require jquery
-// require popper
 // require bootstrap
-// require popper
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
 //= require datatables
 //= require alertify
-
 
 //= require_tree .
 //= require cocoon
