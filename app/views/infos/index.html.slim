@@ -1,7 +1,9 @@
+div style="background-color:lightblue" /
 doctype html
 html
   head
         meta content="width=device-width, initial-scale=1" name="viewport" 
+        link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" 
         css:
            body {
              margin: 0;
@@ -77,6 +79,68 @@ html
            input[type=submit]:hover {
                background-color: #45a049;
            }
+
+           .btn {
+              background-color: DodgerBlue;
+              border: none;
+              color: white;
+              padding: 12px 16px;
+              font-size: 16px;
+              cursor: pointer;
+              width: 150px;
+              height: 50px;
+
+            }
+
+            .btn:hover {
+              background-color: RoyalBlue;
+            }
+
+            .btn {
+              background-color: #2196F3;
+              color: white;
+              padding: 16px;
+              font-size: 16px;
+              border: none;
+              outline: none;
+            }
+
+            .dropbtn {
+              background-color: #4CAF50;
+              color: white;
+              padding: 16px;
+              font-size: 16px;
+              border: none;
+            }
+
+            .dropdown {
+              position: relative;
+              display: inline-block;
+            }
+
+            .dropdown-content {
+              display: none;
+              position: absolute;
+              background-color: #f1f1f1;
+              min-width: 160px;
+              box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+              z-index: 1;
+            }
+
+            .dropdown-content a {
+              color: black;
+              padding: 12px 16px;
+              text-decoration: none;
+              display: block;
+            }
+
+            .dropdown-content a:hover {background-color: #ddd;}
+
+          .dropdown:hover .dropdown-content {display: block;}
+
+          .dropdown:hover .dropbtn {background-color: #3e8e41;}
+
+
       
         .topnav          
           a href="http://localhost:3000/pages/admin"  Home
@@ -117,9 +181,26 @@ html
                 td = link_to 'Show',  info_path(info) 
                 td = link_to 'Edit', edit_info_path(info) 
                 td = link_to 'Delete', info_path(info), data: { confirm: 'Are you sure?' }, method: :delete
-        br
-         = link_to 'New Info', new_info_path 
-         br
-         = link_to 'Back', pages_admin_path
-         <style>
+
+                .dropdown
+                  button.dropbtn Dropdown
+                  .dropdown-content
+                    a href="#"  View
+                    a href="#"  Edit
+                    a href="#"  Delete
+<center>
+br
+
+      
+        button.btn onclick="window.location.href='http://localhost:3000/infos/new'" 
+          i.fa.fa-add
+          | New Resident
+br
+        button.btn onclick="window.location.href='http://localhost:3000/pages/admin'" 
+          i.fa.fa-add     
+          | Back
+
+
+              
+      
       

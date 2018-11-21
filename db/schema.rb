@@ -48,6 +48,9 @@ ActiveRecord::Schema.define(version: 2018_10_03_095415) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "apartment_id"
+    t.string "model"
+    t.string "made"
+    t.string "colour"
   end
 
   create_table "chat_rooms", force: :cascade do |t|
@@ -110,15 +113,6 @@ ActiveRecord::Schema.define(version: 2018_10_03_095415) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "map_areas", force: :cascade do |t|
-    t.string "description"
-    t.string "coordinate"
-    t.bigint "floorplan_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["floorplan_id"], name: "index_map_areas_on_floorplan_id"
-  end
-
   create_table "mapareas", force: :cascade do |t|
     t.string "description"
     t.string "coordinate"
@@ -162,6 +156,14 @@ ActiveRecord::Schema.define(version: 2018_10_03_095415) do
     t.string "parkspacelog_id"
   end
 
+  create_table "parkingqueues", force: :cascade do |t|
+    t.string "name"
+    t.string "apartment_number"
+    t.date "date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "parkspacelogs", force: :cascade do |t|
     t.string "parking_no"
     t.date "date"
@@ -192,10 +194,7 @@ ActiveRecord::Schema.define(version: 2018_10_03_095415) do
     t.string "fullname"
     t.string "aptnums"
     t.string "phonenum"
-    t.string "confirmation_token", limit: 128
-    t.string "remember_token", limit: 128
     t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["remember_token"], name: "index_users_on_remember_token"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 

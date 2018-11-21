@@ -2,6 +2,7 @@ doctype html
 html
   head
         meta content="width=device-width, initial-scale=1" name="viewport" 
+        link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" 
         css:
            body {
              margin: 0;
@@ -77,6 +78,31 @@ html
            input[type=submit]:hover {
                background-color: #45a049;
            }
+
+           .btn {
+              background-color: DodgerBlue;
+              border: none;
+              color: white;
+              padding: 12px 16px;
+              font-size: 16px;
+              cursor: pointer;
+              width: 150px;
+              height: 50px;
+
+            }
+
+            .btn:hover {
+              background-color: RoyalBlue;
+            }
+
+            .btn {
+              background-color: #2196F3;
+              color: white;
+              padding: 16px;
+              font-size: 16px;
+              border: none;
+              outline: none;
+            }
       
         .topnav          
           a href="http://localhost:3000/pages/admin"  Home
@@ -117,7 +143,13 @@ table#dttb-apartments.responsive.nowrap.table.table-hover data-sort="true" data-
         td = link_to 'Edit', edit_apartment_path(apartment)
         td = link_to 'Destroy', apartment, data: { confirm: 'Are you sure?' }, method: :delete
       
+
 br
- = link_to 'New Apartment', new_apartment_path
- br
- = link_to 'Back', pages_main_path
+      
+        button.btn onclick="window.location.href='http://localhost:3000/apartments/new'" 
+          i.fa.fa-add
+          | New Apartments
+br
+        button.btn onclick="window.location.href='http://localhost:3000/pages/admin'" 
+          i.fa.fa-add
+          | Back

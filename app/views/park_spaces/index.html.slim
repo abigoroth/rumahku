@@ -77,6 +77,31 @@ html
            input[type=submit]:hover {
                background-color: #45a049;
            }
+
+           .btn {
+              background-color: DodgerBlue;
+              border: none;
+              color: white;
+              padding: 12px 16px;
+              font-size: 16px;
+              cursor: pointer;
+              width: 150px;
+              height: 50px;
+
+            }
+
+            .btn:hover {
+              background-color: RoyalBlue;
+            }
+
+            .btn {
+              background-color: #2196F3;
+              color: white;
+              padding: 16px;
+              font-size: 16px;
+              border: none;
+              outline: none;
+            }
       
         .topnav          
           a href="http://localhost:3000/pages/admin"  Home
@@ -102,7 +127,7 @@ h3 Lower Ground Floor
 center/
 img alt="S" src="http://i68.tinypic.com/j0w39z.jpg" usemap="#s" /
 map name="s" 
-  area alt="1" coords="113,548,163,657" href="http://localhost:3000/park_spaces/47" shape="rect" class="not-available" parkinglot="1"/
+  area alt="1" coords="113,548,163,657" href="http://localhost:3000/park_spaces/4form" shape="rect" class="not-available" parkinglot="1"/
   area alt="2" coords="165,548,217,656" href="http://localhost:3000/park_spaces/48" shape="rect" parkinglot="2" /
   area alt="3" coords="235,547,296,658" href="http://localhost:3000/park_spaces/49" shape="rect" parkinglot="3" /
   area alt="4" coords="302,548,348,656" href="http://localhost:3000/park_spaces/50" shape="rect" parkinglot="4" /
@@ -212,10 +237,15 @@ table#dttb-infos.responsive.nowrap.table.table-hover data-sort="true" data-sourc
         td = link_to 'Destroy', park_space, data: { confirm: 'Are you sure?' }, method: :delete
 
 
-
-= link_to 'New Park space', new_park_space_path
 br
-= link_to 'Back', pages_admin_path
+      
+        button.btn onclick="window.location.href='http://localhost:3000/park_spaces/new'" 
+          i.fa.fa-add
+          | New Park Space
+br
+        button.btn onclick="window.location.href='http://localhost:3000/pages/admin'" 
+          i.fa.fa-add
+          | Back
 
 
 css:
