@@ -18,7 +18,10 @@ Rails.application.routes.draw do
   get 'floorplans/_map_area_fields'
   get 'floorplan/_map_area_fields'
   resources :floorplans
-  get 'pages/floor_plan'
+  get 'pages/floor_plan' 
+  
+  get '/pages/request_date'
+  
   resources :guests
   
   resources :park_spaces do
@@ -56,7 +59,14 @@ Rails.application.routes.draw do
   get 'pages/main'
 
   resources :parkingqueues
-  resources :park_spaces
+  resources :park_spaces do
+    resources :apartments   
+        member do
+          get "request_parking_queue"
+        end     
+  end
+
+  
   resources :park_spacerentals
   get 'pages/space_rental'
   resources :cars
@@ -68,7 +78,8 @@ Rails.application.routes.draw do
   resources :residentlists
   resources :residents
   resources :parkingqueues
-  resources :park_spaces
+
+  
   resources :park_spacerentals
   get 'pages/space_rental'
   resources :cars
@@ -79,10 +90,11 @@ Rails.application.routes.draw do
   resources :jeng2s
   get 'pages/main'
   get 'pages/jeng2'
-  resources :apartments do
-    member do
-      get "request_parking_queue"
-    end
+  resources :park_spaces do  
+    resources :park_spacerentals      
+        member do
+          get "request_parking_queue"
+        end     
   end
   resources :parkspacelogs
   resources :guests

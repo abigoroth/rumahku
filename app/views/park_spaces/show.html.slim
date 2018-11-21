@@ -123,29 +123,24 @@ html
           a href="http://localhost:3000/infos"  Resident List
           a href="http://localhost:3000/cars"  Car
           a href="http://localhost:3000/apartments"  Apartment
-          a.active href="http://localhost:3000/park_spaces"  Park Space Rental
-          /a href="http://localhost:3000/parkspacelogs"  Space Log
-          /a href="http://localhost:3000/park_spacerentals"  Park Space Rental
+          a.active href="http://localhost:3000/park_spaces"  Park Space Rental          
           a href="http://localhost:3000/floorplans"  Floor Plan
           a href="http://localhost:3000/clusters" Cluster
           a href="http://localhost:3000/chat_rooms" Chat Rooms
 br
          
+       
+
 p#notice = notice
 
 p
   strong Park Number:
   = @park_space.parknum
+
+
 p
   strong Space Type:
   = @park_space.spacetype
-/p
-  strong Available:
-  = @park_space.available
-
-/p
-  strong Space Log:
-  /= link_to @park_space.parkspacelog.parking_no, @park_space.parkspacelog
 
 
 br
@@ -349,3 +344,74 @@ form
      
  
 
+-if cookies.signed['user.id'] 
+  = simple_form_for current_user.apartments.first do |f|
+     = render 'apartment_fields', f: f
+     = f.submit
+
+  
+  input[type="button" value="Request Parking Queue" onclick="window.location.href='http://localhost:3000/park_spaces/#{params[:id]}/request_parking_queue'"]
+      
+
+  br
+-if cookies.signed['admin.id']   
+  
+  - park_spacerentals = @park_space.park_spacerentals.where("end_rent > '#{Date.today}'")
+  - if park_spacerentals.length > 0
+    p
+    font[size="5" face="bold-tahoma" color="Red"]
+      | Not Available
+        
+  - else 
+    p
+    font[size="5" face="-bold-tahoma" color="#5EFF00"]
+      | Available
+
+    br
+
+  h5 Park Space 
+  table.table 
+    thead     
+      tr 
+        th No 
+        th Car 
+        th Start Date
+        th End Date
+        th
+        
+        
+
+    tbody
+      - @park_space.park_spacerentals.each_with_index do |psr,index| 
+        tr 
+          td = index+1
+          td = psr.car.platnum
+          td = psr.start_rent
+          td = psr.end_rent
+          td = link_to "Edit", edit_park_spacerental_path(psr)
+ 
+  h5 Park Space Log 
+  table.table
+    thead     
+      tr        
+        th data-data="date" Date
+        th data-data="message" Message
+        th data-data="url" data-orderable="false" data-class-name="all" data-searchable="false" class="skip-export" width="100px"
+        th
+        th
+
+    tbody
+      - @park_space.parkspacelogs.where(park_space_id: @park_space.id).each_with_index do |parkspacelog|
+        tr
+          td = parkspacelog.date
+          td = parkspacelog.message
+          td = link_to 'View', parkspacelog
+          td = link_to 'Edit', edit_parkspacelog_path(parkspacelog)
+          td = link_to 'Delete', parkspacelog, data: { confirm: 'Are you sure?' }, method: :delete      
+
+form
+  -if cookies.signed['admin.id']  
+    input onclick="window.location.href='http://localhost:3000/park_spaces/#{params[:id]}/park_spacerentals/new'" type="button" value=("Add Rental") 
+
+
+  
