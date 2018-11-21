@@ -31,11 +31,11 @@ ActiveRecord::Schema.define(version: 2018_11_16_031910) do
     t.text "number_apartment"
     t.text "level"
     t.string "apartment_type"
+    t.datetime "parking_queue"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "resident_id"
     t.date "ParkingQueue"
-    t.datetime "parking_queue"
     t.string "info_id"
     t.string "user_id"
     t.integer "park_space_id"
@@ -101,8 +101,6 @@ ActiveRecord::Schema.define(version: 2018_11_16_031910) do
     t.date "date"
     t.string "phone_number"
     t.text "purpose"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "infos", force: :cascade do |t|

@@ -19,7 +19,7 @@ class ApartmentsTest < ApplicationSystemTestCase
     fill_in "Hpnumber", with: @apartment.HpNumber
     fill_in "Level", with: @apartment.Level
     fill_in "Name", with: @apartment.Name
-    fill_in "Numberapartment", with: @apartment.NumberApartment
+    fill_in "Numberapartment", with: @apartment.number_apartment
     fill_in "Parkingnumber", with: @apartment.ParkingNumber
     click_on "Create Apartment"
 
@@ -36,7 +36,7 @@ class ApartmentsTest < ApplicationSystemTestCase
     fill_in "Hpnumber", with: @apartment.HpNumber
     fill_in "Level", with: @apartment.Level
     fill_in "Name", with: @apartment.Name
-    fill_in "Numberapartment", with: @apartment.NumberApartment
+    fill_in "Numberapartment", with: @apartment.number_apartment
     fill_in "Parkingnumber", with: @apartment.ParkingNumber
     click_on "Update Apartment"
 
