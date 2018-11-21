@@ -44,7 +44,16 @@ mount ActionCable.server => '/cable'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   
   resources :parkingqueues
-  resources :park_spaces
+ 
+  resources :park_spaces do
+    resources :apartments   
+        member do
+          get "request_parking_queue"
+        end     
+  end
+
+  get '/pages/request_date'
+
   resources :park_spacerentals
   get 'pages/space_rental'
   resources :cars
@@ -91,6 +100,7 @@ mount ActionCable.server => '/cable'
   resources :jeng2s
   get 'pages/main'
   get 'pages/jeng2'
+
   resources :apartments do
     member do
       get "request_parking_queue"

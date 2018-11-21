@@ -1,9 +1,9 @@
 class ParkSpacerental < ApplicationRecord
     mount_uploader :picture, PictureUploader
 
-    belongs_to :park_space
-    belongs_to :car
-    belongs_to :apartment
+    belongs_to :park_space, optional: true
+    belongs_to :car, optional: true
+    belongs_to :apartment, optional: true
 
     
 end
