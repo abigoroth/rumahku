@@ -19,7 +19,7 @@
 //= require turbolinks
 //= require datatables
 //= require alertify
-
+ 
 //= require_tree .
 //= require cocoon
 //= require cable
