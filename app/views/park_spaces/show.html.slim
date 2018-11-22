@@ -261,23 +261,23 @@ html
 
       table.table
       table#dttb-jeng2s.responsive.nowrap.table.table-hover data-sort="true" data-source="#{url_for(format: :json)}" 
-        thead     
-          tr 
-            th No 
-            th Car 
-            th Start Date
-            th End Date
-            th
-              
+          thead     
+            tr 
+              th No 
+              th Car 
+              th Start Date
+              th End Date
+              th
+                
 
-          tbody
-            - @park_space.park_spacerentals.each_with_index do |psr,index| 
-              tr 
-                td = index+1
-                td = psr.car.platnum
-                td = psr.start_rent
-                td = psr.end_rent
-                td = link_to "Edit", edit_park_spacerental_path(psr)
+            tbody
+              - @park_space.park_spacerentals.each_with_index do |psr,index| 
+                tr 
+                  td = index+1
+                  td = psr.car.platnum
+                  td = psr.start_rent
+                  td = psr.end_rent
+                  td = link_to "Edit", edit_park_spacerental_path(psr)
    
     #Parkspacerental.w3-container.city style="display:none" 
       br       
@@ -310,11 +310,11 @@ html
       
         -if cookies.signed['user.id'] 
             = simple_form_for current_user.apartments.first do |f|
-            = render 'apartment_fields', f: f
-            = f.submit
+              = render 'apartment_fields', f: f
+              = f.submit
               input[type="button" value="Request Parking Queue" onclick="window.location.href='http://localhost:3000/park_spaces/#{params[:id]}/request_parking_queue'"]
         br
-        br
+        br 
         -if cookies.signed['admin.id'] 
         form
          
