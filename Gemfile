@@ -152,4 +152,4 @@ gem 'redis-rails', '~> 5.0', '>= 5.0.1'
 gem 'pry'
 gem 'jquery-ui-rails', '5.0.5'
 gem 'jquery-rails'
-
+gem "jsonb_accessor", "~> 1.0.0"

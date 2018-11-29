@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   
   has_many :apartments
+  has_many :park_spaces
   
 
   has_many :chat_rooms, dependent: :destroy

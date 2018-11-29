@@ -41,12 +41,15 @@ class ApartmentsController < ApplicationController
   # PATCH/PUT /apartments/1
   # PATCH/PUT /apartments/1.json
   def update
+
+    @apartment = Apartment.new(apartment_params) 
+
     respond_to do |format|
-      if @apartment.update(apartment_params)
+      if @apartment.save
         format.html { redirect_to @apartment, notice: 'Apartment was successfully updated.' }
-        format.json { render :show, status: :ok, location: @apartment }
+        format.json { render :show, status: :created, location: @apartment }
       else
-        format.html { render :edit }
+        format.html { render :new }
         format.json { render json: @apartment.errors, status: :unprocessable_entity }
       end
     end
@@ -83,7 +86,7 @@ class ApartmentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def apartment_params
-      params.require(:apartment).permit(:number_apartment, :level, :apartment_type, :parking_queue, :info_id, :user_id, :requested_park_space_id, :requested_start_rent, :requested_end_rent)
+      params.require(:apartment).permit(:number_apartment, :level, :apartment_type, :parking_queue, :info_id, :user_id, :requested_park_space_id, :requested_start_rent, :requested_end_rent, :requested_rent_date)
     end
 
 

@@ -1,0 +1,2 @@
+class ApartmentChannel < ApplicationRecord
+end

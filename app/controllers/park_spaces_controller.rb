@@ -13,9 +13,10 @@ class ParkSpacesController < ApplicationController
 
   # GET /park_spaces/1
   # GET /park_spaces/1.json
-  def show
-    
+  def show     
   end
+
+ 
 
   # GET /park_spaces/new
   def new
@@ -24,11 +25,11 @@ class ParkSpacesController < ApplicationController
 
   # GET /park_spaces/1/edit
   def edit
+    @park_space = ParkSpace.find(params[:id])
   end
 
   def request_parking_queue   
 
-   
     current_user.apartments.first.update(park_space_id: params[:id], parking_queue: DateTime.now)
     
     redirect_to '/pages/floor_plan'
@@ -75,6 +76,8 @@ class ParkSpacesController < ApplicationController
     end
   end
 
+  
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_park_space
@@ -84,6 +87,7 @@ class ParkSpacesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def park_space_params
-      params.require(:park_space).permit(:parknum, :spacetype, :available, apartments_attributes: [:id, :requested_park_space_id, :requested_start_rent, :requested_end_rent, :_destroy])
+      params.require(:park_space).permit(:parknum, :spacetype, :available, :info_id, :user_id, apartments_attributes: [:id, :requested_park_space_id, :requested_start_rent, :requested_end_rent, :_destroy])
     end
+
 end

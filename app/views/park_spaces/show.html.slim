@@ -103,17 +103,17 @@ p
   = @park_space.spacetype
 
 
--if cookies.signed['user.id'] 
-  = simple_form_for current_user.apartments.first do |f|
-     = render 'apartment_fields', f: f
-     = f.submit
-
   
+  -if current_user.apartments.any?
+    = simple_form_for current_user.apartments.first do |f|      
+        = render 'apartment_fields', f: f
+        = f.submit
+
+  br
   input[type="button" value="Request Parking Queue" onclick="window.location.href='http://localhost:3000/park_spaces/#{params[:id]}/request_parking_queue'"]
       
 
   br
--if cookies.signed['admin.id']   
   
   - park_spacerentals = @park_space.park_spacerentals.where("end_rent > '#{Date.today}'")
   - if park_spacerentals.length > 0

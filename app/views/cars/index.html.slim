@@ -96,8 +96,7 @@ table#dttb-infos.responsive.nowrap.table.table-hover data-sort="true" data-sourc
   thead
     tr
     th data-data="cartype" Type
-    th data-data="owner" Owner
-    th data-data="queue" Queue
+    th data-data="owner" Owner    
     th data-data="platnum" Platnum
     th data-data="url" data-orderable="false" data-class-name="all" data-searchable="false" class="skip-export" width="100px"
     th
@@ -107,8 +106,7 @@ table#dttb-infos.responsive.nowrap.table.table-hover data-sort="true" data-sourc
     - @cars.each do |car| 
       tr
         td = car.cartype 
-        td = car.owner 
-        td = car.queue 
+        td = car.owner         
         td = car.platnum 
         td = link_to 'Show', car 
         td = link_to 'Edit', edit_car_path(car) 
