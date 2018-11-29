@@ -45,9 +45,9 @@ class ApartmentsController < ApplicationController
     @apartment = Apartment.new(apartment_params) 
 
     respond_to do |format|
-      if @apartment.save
-        format.html { redirect_to @apartment, notice: 'Apartment was successfully updated.' }
-        format.json { render :show, status: :created, location: @apartment }
+      if @apartment.update(apartment_params)
+        format.html { redirect_to "/apartments", notice: 'Apartment was successfully updated.' }
+        format.json { render :show, status: :ok, location: @apartment }
       else
         format.html { render :new }
         format.json { render json: @apartment.errors, status: :unprocessable_entity }

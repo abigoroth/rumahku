@@ -8,12 +8,23 @@
   = f.input :apartment_type, collection:["House", "Shop"]
   //= f.input :resident_id
   //= f.input :parking_queue
+
   /= f.input :requested_rent_date, as: :date
   = f.input :requested_start_rent, as: :date
   br
   br
   /= f.input :requested_rent_date, as: :date
   = f.input :requested_end_rent, as: :date
+  /= f.input :requested_start_rent, as: :date
+  /br
+  /br
+  /= f.input :requested_end_rent, as: :date
+  /br
+  /br
   br
   br
+  /= f.input :requested_end_rent, as: :date
+  br
+  br
+
   = f.submit

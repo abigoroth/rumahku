@@ -26,6 +26,8 @@
 
 //Global setting and initializer
 
+
+
 $.extend( $.fn.dataTable.defaults, {
   responsive: true,
   pagingType: 'full',
