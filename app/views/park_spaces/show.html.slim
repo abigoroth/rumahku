@@ -47,7 +47,7 @@ html
           
            tr:nth-child(even) {
                background-color: #dddddd;
-           }
+           } 
           
           .center {
                text-align: center;
@@ -252,7 +252,7 @@ html
       button.w3-bar-item.w3-button onclick="openCity('Requestdate')"  Request Date
 
   #Parkspacerental.w3-container.city
-        -if cookies.signed['admin.id'] 
+        - if cookies.signed['admin.id'] 
         - park_spacerentals = @park_space.park_spacerentals.where("end_rent > '#{Date.today}'")
         - if park_spacerentals.length > 0
           p
