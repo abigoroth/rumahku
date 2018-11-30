@@ -1,3 +1,4 @@
+
 doctype html
 html
   head
@@ -77,6 +78,8 @@ html
            input[type=submit]:hover {
                background-color: #45a049;
            }
+
+        
       
         .topnav          
           a href="http://localhost:3000/pages/admin"  Home
@@ -103,6 +106,7 @@ table#dttb-apartments.responsive.nowrap.table.table-hover data-sort="true" data-
       th
       th
 
+
   tbody
     - @apartments.each do |apartment|
       tr
@@ -118,5 +122,9 @@ table#dttb-apartments.responsive.nowrap.table.table-hover data-sort="true" data-
       
 br
  = link_to 'New Apartment', new_apartment_path
- br
- = link_to 'Back', pages_main_path
+ 
+
+form
+  center
+    input[type="button" value="Filter Parking" onclick="window.location.href='http://localhost:3000/apartments/filter_parking_queue'"]
+   

@@ -39,7 +39,7 @@ html
                width: 100;
            }
           
-           td, th {
+           td, th { 
                border: 1px solid #dddddd;
                text-align: left;
                padding: 8px;
@@ -227,9 +227,15 @@ br
   /#nav-request_date.tab-pane aria-labelledby="nav-request_date-tab" role="tabpanel"  
   /h2 HAI ASSALAMUALAIKUM
   /p BUAT APA TU?
- 
+   
   
- 
+  -if current_user.apartments.any?
+    = simple_form_for current_user.apartments.first do |f|      
+        = render 'apartment_fields', f: f
+        = f.submit
+
+  br
+  input[type="button" value="Request Parking Queue" onclick="window.location.href='http://localhost:3000/park_spaces/#{params[:id]}/request_parking_queue'"]
       
   
   
@@ -241,11 +247,11 @@ html
   body
     .w3-container
     .w3-bar.w3-yellow
-      button.w3-bar-item.w3-button onclick="openCity('Parkspacelog')"  Park Space Log
       button.w3-bar-item.w3-button onclick="openCity('Parkspacerental')"  Park Space Rental
+      button.w3-bar-item.w3-button onclick="openCity('Parkspacelog')"  Park Space Log
       button.w3-bar-item.w3-button onclick="openCity('Requestdate')"  Request Date
 
-    #Parkspacelog.w3-container.city
+    #Parkspacerental.w3-container.city
       -if cookies.signed['admin.id'] 
       - park_spacerentals = @park_space.park_spacerentals.where("end_rent > '#{Date.today}'")
       - if park_spacerentals.length > 0
@@ -270,6 +276,7 @@ html
             th
               
 
+  br
           tbody
             - @park_space.park_spacerentals.each_with_index do |psr,index| 
               tr 
@@ -279,7 +286,7 @@ html
                 td = psr.end_rent
                 td = link_to "Edit", edit_park_spacerental_path(psr)
    
-    #Parkspacerental.w3-container.city style="display:none" 
+    #Parkspacelog.w3-container.city style="display:none" 
       br       
       table.table
       table#dttb-jeng2s.responsive.nowrap.table.table-hover data-sort="true" data-source="#{url_for(format: :json)}"
@@ -307,12 +314,13 @@ html
                             
 
     #Requestdate.w3-container.city style="display:none" 
-      
+       
         -if cookies.signed['user.id'] 
-            = simple_form_for current_user.apartments.first do |f|
-            = render 'apartment_fields', f: f
-            = f.submit
-              input[type="button" value="Request Parking Queue" onclick="window.location.href='http://localhost:3000/park_spaces/#{params[:id]}/request_parking_queue'"]
+           -if current_user.apartments.any?
+            = simple_form_for current_user.first do |f|
+              = render 'apartment_fields', f: f
+              = f.submit
+                input[type="button" value="Request Parking Queue" onclick="window.location.href='http://localhost:3000/park_spaces/#{params[:id]}/request_parking_queue'"]
         br
         br
         -if cookies.signed['admin.id'] 
