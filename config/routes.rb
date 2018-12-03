@@ -70,6 +70,8 @@ mount ActionCable.server => '/cable'
   get 'pages/user'
   get 'pages/guard'
   get 'pages/admin'
+
+  
   devise_for :guards
   devise_for :admins
   devise_for :users
@@ -104,6 +106,7 @@ mount ActionCable.server => '/cable'
   resources :apartments do
     member do
       get "request_parking_queue"
+      get "hi"
     end
   end
   resources :parkspacelogs

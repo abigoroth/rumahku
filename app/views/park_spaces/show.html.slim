@@ -84,7 +84,7 @@ html
           a href="http://localhost:3000/infos/new"  Resident Registration
           a href="http://localhost:3000/infos"  Resident List
           a href="http://localhost:3000/cars"  Car
-          a href="http://localhost:3000/apartments"  Apartment
+          a href="http://localhost:3000/apartments"  Apartment 
           a.active href="http://localhost:3000/park_spaces"  Park Space Rental          
           a href="http://localhost:3000/floorplans"  Floor Plan
           a href="http://localhost:3000/clusters" Cluster
@@ -102,14 +102,14 @@ p
   strong Space Type:
   = @park_space.spacetype
 
--if cookies.signed['user.id']
 
-    = simple_form_for current_user.apartments.first do |f|             
-      = render 'apartment_fields', f: f
-      = f.submit
-        input[type="button" value="Request Parking Queue" onclick="window.location.href='http://localhost:3000/park_spaces/#{params[:id]}/request_parking_queue'"]
-          
-
+    -if cookies.signed['user.id'] 
+        = simple_form_for current_user.apartments.first do |f|             
+          = render 'apartment_fields', f: f
+          = f.submit
+br
+  input[type="button" value="Request Parking Queue" onclick="window.location.href='http://localhost:3000/park_spaces/#{params[:id]}/request_parking_queue'"]
+                  
 br
 -if cookies.signed['admin.id']   
   
@@ -164,8 +164,10 @@ br
           td = parkspacelog.message
           td = link_to 'View', parkspacelog
           td = link_to 'Edit', edit_parkspacelog_path(parkspacelog)
-          td = link_to 'Delete', parkspacelog, data: { confirm: 'Are you sure?' }, method: :delete      
+          td = link_to 'Delete', parkspacelog, data: { confirm: 'Are you sure?' }, method: :delete   
 
+
+  
 form
   -if cookies.signed['admin.id']  
     input onclick="window.location.href='http://localhost:3000/park_spaces/#{params[:id]}/park_spacerentals/new'" type="button" value=("Add Rental") 
