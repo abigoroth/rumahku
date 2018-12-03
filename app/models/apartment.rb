@@ -11,7 +11,6 @@ class Apartment< ApplicationRecord
 
     #validates :NumberApartment, presence: true
     #has_many :parkingqueues
-
     
    
 end

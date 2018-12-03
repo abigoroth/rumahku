@@ -1,4 +1,5 @@
 class ParkSpacesController < ApplicationController
+
   before_action -> { authenticate(['admin','user']) } #modifyuser
   before_action :set_park_space, only: [:show, :edit, :update, :destroy]
   
@@ -29,9 +30,7 @@ class ParkSpacesController < ApplicationController
   end
 
   def request_parking_queue   
-
     current_user.apartments.first.update(park_space_id: params[:id], parking_queue: DateTime.now)
-    
     redirect_to '/pages/floor_plan'
     #redirect_to '/park_spaces'
   end

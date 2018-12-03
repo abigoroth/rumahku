@@ -5,8 +5,8 @@ class ApartmentsController < ApplicationController
   # GET /apartments
   # GET /apartments.json
   def index
-    @apartments = Apartment.all
   end
+
 
   # GET /apartments/1
   # GET /apartments/1.json
@@ -44,15 +44,15 @@ class ApartmentsController < ApplicationController
 
     @apartment = Apartment.new(apartment_params) 
 
-    respond_to do |format|
+    #respond_to do |format|
       if @apartment.update(apartment_params)
-        format.html { redirect_to "/apartments", notice: 'Apartment was successfully updated.' }
-        format.json { render :show, status: :ok, location: @apartment }
+        #format.html { redirect_to "/apartments", notice: 'Apartment was successfully updated.' }
+        #format.json { render :show, status: :ok, location: @apartment }
       else
         format.html { render :new }
         format.json { render json: @apartment.errors, status: :unprocessable_entity }
       end
-    end
+    #end
   end
 
   # DELETE /apartments/1
@@ -74,8 +74,11 @@ class ApartmentsController < ApplicationController
 
   def request_parking_queue
      current_user.apartments.first.update_column(:parking_queue, DateTime.today)
-     #redirect_to '/pages/floor_plan'
      redirect_to '/park_spaces'
+  end
+
+  def filter_parking_queue
+    @apartments = Apartment.where.not(parking_queue: nil)
   end
 
   private
@@ -91,3 +94,4 @@ class ApartmentsController < ApplicationController
 
 
 end
+    

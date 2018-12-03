@@ -1,4 +1,5 @@
 class ParkSpacerental < ApplicationRecord
+
     mount_uploader :picture, PictureUploader
 
     belongs_to :park_space, optional: true
