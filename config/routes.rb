@@ -28,6 +28,7 @@ Rails.application.routes.draw do
   
   resources :park_spaces do
     resources :park_spacerentals
+    resources :parkspacelogs
   end
   resources :park_spacerentals
   get 'pages/space_rental'
@@ -37,7 +38,8 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   
   resources :parkingqueues
-  resources :park_spaces
+  resources :park_spaces 
+   
   resources :park_spacerentals
   get 'pages/space_rental'
   resources :cars

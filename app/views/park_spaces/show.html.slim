@@ -3,8 +3,7 @@ doctype html
 html
   head
         /link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-        /script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"
-        script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        /script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
         meta content="width=device-width, initial-scale=1" name="viewport" 
         css:
            body {
@@ -117,6 +116,9 @@ p
           = f.submit
 br
 
+
+
+
   .tabbable
     ul.nav.nav-tabs
       li.active
@@ -188,7 +190,7 @@ br
                 form
                 br
                   center
-                    input[type="button" value="New Park Space Log" onclick="window.location.href='http://localhost:3000/parkspacelogs/new'"] 
+                    input[type="button" value="New Park Space Log" onclick="window.location.href='http://localhost:3000/park_spaces/#{params[:id]}/parkspacelogs/new'"] 
                 br
                 br  
       #tab3.tab-pane
@@ -211,28 +213,3 @@ br
 
 
      
- 
-  h5 Park Space Log 
-  table.table
-    thead     
-      tr        
-        th data-data="date" Date
-        th data-data="message" Message
-        th data-data="url" data-orderable="false" data-class-name="all" data-searchable="false" class="skip-export" width="100px"
-        th
-        th
-
-    tbody
-      - @park_space.parkspacelogs.where(park_space_id: @park_space.id).each_with_index do |parkspacelog|
-        tr
-          td = parkspacelog.date
-          td = parkspacelog.message
-          td = link_to 'View', parkspacelog
-          td = link_to 'Edit', edit_parkspacelog_path(parkspacelog)
-          td = link_to 'Delete', parkspacelog, data: { confirm: 'Are you sure?' }, method: :delete   
-
-
-  
-form
-  -if cookies.signed['admin.id']  
-    input onclick="window.location.href='http://localhost:3000/park_spaces/#{params[:id]}/park_spacerentals/new'" type="button" value=("Add Rental") 
