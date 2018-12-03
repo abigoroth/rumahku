@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_03_095415) do
+ActiveRecord::Schema.define(version: 2018_11_16_031910) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,16 +28,22 @@ ActiveRecord::Schema.define(version: 2018_10_03_095415) do
   end
 
   create_table "apartments", force: :cascade do |t|
-    t.text "NumberApartment"
-    t.text "Level"
-    t.string "ApartmentType"
+    t.text "number_apartment"
+    t.text "level"
+    t.string "apartment_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "resident_id"
     t.date "ParkingQueue"
-    t.date "parking_queue"
+    t.datetime "parking_queue"
     t.string "info_id"
     t.string "user_id"
+    t.integer "park_space_id"
+    t.date "start_rent"
+    t.date "end_rent"
+    t.integer "requested_park_space_id"
+    t.date "requested_start_rent"
+    t.date "requested_end_rent"
   end
 
   create_table "cars", force: :cascade do |t|
@@ -154,6 +160,10 @@ ActiveRecord::Schema.define(version: 2018_10_03_095415) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "parkspacelog_id"
+    t.string "parking_queue"
+    t.date "start_rent"
+    t.date "end_rent"
+    t.integer "apartment_id"
   end
 
   create_table "parkingqueues", force: :cascade do |t|

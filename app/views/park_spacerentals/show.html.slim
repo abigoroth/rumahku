@@ -98,16 +98,16 @@ p
   strong Receipt:
   = image_tag(@park_spacerental.picture_url, width: 200) if @park_spacerental.picture.present?
 
-p
+/p
   strong Park Space:
   = link_to @park_spacerental.park_space.parknum, @park_spacerental.park_space
-p
+/p
   strong Car:
   = link_to @park_spacerental.car.platnum, @park_spacerental.car
 
-p
+/p
   strong Apartment Number:
-  = link_to @park_spacerental.apartment.NumberApartment, @park_spacerental.apartment
+  = link_to @park_spacerental.apartment.number_apartment, @park_spacerental.apartment
 
 p
   strong Start rent:

@@ -12,13 +12,22 @@
 //
 //= require jquery3
 // require popper
+//= require jquery
 // require bootstrap
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
 //= require datatables
 //= require alertify
+<<<<<<< HEAD
 
 // require_tree .
+=======
+ 
+//= require_tree .
+>>>>>>> 0eacff4a53fddae49226506b0cc330047170442f
 //= require cocoon
 //= require cable
+
+
+

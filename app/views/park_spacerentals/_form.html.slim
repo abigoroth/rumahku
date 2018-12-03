@@ -1,10 +1,11 @@
 =simple_form_for @park_spacerental do |f|  
-  = f.association :park_space, label_method: :parknum
+ 
   = f.association :car, label_method: :platnum  
-  = f.association :apartment, label_method: :NumberApartment  
+  = f.association :apartment, label_method: :number_apartment  
   = f.input :start_rent   
   = f.input :end_rent   
   = f.input :price
   = f.file_field :picture, id: :park_spacerental_picture  
+  hr
   = f.submit
   
