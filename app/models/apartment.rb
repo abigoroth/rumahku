@@ -9,7 +9,7 @@ class Apartment< ApplicationRecord
     belongs_to :user, optional: true
     belongs_to :park_space, optional: true
 
-    #validates :NumberApartment, presence: true
+    #validates :number_apartment, presence: true
     #has_many :parkingqueues
     
    

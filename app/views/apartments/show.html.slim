@@ -1,10 +1,13 @@
 p#notice
   = notice
 
+
 p
   strong
-    | Resident ID :
-  = link_to @apartment.user&.aptnums, info_path(@apartment.user) 
+    | Name :
+  = link_to @apartment.user&.fullname, info_path(@apartment)
+  /= link_to @apartment.user.aptnums, info_path(@apartment.user)  
+  /= link_to @apartment.user&.fullname     
 
 p
   strong

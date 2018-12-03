@@ -2,6 +2,7 @@ class ParkSpacesController < ApplicationController
 
   before_action -> { authenticate(['admin','user']) } #modifyuser
   before_action :set_park_space, only: [:show, :edit, :update, :destroy]
+
   
 
   
@@ -21,6 +22,7 @@ class ParkSpacesController < ApplicationController
 
   # GET /park_spaces/new
   def new
+    
     @park_space = ParkSpace.new
   end
 

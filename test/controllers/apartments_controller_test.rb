@@ -17,7 +17,7 @@ class ApartmentsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create apartment" do
     assert_difference('Apartment.count') do
-      post apartments_url, params: { apartment: { Age: @apartment.Age, ApartmentType: @apartment.ApartmentType, HpNumber: @apartment.HpNumber, Level: @apartment.Level, Name: @apartment.Name, NumberApartment: @apartment.NumberApartment, ParkingNumber: @apartment.ParkingNumber } }
+      post apartments_url, params: { apartment: { Age: @apartment.Age, ApartmentType: @apartment.ApartmentType, HpNumber: @apartment.HpNumber, Level: @apartment.Level, Name: @apartment.Name, number_apartment: @apartment.number_apartment, ParkingNumber: @apartment.ParkingNumber } }
     end
 
     assert_redirected_to apartment_url(Apartment.last)
@@ -34,7 +34,7 @@ class ApartmentsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update apartment" do
-    patch apartment_url(@apartment), params: { apartment: { Age: @apartment.Age, ApartmentType: @apartment.ApartmentType, HpNumber: @apartment.HpNumber, Level: @apartment.Level, Name: @apartment.Name, NumberApartment: @apartment.NumberApartment, ParkingNumber: @apartment.ParkingNumber } }
+    patch apartment_url(@apartment), params: { apartment: { Age: @apartment.Age, ApartmentType: @apartment.ApartmentType, HpNumber: @apartment.HpNumber, Level: @apartment.Level, Name: @apartment.Name, number_apartment: @apartment.number_apartment, ParkingNumber: @apartment.ParkingNumber } }
     assert_redirected_to apartment_url(@apartment)
   end
 

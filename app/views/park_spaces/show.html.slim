@@ -87,44 +87,6 @@ html
           
            input[type=submit]:hover {
                background-color: #45a049;
-
-              body {font-family: Arial;}
-
-          /* Style the tab */
-          .tab {
-              overflow: hidden;
-              border: 1px solid #ccc;
-              background-color: #f1f1f1;
-          }
-
-          /* Style the buttons inside the tab */
-          .tab button {
-              background-color: inherit;
-              float: left;
-              border: none;
-              outline: none;
-              cursor: pointer;
-              padding: 14px 16px;
-              transition: 0.3s;
-              font-size: 17px;
-          }
-
-          /* Change background color of buttons on hover */
-          .tab button:hover {
-              background-color: #ddd;
-          }
-
-          /* Create an active/current tablink class */
-          .tab button.active {
-              background-color: #ccc;
-          }
-
-          /* Style the tab content */
-          .tabcontent {
-              display: none;
-              padding: 6px 12px;
-              border: 1px solid #ccc;
-              border-top: none;
            }
       
         .topnav
@@ -132,11 +94,9 @@ html
           a href="http://localhost:3000/infos/new"  Resident Registration
           a href="http://localhost:3000/infos"  Resident List
           a href="http://localhost:3000/cars"  Car
-          a href="http://localhost:3000/apartments"  Apartment
+          a href="http://localhost:3000/apartments"  Apartment 
           a.active href="http://localhost:3000/park_spaces"  Park Space Rental          
           a href="http://localhost:3000/chat_rooms" Chat Rooms
-br
-         
        
 
 p#notice = notice
@@ -151,6 +111,10 @@ p
   = @park_space.spacetype
 
 
+    -if cookies.signed['user.id'] 
+        = simple_form_for current_user.apartments.first do |f|             
+          = render 'apartment_fields', f: f
+          = f.submit
 br
 
   .tabbable
@@ -248,8 +212,27 @@ br
 
      
  
-    
+  h5 Park Space Log 
+  table.table
+    thead     
+      tr        
+        th data-data="date" Date
+        th data-data="message" Message
+        th data-data="url" data-orderable="false" data-class-name="all" data-searchable="false" class="skip-export" width="100px"
+        th
+        th
 
+    tbody
+      - @park_space.parkspacelogs.where(park_space_id: @park_space.id).each_with_index do |parkspacelog|
+        tr
+          td = parkspacelog.date
+          td = parkspacelog.message
+          td = link_to 'View', parkspacelog
+          td = link_to 'Edit', edit_parkspacelog_path(parkspacelog)
+          td = link_to 'Delete', parkspacelog, data: { confirm: 'Are you sure?' }, method: :delete   
 
 
   
+form
+  -if cookies.signed['admin.id']  
+    input onclick="window.location.href='http://localhost:3000/park_spaces/#{params[:id]}/park_spacerentals/new'" type="button" value=("Add Rental") 

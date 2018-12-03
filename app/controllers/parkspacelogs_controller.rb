@@ -1,5 +1,6 @@
 class ParkspacelogsController < ApplicationController
   before_action :set_parkspacelog, only: [:show, :edit, :update, :destroy]
+  before_action -> { authenticate(['admin']) } #modifyuser
 
   # GET /parkspacelogs
   # GET /parkspacelogs.json
