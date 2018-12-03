@@ -6,8 +6,8 @@ class User < ApplicationRecord
   has_many :cars, inverse_of: :user
   accepts_nested_attributes_for :cars, reject_if: :all_blank, allow_destroy: true
   
-  #has_many :apartments
-  belongs_to :apartment
+  has_many :apartments
+  #belongs_to :apartment
 
 
   has_many :chat_rooms, dependent: :destroy

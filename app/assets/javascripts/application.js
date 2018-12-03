@@ -23,4 +23,4 @@
 //= require cocoon
 //= require cable
 //= require jquery_nested_form
-//= require jquery
+

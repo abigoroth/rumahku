@@ -20,6 +20,7 @@ class ParkSpacesController < ApplicationController
 
   # GET /park_spaces/new
   def new
+    
     @park_space = ParkSpace.new
   end
 
