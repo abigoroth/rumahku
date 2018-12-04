@@ -1,3 +1,21 @@
+div style="background-color: white" /
+doctype html
+html
+  head
+        meta content="width=device-width, initial-scale=1" name="viewport" 
+        css:
+           body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            height: 100%;
+            margin: 0;
+            background-image: url("http://i64.tinypic.com/f5ee8.jpg");
+            height: 100%; 
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            }
+
 h1
   | Chat rooms
 
@@ -8,5 +26,8 @@ p.lead
   = link_to 'New chat room', new_chat_room_path, class: 'btn btn-primary'
 ul
   = render @chat_rooms
+
+br
+ = link_to 'Back', pages_admin_path  
 
   

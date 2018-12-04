@@ -18,9 +18,8 @@
 //= require turbolinks
 //= require datatables
 //= require alertify
-//= require jquery-imagemapster/dist/jquery.imagemapster.min.js
+
 //= require_tree .
 //= require cocoon
 //= require cable
-
 
