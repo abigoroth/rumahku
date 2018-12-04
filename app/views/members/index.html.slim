@@ -1,0 +1,12 @@
+h1 Listing Members
+
+table#dttb-members.responsive.nowrap.table.table-hover data-sort="true" data-source="#{url_for(format: :json)}"
+  thead
+    tr
+      th data-data="member_name" Name
+      th data-data="member_age" Age
+      th data-data="member_relationship" Relationship
+      th data-data="url" data-orderable="false" data-class-name="all" data-searchable="false" class="skip-export" width="100px"
+
+
+= link_to 'New Member', new_member_path

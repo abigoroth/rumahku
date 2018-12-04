@@ -82,8 +82,8 @@ html
           a href="http://localhost:3000/pages/admin"  Home
           a href="http://localhost:3000/infos/new"  Resident Registration
           a href="http://localhost:3000/infos"  Resident List
-          a.active href="http://localhost:3000/cars"  Car    
-          a href="http://localhost:3000/apartments"  Apartment      
+          a href="http://localhost:3000/apartments"  Apartment
+          a.active href="http://localhost:3000/cars"  Car          
           a href="http://localhost:3000/park_spaces"  Park Space Rental
           /a href="http://localhost:3000/parkspacelogs"  Space Log
           /a href="http://localhost:3000/park_spacerentals"  Park Space Rental
@@ -96,19 +96,21 @@ table#dttb-infos.responsive.nowrap.table.table-hover data-sort="true" data-sourc
   thead
     tr
     th data-data="cartype" Type
-    th data-data="owner" Owner    
+    th data-data="owner" Owner
     th data-data="platnum" Platnum
     th data-data="url" data-orderable="false" data-class-name="all" data-searchable="false" class="skip-export" width="100px"
+    /th
     th
-    th
+    
 
   tbody
     - @cars.each do |car| 
       tr
         td = car.cartype 
-        td = car.owner         
+        /td = link_to car.user&.fullname, info_path(car.user.id) 
+        td = link_to car.user.fullname, info_path(car.user.id)
         td = car.platnum 
-        td = link_to 'Show', car 
+        /td = link_to 'Show', car 
         td = link_to 'Edit', edit_car_path(car) 
         td = link_to 'Delete', car, data: { confirm: 'Are you sure?' }, method: :delete
 br

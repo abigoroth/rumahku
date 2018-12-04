@@ -11,18 +11,16 @@
 // about supported directives.
 //
 //= require jquery3
-// require bootstrap
-// require popper
+//= require popper
+//= require bootstrap
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
 //= require datatables
 //= require alertify
-
- 
+//= require jquery-imagemapster/dist/jquery.imagemapster.min.js
 //= require_tree .
 //= require cocoon
 //= require cable
-
-
+//= require jquery_nested_form
 
