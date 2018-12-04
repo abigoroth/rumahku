@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_30_102257) do
+ActiveRecord::Schema.define(version: 2018_12_03_090426) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,11 +38,11 @@ ActiveRecord::Schema.define(version: 2018_11_30_102257) do
     t.text "number_apartment"
     t.text "level"
     t.string "apartment_type"
-    t.datetime "parking_queue"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "resident_id"
     t.date "ParkingQueue"
+    t.datetime "parking_queue"
     t.string "info_id"
     t.string "user_id"
     t.integer "park_space_id"
@@ -52,6 +52,13 @@ ActiveRecord::Schema.define(version: 2018_11_30_102257) do
     t.date "requested_start_rent"
     t.date "requested_end_rent"
     t.jsonb "requested_rent_date"
+  end
+
+  create_table "apartments_users", id: false, force: :cascade do |t|
+    t.bigint "apartment_id"
+    t.bigint "user_id"
+    t.index ["apartment_id"], name: "index_apartments_users_on_apartment_id"
+    t.index ["user_id"], name: "index_apartments_users_on_user_id"
   end
 
   create_table "cars", force: :cascade do |t|
@@ -109,6 +116,8 @@ ActiveRecord::Schema.define(version: 2018_11_30_102257) do
     t.date "date"
     t.string "phone_number"
     t.text "purpose"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "infos", force: :cascade do |t|
@@ -166,13 +175,11 @@ ActiveRecord::Schema.define(version: 2018_11_30_102257) do
     t.text "body"
     t.bigint "user_id"
     t.bigint "chat_room_id"
-    t.bigint "admin_id"
-    t.bigint "guard_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["admin_id"], name: "index_messages_on_admin_id"
+    t.bigint "admin_id"
+    t.bigint "guard_id"
     t.index ["chat_room_id"], name: "index_messages_on_chat_room_id"
-    t.index ["guard_id"], name: "index_messages_on_guard_id"
     t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
@@ -199,14 +206,6 @@ ActiveRecord::Schema.define(version: 2018_11_30_102257) do
     t.date "start_rent"
     t.date "end_rent"
     t.integer "apartment_id"
-  end
-
-  create_table "parkingqueues", force: :cascade do |t|
-    t.string "name"
-    t.string "apartment_number"
-    t.date "date"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "parkspacelogs", force: :cascade do |t|
@@ -239,6 +238,9 @@ ActiveRecord::Schema.define(version: 2018_11_30_102257) do
     t.string "fullname"
     t.string "aptnums"
     t.string "phonenum"
+    t.string "confirmation_token", limit: 128
+    t.string "remember_token", limit: 128
+    t.integer "apartment_id"
     t.string "occupation"
     t.string "IC_number"
     t.string "races"
@@ -250,9 +252,6 @@ ActiveRecord::Schema.define(version: 2018_11_30_102257) do
     t.string "house_member_relationship"
     t.string "age"
     t.string "parent_id"
-    t.string "confirmation_token", limit: 128
-    t.string "remember_token", limit: 128
-    t.integer "apartment_id"
     t.integer "car_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["remember_token"], name: "index_users_on_remember_token"
@@ -261,8 +260,6 @@ ActiveRecord::Schema.define(version: 2018_11_30_102257) do
 
   add_foreign_key "chat_rooms", "users"
   add_foreign_key "members", "infos"
-  add_foreign_key "messages", "admins"
   add_foreign_key "messages", "chat_rooms"
-  add_foreign_key "messages", "guards"
   add_foreign_key "messages", "users"
 end

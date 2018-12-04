@@ -1,6 +1,6 @@
 class CarsController < ApplicationController
   #before_action :authenticate
-  before_action -> { authenticate(['admin', 'user']) } #modifyuser
+  #before_action -> { authenticate(['admin', 'user']) } #modifyuser
   before_action :set_car, only: [:show, :edit, :update, :destroy]
 
 
