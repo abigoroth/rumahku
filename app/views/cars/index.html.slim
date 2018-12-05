@@ -107,8 +107,9 @@ table#dttb-infos.responsive.nowrap.table.table-hover data-sort="true" data-sourc
     th data-data="owner" Owner
     th data-data="platnum" Platnum
     th data-data="url" data-orderable="false" data-class-name="all" data-searchable="false" class="skip-export" width="100px"
-    /th
     th
+    th
+
     
 
   tbody
@@ -117,8 +118,9 @@ table#dttb-infos.responsive.nowrap.table.table-hover data-sort="true" data-sourc
         td = car.cartype 
         /td = link_to car.user&.fullname, info_path(car.user.id) 
         /td = link_to car.user.fullname, info_path(car.user.id)
+        td
         td = car.platnum 
-        /td = link_to 'Show', car 
+        td = link_to 'Show', car 
         td = link_to 'Edit', edit_car_path(car) 
         td = link_to 'Delete', car, data: { confirm: 'Are you sure?' }, method: :delete
 br

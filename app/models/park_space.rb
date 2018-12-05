@@ -1,10 +1,15 @@
 class ParkSpace < ApplicationRecord
     has_many :park_spacerentals
     has_many :parkspacelogs
-    has_many :apartments, inverse_of: :park_space
+    
     belongs_to :user, optional: true
+    
+    has_many :apartments, inverse_of: :park_space
     accepts_nested_attributes_for :apartments, reject_if: :all_blank, allow_destroy: true
 
+    has_many :cars, inverse_of: :park_space
+    accepts_nested_attributes_for :cars, reject_if: :all_blank, allow_destroy: true
+    
     has_many :requests, class_name: "Apartment" 
     
     #validates :start_rent, presence: true
