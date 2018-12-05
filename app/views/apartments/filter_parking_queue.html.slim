@@ -78,57 +78,53 @@ html
                background-color: #45a049;
            }
       
+        .topnav          
+          a href="http://localhost:3000/pages/admin"  Home
+          a href="http://localhost:3000/infos/new"  Resident Registration
+          a href="http://localhost:3000/infos"  Resident List
+          a href="http://localhost:3000/cars"  Car
+          a.active href="http://localhost:3000/apartments"  Apartment
+          a href="http://localhost:3000/park_spaces"  Park Space Rental
+          a href="http://localhost:3000/floorplans"  Floor Plan
+          a href="http://localhost:3000/clusters" Cluster
+          a href="http://localhost:3000/chat_rooms" Chat Rooms
+ 
+              
 
-#cssmenu 
- ul          
-    li      
-        a href="http://localhost:3000/pages/admin"  Home
-    li
-        a href="http://localhost:3000/infos/new"  Resident Registration
-    li
-        a href="http://localhost:3000/infos"  Resident List
-    li
-        a.active href="http://localhost:3000/cars"  Car
-    li
-        a href="http://localhost:3000/apartments"  Apartment
-    li
-        a href="http://localhost:3000/park_spaces"  Park Space Rental
-    li
-        a href="http://localhost:3000/chat_rooms" Chat Rooms
-    li
-
-br   
-
-
-table#dttb-infos.responsive.nowrap.table.table-hover data-sort="true" data-source="#{url_for(format: :json)}"
+  
+table#dttb-apartments.responsive.nowrap.table.table-hover data-sort="true" data-source="#{url_for(format: :json)}"
   thead
     tr
-    th data-data="cartype" Type
-    th data-data="owner" Owner
-    th data-data="platnum" Platnum
-    th data-data="url" data-orderable="false" data-class-name="all" data-searchable="false" class="skip-export" width="100px"
-    /th
-    th
-    
+      th  Number Apartment
+      th  Level
+      th  Apartment Type
+      th  Parking Queue
+      th  Requested Start Rent
+      th  Requested End Rent
+      th
+      th
+      th
 
   tbody
-    - @cars.each do |car| 
+    - @apartments.each do |apartment|
       tr
-        td = car.cartype 
-        /td = link_to car.user&.fullname, info_path(car.user.id) 
-        /td = link_to car.user.fullname, info_path(car.user.id)
-        td = car.platnum 
-        /td = link_to 'Show', car 
-        td = link_to 'Edit', edit_car_path(car) 
-        td = link_to 'Delete', car, data: { confirm: 'Are you sure?' }, method: :delete
-br
-= link_to 'New Car', new_car_path 
-br
-= link_to 'Back', pages_admin_path
+        td = apartment.number_apartment
+        td = apartment.level
+        td = apartment.apartment_type
+        td = apartment.parking_queue
+        td = apartment.requested_start_rent
+        td = apartment.requested_end_rent
+        td = link_to 'Show', apartment
+        td = link_to 'Edit', edit_apartment_path(apartment)
+        td = link_to 'Destroy', apartment, data: { confirm: 'Are you sure?' }, method: :delete
 
 
 
+      
 
-
-
+  = link_to 'New Apartment', new_apartment_path
+  br
+  = link_to 'Back', pages_main_path
         
+
+

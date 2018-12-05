@@ -1,8 +1,12 @@
 br
 doctype html
 html
-  head
-        meta content="width=device-width, initial-scale=1" name="viewport" 
+  head               
+        meta[name="viewport" content="width=device-width, initial-scale=1"]
+        link[rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"]
+        script[src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"]
+        script[src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"]
+        
         css:
            body {
              margin: 0;
@@ -12,6 +16,7 @@ html
           .topnav {
              overflow: hidden;
              background-color: #333;
+             
            }
           
           .topnav a {
@@ -29,7 +34,7 @@ html
            }
           
           .topnav a.active {
-             background-color: #4CAF50;
+             background-color: #009fff;
              color: white;
            }
           
@@ -39,7 +44,7 @@ html
                width: 100;
            }
           
-           td, th {
+           td, th { 
                border: 1px solid #dddddd;
                text-align: left;
                padding: 8px;
@@ -47,7 +52,7 @@ html
           
            tr:nth-child(even) {
                background-color: #dddddd;
-           }
+           } 
           
           .center {
                text-align: center;
@@ -77,19 +82,61 @@ html
           
            input[type=submit]:hover {
                background-color: #45a049;
+
+              body {font-family: Arial;}
+
+          /* Style the tab */
+          .tab {
+              overflow: hidden;
+              border: 1px solid #ccc;
+              background-color: #f1f1f1;
+          }
+
+          /* Style the buttons inside the tab */
+          .tab button {
+              background-color: inherit;
+              float: left;
+              border: none;
+              outline: none;
+              cursor: pointer;
+              padding: 14px 16px;
+              transition: 0.3s;
+              font-size: 17px;
+          }
+
+          /* Change background color of buttons on hover */
+          .tab button:hover {
+              background-color: #ddd;
+          }
+
+          /* Create an active/current tablink class */
+          .tab button.active {
+              background-color: #ccc;
+          }
+
+          /* Style the tab content */
+          .tabcontent {
+              display: none;
+              padding: 6px 12px;
+              border: 1px solid #ccc;
+              border-top: none;
            }
-      
+
+        br
+        br
         .topnav
           a href="http://localhost:3000/pages/admin"  Home
           a href="http://localhost:3000/infos/new"  Resident Registration
           a href="http://localhost:3000/infos"  Resident List
           a href="http://localhost:3000/cars"  Car
-          a href="http://localhost:3000/apartments"  Apartment 
+          a href="http://localhost:3000/apartments"  Apartment
           a.active href="http://localhost:3000/park_spaces"  Park Space Rental          
-          a href="http://localhost:3000/floorplans"  Floor Plan
-          a href="http://localhost:3000/clusters" Cluster
+          /a href="http://localhost:3000/floorplans"  Floor Plan
+          /a href="http://localhost:3000/clusters" Cluster
           a href="http://localhost:3000/chat_rooms" Chat Rooms
-       
+br
+         
+  
 
 p#notice = notice
 
@@ -102,72 +149,137 @@ p
   strong Space Type:
   = @park_space.spacetype
 
+.tabbable
+  ul.nav.nav-tabs
+    li.active
+      a[href="#tab1" data-toggle="tab"]
+        | Park Space Rental
+    li
+      a[href="#tab2" data-toggle="tab"]
+        | Park Space Log
+    li
+      a[href="#tab3" data-toggle="tab"]
+        | Request Parking Form
 
-    -if cookies.signed['user.id'] 
-        = simple_form_for current_user.apartments.first do |f|             
-          = render 'apartment_fields', f: f
-          = f.submit
-br
-  input[type="button" value="Request Parking Queue" onclick="window.location.href='http://localhost:3000/park_spaces/#{params[:id]}/request_parking_queue'"]
+  .tab-content
+    #tab1.tab-pane.active
+      p
+        
+            - park_spacerentals = @park_space.park_spacerentals.where("end_rent > '#{Date.today}'")
+            - if park_spacerentals.length > 0
+              p
+              font[size="4" face="calibri" color="Red"]
+                <span class="shadow p-3 mb-5 bg-white rounded">
+                  | This Park Space is Not Available
+                </span>
+            - else 
+              p
+              font[size="4" face="calibri" color="268E22"]
+                 <span class="shadow p-3 mb-5 bg-white rounded">
+                  | This Park Space is Available
+                 </span>
+        
+
+         
+            table.table
+            table#dttb-jeng2s.responsive.nowrap.table.table-hover data-sort="true" data-source="#{url_for(format: :json)}" 
+              thead     
+                tr 
+                  th No 
+                  th Car 
+                  th Start Date
+                  th End Date
+                  th
+                    
+
+        
+                tbody
+                  - @park_space.park_spacerentals.each_with_index do |psr,index| 
+                    tr 
+                      td = index+1
+                      td = psr.car.platnum
+                      td = psr.start_rent
+                      td = psr.end_rent
+                      td = link_to "Edit", edit_park_spacerental_path(psr)
+       
+        
+    #tab2.tab-pane
+      p
+        table.table
+            table#dttb-jeng2s.responsive.nowrap.table.table-hover data-sort="true" data-source="#{url_for(format: :json)}"
+              thead              
+                tr
+                    /th data-data="parking_no" Parking no
+                    th data-data="date" Date
+                    th data-data="message" Message
+                    th data-data="url" data-orderable="false" data-class-name="all" data-searchable="false" class="skip-export" width="100px"
+                    th
+                    th
                   
-br
--if cookies.signed['admin.id']   
+                  
+
+                tbody
+                  - @park_space.parkspacelogs.where(park_space_id: @park_space.id).each_with_index do |parkspacelog|
+                    tr
+                      /td = parkspacelog.parking_no
+                      td = parkspacelog.date
+                      td = parkspacelog.message
+                      td = link_to 'View', parkspacelog
+                      td = link_to 'Edit', edit_parkspacelog_path(parkspacelog)
+                      td = link_to 'Delete', parkspacelog, data: { confirm: 'Are you sure?' }, method: :delete 
+    #tab3.tab-pane
+      p 
+
+        -if cookies.signed['user.id'] 
+          -if current_user.apartments.any?
+              =simple_form_for current_user.apartments.first do |f|
+                = render 'apartment_fields', f: f                
+                button.btn-lg.btn-primary.col-3[type="submit" data-toggle="collapse" data-target="#demo"] Submit                
+                /= f.submit 
+
+                #demo.collapse
+                    input[type="button" class="btn-lg btn-primary col-3" value="Request Parking Queue" onclick="window.location.href='http://localhost:3000/park_spaces/#{params[:id]}/request_parking_queue'"]
+          
+        
+       
+          
+        -if cookies.signed['admin.id'] 
+           table.table
+            table#dttb-jeng2s.responsive.nowrap.table.table-hover data-sort="true" data-source="#{url_for(format: :json)}"
+              thead              
+                tr
+                    th data-data="number_apartment" Number Apartment                     
+                    th data-data="requested_start_rent" Requested Start Rent
+                    th data-data="requested_end_rent" Requested End Rent
+                    th data-data="url" data-orderable="false" data-class-name="all" data-searchable="false" class="skip-export" width="100px"
+                    th
+                    th
+                  
+                  
+
+                tbody
+                  - @park_space.apartments.each_with_index do |apartment|
+                    tr 
+                      td = apartment.number_apartment                     
+                      td = apartment.requested_start_rent
+                      td = apartment.requested_end_rent
+                      td = link_to 'View', apartment
+                      td = link_to 'Edit', edit_apartment_path(apartment)
+                      td = link_to 'Delete', apartment, data: { confirm: 'Are you sure?' }, method: :delete 
+          
+            form   
+                /= link_to 'New', new_park_spacerental_path(@park_space, ps_id: @park_space.id)      
+                input onclick="window.location.href='http://localhost:3000/park_spaces/#{params[:id]}/park_spacerentals/new'" type="button" value=("Add Rental")
+            
+            
+            
   
-  - park_spacerentals = @park_space.park_spacerentals.where("end_rent > '#{Date.today}'")
-  - if park_spacerentals.length > 0
-    p
-    font[size="5" face="bold-tahoma" color="Red"]
-      | Not Available
-        
-  - else 
-    p
-    font[size="5" face="-bold-tahoma" color="#5EFF00"]
-      | Available
-
-    br
-
-  h5 Park Space 
-  table.table 
-    thead     
-      tr 
-        th No 
-        th Car 
-        th Start Date
-        th End Date
-        th
-        
-        
-
-    tbody
-      - @park_space.park_spacerentals.each_with_index do |psr,index| 
-        tr 
-          td = index+1
-          td = psr.car.platnum
-          td = psr.start_rent
-          td = psr.end_rent
-          td = link_to "Edit", edit_park_spacerental_path(psr)
  
-  h5 Park Space Log 
-  table.table
-    thead     
-      tr        
-        th data-data="date" Date
-        th data-data="message" Message
-        th data-data="url" data-orderable="false" data-class-name="all" data-searchable="false" class="skip-export" width="100px"
-        th
-        th
 
-    tbody
-      - @park_space.parkspacelogs.where(park_space_id: @park_space.id).each_with_index do |parkspacelog|
-        tr
-          td = parkspacelog.date
-          td = parkspacelog.message
-          td = link_to 'View', parkspacelog
-          td = link_to 'Edit', edit_parkspacelog_path(parkspacelog)
-          td = link_to 'Delete', parkspacelog, data: { confirm: 'Are you sure?' }, method: :delete   
+  
+  
+  
+
 
 
   
-form
-  -if cookies.signed['admin.id']  
-    input onclick="window.location.href='http://localhost:3000/park_spaces/#{params[:id]}/park_spacerentals/new'" type="button" value=("Add Rental") 
