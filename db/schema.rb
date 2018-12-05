@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_16_031910) do
+ActiveRecord::Schema.define(version: 2018_11_26_045227) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,13 @@ ActiveRecord::Schema.define(version: 2018_11_16_031910) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_admins_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
+  end
+
+  create_table "apartment_channels", force: :cascade do |t|
+    t.jsonb "requested_rent_date"
+    t.integer "apartment_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "apartments", force: :cascade do |t|
@@ -44,6 +51,7 @@ ActiveRecord::Schema.define(version: 2018_11_16_031910) do
     t.integer "requested_park_space_id"
     t.date "requested_start_rent"
     t.date "requested_end_rent"
+    t.jsonb "requested_rent_date"
   end
 
   create_table "cars", force: :cascade do |t|
@@ -54,9 +62,7 @@ ActiveRecord::Schema.define(version: 2018_11_16_031910) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "apartment_id"
-    t.string "model"
-    t.string "made"
-    t.string "colour"
+    t.integer "user_id"
   end
 
   create_table "chat_rooms", force: :cascade do |t|
@@ -117,6 +123,16 @@ ActiveRecord::Schema.define(version: 2018_11_16_031910) do
     t.string "picture"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "IC_number"
+    t.string "races"
+    t.string "occupation"
+    t.string "emergency_name"
+    t.string "emergency_contact"
+    t.string "house_member"
+    t.string "house_member_name"
+    t.string "house_member_age"
+    t.string "house_member_relationship"
+    t.string "age"
   end
 
   create_table "mapareas", force: :cascade do |t|
@@ -127,6 +143,16 @@ ActiveRecord::Schema.define(version: 2018_11_16_031910) do
     t.datetime "updated_at", null: false
     t.string "picture"
     t.index ["floorplan_id"], name: "index_mapareas_on_floorplan_id"
+  end
+
+  create_table "members", force: :cascade do |t|
+    t.string "member_name"
+    t.string "member_age"
+    t.string "member_relationship"
+    t.bigint "info_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id"
   end
 
   create_table "messages", force: :cascade do |t|
@@ -204,11 +230,27 @@ ActiveRecord::Schema.define(version: 2018_11_16_031910) do
     t.string "fullname"
     t.string "aptnums"
     t.string "phonenum"
+    t.string "confirmation_token", limit: 128
+    t.string "remember_token", limit: 128
+    t.string "occupation"
+    t.string "IC_number"
+    t.string "races"
+    t.string "emergency_name"
+    t.string "emergency_contact"
+    t.string "house_member"
+    t.string "house_member_name"
+    t.string "house_member_age"
+    t.string "house_member_relationship"
+    t.string "age"
+    t.string "parent_id"
+    t.integer "apartment_id"
+    t.integer "car_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "chat_rooms", "users"
+  add_foreign_key "members", "infos"
   add_foreign_key "messages", "chat_rooms"
   add_foreign_key "messages", "users"
 end

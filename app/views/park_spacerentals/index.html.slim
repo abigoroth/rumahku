@@ -92,33 +92,25 @@ html
           a href="http://localhost:3000/chat_rooms" Chat Rooms
 
 
-h1 Listing Park Space Rentals
-table class="table table-striped table-bordered table-hover"
-  thead class = "thead-dark"
+table#dttb-apartments.responsive.nowrap.table.table-hover data-sort="true" data-source="#{url_for(format: :json)}"
+  thead
     tr
-      /th Park Space ID
-      /th Car ID
       th Start Rent
       th End Rent
       th Price
-      /th Apartment ID
       th Receipt
       th
       th
-      th
-      
+      th     
       
 
   tbody
     - @park_spacerentals.each do |park_spacerental|
       tr
-        /td = park_spacerental.park_space_id
-        /td = park_spacerental.car_id
         td = park_spacerental.start_rent
         td = park_spacerental.end_rent
         td = park_spacerental.price
         td = image_tag park_spacerental.picture_url, width: '20%' if park_spacerental.picture.present?
-        /td = park_spacerental.apartment_id
         td = link_to 'Show', park_spacerental
         td = link_to 'Edit', edit_park_spacerental_path(park_spacerental)
         td = link_to 'Destroy', park_spacerental, data: { confirm: 'Are you sure?' }, method: :delete
@@ -126,3 +118,7 @@ table class="table table-striped table-bordered table-hover"
 br
 
 = link_to 'New Park Space Rental', new_park_spacerental_path
+
+form
+  center
+   input[type="button" value="Filter Expired" onclick="window.location.href='http://localhost:3000/apartments/filter_expired'"]

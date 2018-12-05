@@ -1,0 +1,328 @@
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+
+.collapsible {
+  background-color: #777;
+  margin: auto;
+  color: white;
+  cursor: pointer;
+  padding: 18px;
+  text-align: center;
+  outline: none;
+  font-size: 20px;
+  border-radius: 25px;
+  width: 500px; 
+
+}
+
+.active, .collapsible:hover {
+  align-items: center;
+  justify-content: center;
+  background-color: #555;
+  border-radius: 25px;
+  width: 500px; 
+  margin: auto;
+}
+
+.heads {
+  align-items: center;
+  justify-content: center;
+  background-color: #777;
+  color: white;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: center;
+  outline: none;
+  font-size: 20px;
+  border-radius: 25px;
+  width: 500px;
+  margin: auto;
+
+}
+
+.heady {
+  align-items: center;
+  justify-content: center;
+  background-color: #008080;
+  color: white;
+  cursor: pointer;
+  padding: 10px;
+  width: 100%;
+  border: none;
+  text-align: center;
+  outline: none;
+  font-size: 20px;
+  border-radius: 15px;
+  width: 100px;
+  margin: auto;
+
+}
+
+a, link { 
+  color: black;
+}
+
+.content {
+
+  padding-top:  35px;
+  padding-left:  35px;
+  padding-bottom:  35px;
+  display: none;
+  overflow: hidden;
+  background-color: #f1f1f1;
+  border-radius: 25px;
+  width: 500px;
+  margin: auto;
+  border-color: #777;
+  border-style: solid;
+  text-align: left;
+}
+
+.bodys {
+  padding-top:  35px;
+  padding-left:  35px;
+  padding-bottom:  35px;
+  background-color: #f1f1f1;
+  border-radius: 25px;
+  border-color: #777;
+  border-style: solid;
+  width: 500px;
+  margin: auto;
+}
+
+body {
+  
+  padding-left: 35px;
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  margin: auto;
+  
+}
+
+.topnav {
+  overflow: hidden;
+  background-color: #333;
+  margin: auto;
+}
+
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+ 
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+  
+}
+
+.topnav a.active {
+  background-color: #4CAF50;
+  color: white;
+  
+}
+
+
+</style>
+<div class="topnav">
+  <a href="http://localhost:3000/pages/admin">Home</a>
+  <a href="hhttp://localhost:3000/infos/new">Resident Registration</a>
+  <a href="http://localhost:3000/infos">Resident List</a>
+  <a href="http://localhost:3000/cars">Car</a>
+  <a href="http://localhost:3000/pages/main">Apartment</a>
+  <a href="http://localhost:3000/park_spaces">Park Space Rental</a>
+  <a href="http://localhost:3000/floorplans">Floor Plan</a>
+  <a href="http://localhost:3000/clusters">Cluster</a>
+</div>
+
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a class="nav-link active" href="#">Resident's Information</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="http://localhost:3000/members/new">Add Members</a>
+  </li>
+
+
+</ul>
+
+<br>
+
+
+<div class="heads">
+  Resident's Details
+</div>
+
+<div class="bodys">
+  <p>
+    <strong>Email :</strong>
+    <%= @info.email %>
+  </p>
+
+  <p>
+    <strong>Name :</strong>
+    <%= @info.fullname %>
+  </p>
+
+  <p>
+    <strong>IC Number :</strong>
+    <%= @info.IC_number %>
+  </p>
+
+  <p>
+    <strong>Age :</strong>
+    <%= @info.age %>
+  </p>
+
+  <p>
+    <strong>Races :</strong>
+    <%= @info.races %>
+  </p>
+
+  <p>
+    <strong>Occupation :</strong>
+    <%= @info.occupation %>
+  </p>
+
+  <p>
+    <strong>Phone Number :</strong>
+    <%= @info.phonenum %>
+  </p>
+
+  <p>
+    <strong>Apartment Number :</strong>
+    <%= @info&.apartment.number_apartment %>
+  </p>
+
+  <p>
+    <strong>Owner:</strong>
+    <%= @info.owner %>
+  </p>
+</div>
+
+<br>
+
+<center>
+<div>
+<button class="collapsible">Emergency Contact</button>
+<div class="content">
+  <p>
+    <strong>Name :</strong>
+    <%= @info.emergency_name %>
+  </p>
+
+  <p>
+    <strong>Phone Number</strong>
+    <%= @info.emergency_contact %>
+  </p>
+</div>
+</center>
+
+<br>
+
+<center>
+<div>
+<button class="collapsible">View House Members</button>
+<div class="content">
+  <p>
+    <strong>Members in House :</strong>
+    <%= @info.members.count + 1 %> members
+  </p>
+  
+
+  <% @info.members.each do |member| %> 
+  <p>
+    <strong>Name :</strong>
+    <td><%= member.member_name %></td>
+  </p>
+
+  <p>
+    <strong>Age :</strong>
+    <td><%= member.member_age %></td>
+  </p>
+
+  <p>
+    <strong>Relationship :</strong>
+   <td><%= member.member_relationship %></td>
+  </p>
+  <hr>
+
+  <% end %>
+</div>
+</center>
+
+<br>
+
+<center>
+<div>
+<button class="collapsible">Car</button>
+<div class="content">
+  <p>
+    <strong>Number of cars :</strong>
+    <%= @info.cars.count %> cars
+
+  <% @info.cars.each do |car| %> 
+    <p>
+      <strong>Car Type :</strong>
+      <td><%= car.cartype %></td>
+      
+    </p>
+
+    <p>
+      <strong>Owner Name :</strong>
+      <td><%= car.owner %></td>
+      
+    </p>
+
+    <p>
+      <strong>Plat Number :</strong>
+      <td><%= car.platnum %></td>
+      
+    </p>
+    <hr>
+
+  <% end %>
+</div>
+</center>
+
+
+<script>
+  var coll = document.getElementsByClassName("collapsible");
+  var i;
+
+    for (i = 0; i < coll.length; i++) {
+      coll[i].addEventListener("click", function() 
+      {
+        this.classList.toggle("active");
+        var content = this.nextElementSibling;
+        if (content.style.display === "block") 
+        { content.style.display = "none"; } 
+        else 
+        { content.style.display = "block"; }
+      });
+    }
+</script>
+
+<br>
+<br>
+  <center>
+  <button class="heady">
+   <%= link_to 'Edit', edit_info_path(@info) %>
+  </button>
+ 
+  <button class="heady">
+    <%= link_to 'Back', infos_path %>
+  </button>
+  </center>
+
+

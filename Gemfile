@@ -4,10 +4,11 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 gem 'devise'
 gem 'simple_form'
 gem 'slim'
+gem 'nested_form'
+gem 'mailboxer'
 
 ruby '2.5.1'
 
-gem 'rails-ujs' , '~> 0.1.0'
 gem 'bootswatch-rails'
 gem 'bootstrap'
 gem 'alertifyjs-rails'
@@ -129,7 +130,6 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
-  gem 'rails-erd'
 end
 
 group :test do
@@ -141,12 +141,12 @@ group :test do
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'simple_form'
 gem "slim-rails"
+gem 'jquery-rails'
+gem 'jquery-datatables'
+gem 'alertifyjs-rails'
 gem "cocoon"
 gem 'redis-rails', '~> 5.0', '>= 5.0.1'
 gem 'pry'
-gem 'jquery-ui-rails', '5.0.5'
-gem 'jquery-rails'
-

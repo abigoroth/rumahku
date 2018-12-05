@@ -1,0 +1,51 @@
+
+
+
+
+- if @info.id
+  - path= info_path(@info)
+- else
+  - path= infos_path
+= simple_form_for @info, url:path do |f|
+  = f.error_notification
+  = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
+  
+  .form-inputs
+    = f.input :email
+    = f.input :fullname
+    = f.input :IC_number
+    = f.input :age
+    = f.input :races, collection:["Malay","Chinese","Indian","Others"]
+    = f.input :occupation
+    = f.input :phonenum
+    = f.association :apartment, label_method: :number_apartment
+    = f.input :owner
+    br
+    hr
+    b  Emergency Contact 
+    = f.input :emergency_name
+    = f.input :emergency_contact
+    = f.input :password
+   
+    br
+    hr
+    b  In House Members 
+    = f.input :house_member
+
+
+    #members
+      - @info.members.build
+      = f.simple_fields_for :members do |member|
+        = render 'member_fields', f: member
+      .links
+        = link_to_add_association 'add member', f, :members
+
+    #cars
+      - @info.cars.build
+      = f.simple_fields_for :cars do |car|
+        = render 'car_fields', f: car
+      .links
+        = link_to_add_association 'add car', f, :cars
+
+    .form-actions 
+      = f.button :submit

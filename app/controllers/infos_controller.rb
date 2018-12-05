@@ -21,6 +21,13 @@ class InfosController < ApplicationController
   # GET /infos/1/edit
   def edit
   end
+  
+  def _member_fields
+  end
+
+  def _car_fields
+  end
+
 
   # POST /infos
   # POST /infos.json
@@ -35,7 +42,7 @@ class InfosController < ApplicationController
         format.html { render :new }
         format.json { render json: @info.errors, status: :unprocessable_entity }
       end
-    end
+    end 
   end
 
   # PATCH/PUT /infos/1
@@ -71,8 +78,11 @@ class InfosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def info_params
-      params.require(:user).permit(:email, :fullname, :aptnums, :phonenum, :owner, :password)
+      params.require(:user).permit(:email, :fullname, :IC_number, :age, :races, :occupation, :phonenum, :aptnums, :owner, :emergency_name, :emergency_contact, :house_member, :house_member_name, :house_member_age, :house_member_relationship, :password, :picture, :apartment_id , members_attributes: [:id, :member_name, :member_age, :member_relationship, :_destroy], cars_attributes: [:id, :cartype, :owner, :queue, :platnum, :apartment_id, :_destroy])
+      
+   
     end
 
 
-end
+
+  end

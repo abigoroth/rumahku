@@ -1,4 +1,4 @@
-div style="background-color:lightblue" /
+div style="background-color: white" /
 doctype html
 html
   head
@@ -8,6 +8,16 @@ html
            body {
              margin: 0;
              font-family: Arial, Helvetica, sans-serif;
+               
+            #filter: blur(8px);
+            #-webkit-filter: blur(8px);
+            height: 100%;
+            margin: 0;
+            background-image: url("http://i64.tinypic.com/f5ee8.jpg");
+            height: 100%; 
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
            }
           
           .topnav {
@@ -26,7 +36,7 @@ html
           
           .topnav a:hover {
              background-color: #ddd;
-             color: black;
+             color: blue;
            }
           
           .topnav a.active {
@@ -112,10 +122,6 @@ html
           a.active href="http://localhost:3000/cars"  Car    
           a href="http://localhost:3000/apartments"  Apartment      
           a href="http://localhost:3000/park_spaces"  Park Space Rental
-          /a href="http://localhost:3000/parkspacelogs"  Space Log
-          /a href="http://localhost:3000/park_spacerentals"  Park Space Rental
-          a href="http://localhost:3000/floorplans"  Floor Plan
-          a href="http://localhost:3000/clusters" Cluster
           a href="http://localhost:3000/chat_rooms" Chat Rooms
 
 
@@ -123,8 +129,7 @@ table#dttb-infos.responsive.nowrap.table.table-hover data-sort="true" data-sourc
   thead
     tr
     th data-data="cartype" Type
-    th data-data="owner" Owner
-    th data-data="queue" Queue
+    th data-data="owner" Owner    
     th data-data="platnum" Platnum
     th data-data="url" data-orderable="false" data-class-name="all" data-searchable="false" class="skip-export" width="100px"
     th
@@ -134,8 +139,7 @@ table#dttb-infos.responsive.nowrap.table.table-hover data-sort="true" data-sourc
     - @cars.each do |car| 
       tr
         td = car.cartype 
-        td = car.owner 
-        td = car.queue 
+        td = car.owner         
         td = car.platnum 
         td = link_to 'Show', car 
         td = link_to 'Edit', edit_car_path(car) 

@@ -1,6 +1,7 @@
+
 =@apartment.errors.inspect if @apartment.errors.any?
 =simple_form_for @apartment do |f|
-  /= f.association :user, label_method: :aptnums
+  = f.association :user, label_method: :aptnums
   /= f.association :parkingqueue, label_method: :date 
   = f.input :number_apartment
   //= f.association :info, label_method: :aptnums
@@ -8,10 +9,23 @@
   = f.input :apartment_type, collection:["House", "Shop"]
   //= f.input :resident_id
   //= f.input :parking_queue
+
+  /= f.input :requested_rent_date, as: :date
+  = f.input :requested_start_rent, as: :date
+  br
+  br
+  /= f.input :requested_rent_date, as: :date
+  = f.input :requested_end_rent, as: :date
   /= f.input :requested_start_rent, as: :date
+  /br
+  /br
+  /= f.input :requested_end_rent, as: :date
+  /br
+  /br
   br
   br
   /= f.input :requested_end_rent, as: :date
   br
   br
-  = f.submit
+  =f.submit
+
