@@ -30,6 +30,7 @@ class User < ApplicationRecord
   
   has_many :apartments
   belongs_to :apartment
+  has_many :park_spaces
 
 
   has_many :chat_rooms, dependent: :destroy

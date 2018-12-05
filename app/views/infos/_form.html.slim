@@ -14,17 +14,26 @@
     = f.input :email
     = f.input :password
     = f.input :fullname
+    br
     = f.input :IC_number
+    br
     = f.input :age
+    br
     = f.input :races, collection:["Malay","Chinese","Indian","Others"]
+    br
     = f.input :occupation
+    br
     = f.input :phonenum
+    br
     = f.association :apartment, label_method: :number_apartment
     = f.input :aptnums
     = f.input :owner
+    
     br
     hr
     b  Emergency Contact 
+    br
+    br
     = f.input :emergency_name
     = f.input :emergency_contact
     
@@ -32,8 +41,8 @@
     br
     hr
     b  In House Members 
-    = f.input :house_member
-
+    br
+    br
 
     #members
       - @info.members.build
@@ -41,13 +50,18 @@
         = render 'member_fields', f: member
       .links
         = link_to_add_association 'add member', f, :members
-
+    br
+    hr
+    b  Cars
+    br
+    br
     #cars
       - @info.cars.build
       = f.simple_fields_for :cars do |car|
         = render 'car_fields', f: car
       .links
         = link_to_add_association 'add car', f, :cars
-
+    br
+    br
     .form-actions 
       = f.button :submit
