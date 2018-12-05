@@ -1,9 +1,11 @@
-div style="background-color: white" /
+div style="background-color: #ffffcc" /
 doctype html
 html
   head
-        /link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-        /script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        
+        link[rel="" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"]
+        /script[src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"]
+        script[src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"]
         meta content="width=device-width, initial-scale=1" name="viewport" 
         css:
            body {
@@ -11,7 +13,7 @@ html
              font-family: Arial, Helvetica, sans-serif;
              height: 100%;
              margin: 0;
-             background-image: url("http://i64.tinypic.com/f5ee8.jpg");
+             background-image: url("https://www.decomurale.ca/wp-content/uploads/2015/10/C_shutterstock_139454717.jpg");
              height: 100%; 
              background-position: center;
              background-repeat: no-repeat;
@@ -110,10 +112,7 @@ p
   = @park_space.spacetype
 
 
-    -if cookies.signed['user.id'] 
-        = simple_form_for current_user.apartments.first do |f|             
-          = render 'apartment_fields', f: f
-          = f.submit
+  
 br
 
 
@@ -199,8 +198,14 @@ br
                 = simple_form_for current_user.apartments.first do |f|
                   = render 'apartment_fields', f: f
                   = f.submit
-                    input[type="button" value="Request Parking Queue" onclick="window.location.href='http://localhost:3000/park_spaces/#{params[:id]}/request_parking_queue'"]
-          
+                br  
+                   input[type="button" value="Request Parking Queue" onclick="window.location.href='http://localhost:3000/park_spaces/#{params[:id]}/request_parking_queue'"]
+               
+        /-if cookies.signed['user.id'] 
+            -if current_user.cars.any?      
+              = simple_form_for current_user.cars.first do |f|
+                = render 'car_fields', f: f
+                = f.submit
         br
         br
         -if cookies.signed['admin.id'] 
@@ -209,7 +214,7 @@ br
                   input onclick="window.location.href='http://localhost:3000/park_spaces/#{params[:id]}/park_spacerentals/new'" type="button" value=("Add Rental") 
 
 
-      
+       
 
 
      
