@@ -127,6 +127,7 @@ namespace :guard do
 end
 
 
+
   resources :parkingqueues
   resources :jeng3s
   resources :jeng2s
@@ -139,7 +140,6 @@ end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
  
-
   
 
 end

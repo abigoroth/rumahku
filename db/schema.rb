@@ -62,6 +62,9 @@ ActiveRecord::Schema.define(version: 2018_11_26_045227) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "apartment_id"
+    t.string "model"
+    t.string "made"
+    t.string "colour"
     t.integer "user_id"
   end
 
@@ -230,8 +233,6 @@ ActiveRecord::Schema.define(version: 2018_11_26_045227) do
     t.string "fullname"
     t.string "aptnums"
     t.string "phonenum"
-    t.string "confirmation_token", limit: 128
-    t.string "remember_token", limit: 128
     t.string "occupation"
     t.string "IC_number"
     t.string "races"
