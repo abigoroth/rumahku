@@ -1,8 +1,3 @@
-<div style="background-color: white" />
-<!DOCTYPE html>
-<html>
-<head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
  <style>
  @import url('https://fonts.googleapis.com/css?family=Poppins');
 
@@ -54,9 +49,9 @@ h2 {
   background: #fff;
   padding: 30px;
   width: 90%;
-  max-width: 650px;
+  max-width: 450px;
   position: relative;
-  padding: 40px;
+  padding: 0px;
   -webkit-box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
   box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
   text-align: center;
@@ -64,7 +59,7 @@ h2 {
 
 #formFooter {
   background-color: #f6f6f6;
-  border-top: 1px solid #cccccc;
+  border-top: 1px solid #dce8f1;
   padding: 25px;
   text-align: center;
   -webkit-border-radius: 0 0 10px 10px;
@@ -98,7 +93,6 @@ input[type=button], input[type=submit], input[type=reset]  {
   display: inline-block;
   text-transform: uppercase;
   font-size: 13px;
-  border-color: #cccccc; 
   -webkit-box-shadow: 0 10px 30px 0 rgba(95,186,233,0.4);
   box-shadow: 0 10px 30px 0 rgba(95,186,233,0.4);
   -webkit-border-radius: 5px 5px 5px 5px;
@@ -124,15 +118,16 @@ input[type=button]:active, input[type=submit]:active, input[type=reset]:active  
 }
 
 input[type=text] {
-  background-color: #fff;
+  background-color: #f6f6f6;
+  border: none;
   color: #0d0d0d;
-  padding: 0px;
+  padding: 15px 32px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
   margin: 5px;
-  width: 100%;
+  width: 85%;
   border: 2px solid #f6f6f6;
   -webkit-transition: all 0.5s ease-in-out;
   -moz-transition: all 0.5s ease-in-out;
@@ -150,9 +145,6 @@ input[type=text]:focus {
 
 input[type=text]:placeholder {
   color: #cccccc;
- 
-  
-
 }
 
 
@@ -277,31 +269,14 @@ input[type=text]:placeholder {
   box-sizing: border-box;
 }
 
-
 </style>
    
 
-<div id='cssmenu'>
-<ul>
-   <li><a href="http://localhost:3000/pages/admin">Home</a></li>
-   <li><a class="active" href="http://localhost:3000/infos/new">Resident Registration</a></li>
-   <li><a href="http://localhost:3000/infos">Resident List</a></li>
-   <li><a href="http://localhost:3000/cars">Car</a></li>
-   <li><a href="http://localhost:3000/apartments">Apartment</a></li>
-   <li><a href="http://localhost:3000/park_spaces">Park Space Rental</a></li>
-   <li><a href="http://localhost:3000/chat_rooms">Chat Rooms</a></li>
-</ul>
-</div>
-<br>
-<br>
-<h2 style="text-align:center;"> Resident Registration </h2>
-
 <html>
-
 <div class="wrapper fadeInDown">
   <div id="formContent">
     <!-- Tabs Titles -->
-    <h2 class="active"> Register </h2>
+    <h2 class="active"> Sign In </h2>
     
 
     <!-- Icon --> 
@@ -310,18 +285,24 @@ input[type=text]:placeholder {
     </div>
 <br>
 <br>
-<div class="form">
-<%= render 'form', info: @info %>
-</div>
+    <div class="form">
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
-<%= render 'form', info: @info %>
+      <div class="fadeIn second">
+        <%= f.label :email %><br />
+        <%= f.email_field :email, autofocus: true, autocomplete: "email"  %>
+      </div>
 
-<%= link_to 'Back', infos_path %>
-</button>
-</center>
-<br>
+      <div class="fadeIn third">
+        <%= f.label :password %><br />
+        <%= f.password_field :password, autocomplete: "current-password" %>
+      </div>
 
-
-
-
+      <div class="actions">
+        <div class="fadeIn fourth">
+        <%= f.submit "Log in" %>
+        </div>
+      </div>
+    <%= render "admins/shared/links" %>
+    <% end %>
 

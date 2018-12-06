@@ -1,4 +1,3 @@
-
 // This is a manifest file that'll be compiled into application.js, which will include all the files
 // listed below.
 //
@@ -19,10 +18,9 @@
 //= require turbolinks
 //= require datatables
 //= require alertify
+//= require jquery-imagemapster/dist/jquery.imagemapster.min.js
 
 //= require_tree .
 //= require cocoon
 //= require cable
-//= require jquery_nested_form
-
 

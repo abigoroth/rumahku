@@ -40,19 +40,17 @@ class ApartmentsController < ApplicationController
 
   # PATCH/PUT /apartments/1
   # PATCH/PUT /apartments/1.json
-  def update
+  def update  
 
-    @apartment = Apartment.new(apartment_params) 
-
-    respond_to do |format|
+    #respond_to do |format|
       if @apartment.update(apartment_params)
-        format.html { redirect_to "/apartments", notice: 'Apartment was successfully updated.' }
-        format.json { render :show, status: :ok, location: @apartment }
+        #format.html { redirect_to "/apartments", notice: 'Apartment was successfully updated.' }
+        #format.json { render :show, status: :ok, location: @apartment }
       else
-        format.html { render :new }
+        format.html { render :edit }
         format.json { render json: @apartment.errors, status: :unprocessable_entity }
       end
-    end
+    #end
   end
 
   # DELETE /apartments/1
@@ -78,7 +76,7 @@ class ApartmentsController < ApplicationController
   end
 
   def filter_parking_queue
-    @apartments = Apartment.where.not(parking_queue: nil) 
+    @apartments = Apartment.where.not(parking_queue: nil)
   end
 
   private
