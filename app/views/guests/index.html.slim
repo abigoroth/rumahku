@@ -1,4 +1,3 @@
-h1 Listing Guests
 
 doctype html
 html
@@ -9,31 +8,7 @@ html
              margin: 0;
              font-family: Arial, Helvetica, sans-serif;
            }
-          
-          .topnav {
-             overflow: hidden;
-             background-color: #333;
-           }
-          
-          .topnav a {
-             float: left;
-             color: #f2f2f2;
-             text-align: center;
-             padding: 14px 16px;
-             text-decoration: none;
-             font-size: 17px;
-           }
-          
-          .topnav a:hover {
-             background-color: #ddd;
-             color: black;
-           }
-          
-          .topnav a.active {
-             background-color: #4CAF50;
-             color: white;
-           }
-          
+        
            table {
                font-family: arial, sans-serif;
                border-collapse: collapse;
@@ -79,35 +54,62 @@ html
            input[type=submit]:hover {
                background-color: #45a049;
            }
-      
-        .topnav          
+           .button {
+              background-color: #4CAF50;
+              border: none;
+              color: white;
+              padding: 15px 25px;
+              text-align: center;
+              font-size: 16px;
+              cursor: pointer;
+          }
+
+          .button:hover {
+              background-color: green;
+          }
           
-          a href="http://localhost:3000/guests" Guest
+link href="https://cdn.datatables.net/1.10.19/css/dataTables.semanticui.min.css" rel="stylesheet" type="text/css" /
+script charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js" type="text/javascript" 
+
+#cssmenu
+ ul          
+    li      
+        
+        a href="http://localhost:3000/guests" Guest
+    li
           a href="http://localhost:3000/chat_rooms" Chat Rooms
+    li
 
-table#dttb-guests.responsive.nowrap.table.table-hover data-sort="true" data-source="#{url_for(format: :json)}"
-  thead
-    tr
-      th data-data="plat_number" Plat number
-      th data-data="block" Block
-      th data-data="date" Date
-      th data-data="phone_number" Phone number
-      th data-data="purpose" Purpose
-      th data-data="url" data-orderable="false" data-class-name="all" data-searchable="false" class="skip-export" width="100px"
-      th
-      th
+br   
+        
+        
 
-  tbody
-    - @guests.each do |guest|
-      tr
-        td = guest.plat_number
-        td = guest.block
-        td = guest.date
-        td = guest.phone_number
-        td = guest.purpose
-        td = link_to 'Show', guest
-        td = link_to 'Edit', edit_guest_path(guest)
-        td = link_to 'Destroy', guest, data: { confirm: 'Are you sure?' }, method: :delete
-
-
-= link_to 'New Guest', new_guest_path
+        table#dttb-guests.responsive.nowrap.table.table-hover data-sort="true" data-source="#{url_for(format: :json)}"
+          thead
+            tr
+              th data-data="plat_number" Plat number
+              th data-data="block" Block
+              th data-data="date" Date
+              th data-data="phone_number" Phone number
+              th data-data="purpose" Purpose
+              th data-data="url" data-orderable="false" data-class-name="all" data-searchable="false" class="skip-export" width="100px"
+              th 
+              th 
+              th 
+              
+          tbody
+            - @guests.each do |guest| 
+              tr
+                td = guest.plat_number
+                td = guest.block
+                td = guest.date
+                td = guest.phone_number
+                td = guest.purpose
+                td = link_to 'Show', guest
+                td = link_to 'Edit', edit_guest_path(guest)
+                td = link_to 'Destroy', guest, data: { confirm: 'Are you sure?' }, method: :delete
+        br
+         br
+         = link_to 'Back', pages_residentlist_path
+        
+      
