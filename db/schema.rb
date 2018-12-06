@@ -240,9 +240,6 @@ ActiveRecord::Schema.define(version: 2018_12_03_090426) do
     t.string "fullname"
     t.string "aptnums"
     t.string "phonenum"
-    t.string "confirmation_token", limit: 128
-    t.string "remember_token", limit: 128
-    t.integer "apartment_id"
     t.string "occupation"
     t.string "IC_number"
     t.string "races"
@@ -254,6 +251,7 @@ ActiveRecord::Schema.define(version: 2018_12_03_090426) do
     t.string "house_member_relationship"
     t.string "age"
     t.string "parent_id"
+    t.integer "apartment_id"
     t.integer "car_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
