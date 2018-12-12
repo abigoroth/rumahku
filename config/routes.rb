@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   
-  resources :chat_rooms, only: [:new, :create, :show, :index]
+  resources :chat_rooms
   #root 'chat_rooms#index'
 
  
@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   get 'chat_rooms/show'
   get 'chat_rooms/new'
   get 'chat_rooms/_chat_room'
-  get 'chat_rooms/index'
+  get 'chat_rooms/index' 
   get 'messages/_message'
  
   resources :clusters

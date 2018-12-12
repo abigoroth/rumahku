@@ -1,6 +1,6 @@
 
 
-<div id='cssmenu'>
+<div id='cssmenu'> 
 <ul>
   <li><a href="http://localhost:3000/pages/admin">Home</a></li>
   <li><a href="http://localhost:3000/infos/new">Resident Registration</a></li>
@@ -19,7 +19,13 @@
 <h1>Chat rooms</h1>
 
 <p class="lead"><%= link_to 'New chat room', new_chat_room_path, class: 'btn btn-primary' %></p>
-
+<div class="col-md-11">
+<p class="card-text">
 <ul>
   <%= render @chat_rooms %>
+  <% @chat_rooms.each do |chat_room| %>
+  <%= link_to 'Destroy', chat_room, method: :delete, data: { confirm: 'Are you sure?' } %>
+  <% end %>  
 </ul>
+</div>
+</div>
