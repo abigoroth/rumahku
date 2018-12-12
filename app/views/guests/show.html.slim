@@ -1,21 +1,88 @@
-p#notice = notice
+  css:
+    @import url('https://fonts.googleapis.com/css?family=Poppins');
+    
+    /!* BASIC */
+    
+    html {
+      background-color: #56baed;
+    }
+    
+    body {
+      font-family: "Poppins", sans-serif;
+      height: 100vh;
+      align-items: center;
+      justify-content: center; 
+    }
+    
+    a {
+      color: #92badd;
+      display:inline-block;
+      text-decoration: none;
+      font-weight: 400;
+    }
+    
+    
+    h2 {
+      text-align: center;
+      font-size: 16px;
+      font-weight: 600;
+      text-transform: uppercase;
+      display:inline-block;
+      margin: 40px 8px 10px 8px;
+      color: #cccccc;
+    }
+  
+    #formContent {
+      -webkit-border-radius: 10px 10px 10px 10px;
+      border-radius: 15px 15px 15px 15px;
+      background: #fff;
+      padding: 30px;
+      max-width: 400px;
+      width: 100%;
+      -webkit-box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+      box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+      align-items: center;
+      justify-content: center; 
+    }
+   
+    h2.active {
+      color: #0d0d0d;
+      border-bottom: 2px solid #5fbae9;
+      text-align: center;
+      justify-content: center; 
+    }
+    
+   
 
-p
-  b Plat number:
-  = @guest.plat_number
-p
-  b Block:
-  = @guest.block
-p
-  b Date:
-  = @guest.date
-p
-  b Phone number:
-  = @guest.phone_number
-p
-  b Purpose:
-  = @guest.purpose
-
-= link_to 'Edit', edit_guest_path(@guest)
-'|
-= link_to 'Back', guests_path
+  
+  html lang="en"
+    head
+      meta charset="UTF-8"/
+      meta name="viewport" content="width=device-width, initial-scale=1.0"/
+      meta http-equiv="X-UA-Compatible" content="ie=edge"/
+      title Guest
+    body
+          #formContent
+            h2.active Guest 
+            p
+            b Plat number:
+            = @guest.plat_number
+            p
+            b Block:
+            = @guest.block
+            p
+            b Date:
+            = @guest.date
+            p
+            b Phone number:
+            = @guest.phone_number
+            p
+            b Purpose:
+            = @guest.purpose 
+            p
+            = link_to 'Edit', edit_guest_path(@guest)
+            '|
+            = link_to 'Back', guests_path
+                  
+            br
+            br

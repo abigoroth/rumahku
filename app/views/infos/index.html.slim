@@ -112,12 +112,8 @@ br
                 td = info.fullname 
                 td = info.IC_number
                 td = info.apartment&.number_apartment
-                td = info.phonenum  
-                td = info.races 
-                td = info.occupation  
-                /td = info.apartment&.number_apartment
-                
-               
+                td = info.phonenum 
+                td = info.owner 
                 td = link_to 'Show',  info_path(info) 
                 td = link_to 'Edit', edit_info_path(info) 
                 td = link_to 'Delete', info_path(info), data: { confirm: 'Are you sure?' }, method: :delete
@@ -125,5 +121,3 @@ br
          = link_to 'New Info', new_info_path 
          br
          = link_to 'Back', pages_admin_path
-        
-      
