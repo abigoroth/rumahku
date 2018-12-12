@@ -104,6 +104,7 @@ table#dttb-apartments.responsive.nowrap.table.table-hover data-sort="true" data-
       th
       th
       th
+      th
 
   tbody
     - @apartments.each do |apartment|
@@ -117,6 +118,7 @@ table#dttb-apartments.responsive.nowrap.table.table-hover data-sort="true" data-
         td = link_to 'Show', apartment
         td = link_to 'Edit', edit_apartment_path(apartment)
         td = link_to 'Destroy', apartment, data: { confirm: 'Are you sure?' }, method: :delete
+        td = link_to 'New Park Space', new_park_spacerental_path(park_spacerental:{apartment_id: apartment.id}, ps_id: apartment.requested_park_space_id, start_rent: apartment.start_rent, end_rent: apartment.end_rent)
 
 
 

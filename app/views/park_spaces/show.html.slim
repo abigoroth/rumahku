@@ -231,8 +231,8 @@ p
       p
       br
         -if cookies.signed['user.id'] 
-              -if current_user.apartments.any?
-                  =simple_form_for current_user.apartments.first do |f|                
+              -if current_user.apartment.present?
+                  =simple_form_for current_user.apartment do |f|                
                       = render 'apartment_fields', f: f
                       /= f.submit
                       button.btn-lg.btn-primary.col-3[type="submit" data-toggle="collapse" data-target="#demo"] Next                

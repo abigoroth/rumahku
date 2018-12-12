@@ -1,7 +1,7 @@
 =simple_form_for @park_spacerental do |f| 
-  = f.input :park_space_id, input_html: {value: params[:ps_id]}, :disabled=>true
-  = f.association :park_space, label_method: :parknum
-  = f.association :car, label_method: :platnum  
+  = f.input :park_space_id, input_html: {value: params[:ps_id]}, :readonly=>true
+  /= f.association :park_space, label_method: :parknum
+  = f.input :car_id, collection: Car.where(apartment_id: @park_spacerental.apartment_id), label_method: :platnum  
   = f.association :apartment, label_method: :number_apartment  
   = f.input :start_rent   
   = f.input :end_rent   

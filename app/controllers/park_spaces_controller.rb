@@ -31,7 +31,7 @@ class ParkSpacesController < ApplicationController
   end
 
   def request_parking_queue   
-    current_user.apartments.first.update(park_space_id: params[:id], parking_queue: DateTime.now)
+    current_user.apartment.update(park_space_id: params[:id], parking_queue: DateTime.now)
     redirect_to '/pages/floor_plan'
     #redirect_to '/park_spaces'
   end
@@ -55,15 +55,15 @@ class ParkSpacesController < ApplicationController
   # PATCH/PUT /park_spaces/1
   # PATCH/PUT /park_spaces/1.json
   def update
-    #respond_to do |format|
+    respond_to do |format|
       if @park_space.update(park_space_params)
-        #format.html { redirect_to @park_space, notice: 'Park space was successfully updated.' }
-        #format.json { render :show, status: :ok, location: @park_space }
+        format.html { redirect_to @park_space, notice: 'Park space was successfully updated.' }
+        format.json { render :show, status: :ok, location: @park_space }
       else
         format.html { render :edit }
         format.json { render json: @park_space.errors, status: :unprocessable_entity }
       end
-    #end
+    end
   end
 
   # DELETE /park_spaces/1
