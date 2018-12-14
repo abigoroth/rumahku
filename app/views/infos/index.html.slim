@@ -97,17 +97,20 @@ br
               th data-data="IC_number" IC Number
               th data-data="aptnums" Apartment Number
               th data-data="phonenum" Phone Number
-              th data-data="owner" Owner
+              th data-data="owner" Race
+              th data-data="occupation" Occupation
               th 
               th 
-              th 
+              th
+             
+              
               
           tbody
             - @infos.each do |info| 
               tr
                 td = info.email 
                 td = info.fullname 
-                td = info.IC_number 
+                td = info.IC_number
                 td = info.apartment&.number_apartment
                 td = info.phonenum 
                 td = info.owner 

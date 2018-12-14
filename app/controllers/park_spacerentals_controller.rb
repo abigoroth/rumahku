@@ -15,7 +15,11 @@ class ParkSpacerentalsController < ApplicationController
 
   # GET /park_spacerentals/new
   def new
-    @park_spacerental = ParkSpacerental.new
+    if params[:park_spacerental]
+      @park_spacerental = ParkSpacerental.new(park_spacerental_params)
+    else
+      @park_spacerental = ParkSpacerental.new
+    end
   end
 
   # GET /park_spacerentals/1/edit

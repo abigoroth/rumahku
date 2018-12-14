@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_03_090426) do
+ActiveRecord::Schema.define(version: 2018_12_07_071338) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -70,6 +70,7 @@ ActiveRecord::Schema.define(version: 2018_12_03_090426) do
     t.datetime "updated_at", null: false
     t.string "apartment_id"
     t.integer "user_id"
+    t.integer "park_space_id"
   end
 
   create_table "chat_rooms", force: :cascade do |t|
@@ -138,6 +139,7 @@ ActiveRecord::Schema.define(version: 2018_12_03_090426) do
     t.string "house_member_age"
     t.string "house_member_relationship"
     t.string "age"
+    t.integer "apartment_id"
   end
 
   create_table "map_areas", force: :cascade do |t|
@@ -206,6 +208,7 @@ ActiveRecord::Schema.define(version: 2018_12_03_090426) do
     t.date "start_rent"
     t.date "end_rent"
     t.integer "apartment_id"
+    t.integer "car_id"
   end
 
   create_table "parkingqueues", force: :cascade do |t|

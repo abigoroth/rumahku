@@ -22,6 +22,7 @@ class ParkSpacesController < ApplicationController
   # GET /park_spaces/new
   def new
     @park_space = ParkSpace.new
+   
   end
 
   # GET /park_spaces/1/edit
@@ -30,7 +31,7 @@ class ParkSpacesController < ApplicationController
   end
 
   def request_parking_queue   
-    current_user.apartments.first.update(park_space_id: params[:id], parking_queue: DateTime.now)
+    current_user.apartment.update(park_space_id: params[:id], parking_queue: DateTime.now)
     redirect_to '/pages/floor_plan'
     #redirect_to '/park_spaces'
   end
@@ -90,3 +91,4 @@ class ParkSpacesController < ApplicationController
     end
 
 end
+ 

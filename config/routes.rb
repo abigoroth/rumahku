@@ -19,18 +19,15 @@ Rails.application.routes.draw do
   get 'floorplans/_map_area_fields'
   get 'floorplan/_map_area_fields'
   resources :floorplans
-  get 'pages/floor_plan'
+  get 'pages/floor_plan' 
+  
   get '/pages/request_date'
 
+  
   resources :guests
-
-
-
+  
   resources :park_spaces do
-    resources :park_spacerentals 
-      member do
-        get "request_parking_queue"
-      end
+    resources :park_spacerentals
   end
   resources :park_spacerentals
   get 'pages/space_rental'
