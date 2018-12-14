@@ -18,7 +18,7 @@
     br
     = f.input :aptnums
     br
-    = f.input :fullname
+    = f.input :fullname 
     br
     = f.input :IC_number
     br
@@ -64,7 +64,7 @@
         = render 'car_fields', f: car
       .links
         = link_to_add_association 'add car', f, :cars
-    br
+    br 
     br
     .form-actions 
       = f.button :submit
