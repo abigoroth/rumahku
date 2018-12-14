@@ -2,10 +2,11 @@ div style="background-color: #ffffcc" /
 doctype html
 html
   head
-        
-        link[rel="" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"]
+        br/
+        br
+        link[rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"]
         /script[src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"]
-        script[src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"]
+        /script[src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"]
         meta content="width=device-width, initial-scale=1" name="viewport" 
         css:
            body {
@@ -90,14 +91,25 @@ html
                background-color: #45a049;
            }
       
-        .topnav
-          a href="http://localhost:3000/pages/admin"  Home
-          a href="http://localhost:3000/infos/new"  Resident Registration
-          a href="http://localhost:3000/infos"  Resident List
-          a href="http://localhost:3000/cars"  Car
-          a href="http://localhost:3000/apartments"  Apartment 
-          a.active href="http://localhost:3000/park_spaces"  Park Space Rental          
-          a href="http://localhost:3000/chat_rooms" Chat Rooms
+#cssmenu 
+ ul          
+    li      
+        a href="http://localhost:3000/pages/admin"  Home
+    li
+        a href="http://localhost:3000/infos/new"  Resident Registration
+    li
+        a href="http://localhost:3000/infos"  Resident List
+    li
+        a.active href="http://localhost:3000/cars"  Car
+    li
+        a href="http://localhost:3000/apartments"  Apartment
+    li
+        a href="http://localhost:3000/park_spaces"  Park Space Rental
+    li
+        a href="http://localhost:3000/chat_rooms" Chat Rooms
+    li
+
+br 
        
 
 p#notice = notice
@@ -201,11 +213,6 @@ br
                 br  
                    input[type="button" value="Request Parking Queue" onclick="window.location.href='http://localhost:3000/park_spaces/#{params[:id]}/request_parking_queue'"]
                
-        /-if cookies.signed['user.id'] 
-            -if current_user.cars.any?      
-              = simple_form_for current_user.cars.first do |f|
-                = render 'car_fields', f: f
-                = f.submit
         br
         br
         -if cookies.signed['admin.id'] 

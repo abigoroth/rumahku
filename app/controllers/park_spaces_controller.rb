@@ -1,8 +1,7 @@
 class ParkSpacesController < ApplicationController
 
-  before_action -> { authenticate(['admin','user']) } #modifyuser
+  #before_action -> { authenticate(['admin','user']) } #modifyuser
   before_action :set_park_space, only: [:show, :edit, :update, :destroy]
-
   
 
   
@@ -22,7 +21,6 @@ class ParkSpacesController < ApplicationController
 
   # GET /park_spaces/new
   def new
-    
     @park_space = ParkSpace.new
   end
 
@@ -88,7 +86,7 @@ class ParkSpacesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def park_space_params
-      params.require(:park_space).permit(:parknum, :spacetype, :available, :info_id, :user_id, apartments_attributes: [:id, :requested_park_space_id, :requested_start_rent, :requested_end_rent, :_destroy],)
+      params.require(:park_space).permit(:parknum, :spacetype, :available, :info_id, :user_id, apartments_attributes: [:id, :requested_park_space_id, :requested_start_rent, :requested_end_rent, :_destroy])
     end
 
 end

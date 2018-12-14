@@ -19,8 +19,8 @@
 //= require datatables
 //= require alertify
 
+
 //= require_tree .
 //= require cocoon
 //= require cable
-//= require jquery_nested_form
 

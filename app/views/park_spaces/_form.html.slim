@@ -1,8 +1,10 @@
+=@park_space.errors.inspect if @park_space.errors.any?
 =simple_form_for @park_space do |f|  
+  = f.error_notification
+  = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
+
   = f.input :parknum   
   = f.input :spacetype   
   = f.input :available
   = f.submit
-
-
  

@@ -17,37 +17,8 @@ html
             background-position: center;
             background-repeat: no-repeat;
             background-size: cover;
-           
            }
-
-            {
-             box-sizing: border-box;
-             }
-          
-          .topnav {
-             overflow: hidden;
-             background-color: #333;
-           }
-          
-          .topnav a {
-             float: left;
-             color: #f2f2f2;
-             text-align: center;
-             padding: 14px 16px;
-             text-decoration: none;
-             font-size: 17px;
-           }
-          
-          .topnav a:hover {
-             background-color: #ddd;
-             color: blue;
-           }
-          
-          .topnav a.active {
-             background-color: #4CAF50;
-             color: white;
-           }
-          
+        
            table {
                font-family: arial, sans-serif;
                border-collapse: collapse;
@@ -93,39 +64,70 @@ html
            input[type=submit]:hover {
                background-color: #45a049;
            }
+           .button {
+              background-color: #4CAF50;
+              border: none;
+              color: white;
+              padding: 15px 25px;
+              text-align: center;
+              font-size: 16px;
+              cursor: pointer;
+          }
+
+          .button:hover {
+              background-color: green;
+          }
       
-        .topnav          
-          a href="http://localhost:3000/pages/admin"  Home
-          a href="http://localhost:3000/infos/new"  Resident Registration
-          a.active href="http://localhost:3000/infos"  Resident List
-          a href="http://localhost:3000/cars"  Car
-          a href="http://localhost:3000/apartments"  Apartment
-          a href="http://localhost:3000/park_spaces"  Park Space Rental
-          a href="http://localhost:3000/chat_rooms" Chat Rooms
+#cssmenu
+ ul          
+    li      
+        a href="http://localhost:3000/pages/admin"  Home
+    li
+        a href="http://localhost:3000/infos/new"  Resident Registration
+    li
+        a.active href="http://localhost:3000/infos"  Resident List
+    li
+        a href="http://localhost:3000/cars"  Car
+    li
+        a href="http://localhost:3000/apartments"  Apartment
+    li
+        a href="http://localhost:3000/park_spaces"  Park Space Rental
+    li
+        a href="http://localhost:3000/chat_rooms" Chat Rooms
+    li
 
-
+br   
+        
         
 
         table#dttb-infos.responsive.nowrap.table.table-hover data-sort="true" data-source="#{url_for(format: :json)}"
           thead
             tr
               th data-data="Email" Email
-              th data-data="Name" Name
-              th data-data="apartment_number" Apartment Number
-              th data-data="phone_number" Phone Number
+              th data-data="Fullname" Name
+              th data-data="IC_number" IC Number
+              th data-data="aptnums" Apartment Number
+              th data-data="phonenum" Phone Number
               th data-data="owner" Owner
               th 
               th 
               th 
+              th
+              th
               
           tbody
             - @infos.each do |info| 
               tr
                 td = info.email 
                 td = info.fullname 
-                td = info.aptnums 
+                td = info.IC_number 
+                td = info.races 
+                td = info.occupation  
+                /td = info.apartment&.number_apartment
+                td = info.apartment&.number_apartment
                 td = info.phonenum 
                 td = info.owner 
+
                 td = link_to 'Show',  info_path(info) 
                 td = link_to 'Edit', edit_info_path(info) 
                 td = link_to 'Delete', info_path(info), data: { confirm: 'Are you sure?' }, method: :delete
@@ -133,5 +135,5 @@ html
          = link_to 'New Info', new_info_path 
          br
          = link_to 'Back', pages_admin_path
-         <style>
+        
       

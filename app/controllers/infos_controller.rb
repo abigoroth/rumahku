@@ -1,5 +1,5 @@
 class InfosController < ApplicationController
-  before_action -> { authenticate(['admin','user']) } #modifyuser
+  #before_action -> { authenticate(['admin','user']) } #modifyuser
   before_action :set_info, only: [:show, :edit, :update, :destroy]
 
   # GET /infos
@@ -80,7 +80,6 @@ class InfosController < ApplicationController
     def info_params
       params.require(:user).permit(:email, :fullname, :IC_number, :age, :races, :occupation, :phonenum, :aptnums, :owner, :emergency_name, :emergency_contact, :house_member, :house_member_name, :house_member_age, :house_member_relationship, :password, :picture, :apartment_id , members_attributes: [:id, :member_name, :member_age, :member_relationship, :_destroy], cars_attributes: [:id, :cartype, :owner, :queue, :platnum, :apartment_id, :_destroy])
       
-   
     end
 
 

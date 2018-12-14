@@ -51,7 +51,7 @@ class ParkSpacerentalsController < ApplicationController
       end
     end
   end
-
+ 
   # DELETE /park_spacerentals/1
   # DELETE /park_spacerentals/1.json
   def destroy
@@ -60,6 +60,11 @@ class ParkSpacerentalsController < ApplicationController
       format.html { redirect_to park_spacerentals_url, notice: 'Park spacerental was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+  
+
+  def filter_expired 
+    @park_spacerentals = ParkSpacerental.where('start_rent < ?', Date.today)    
   end
 
   private
@@ -73,3 +78,4 @@ class ParkSpacerentalsController < ApplicationController
       params.require(:park_spacerental).permit(:park_space_id, :car_id, :start_rent, :end_rent, :price, :apartment_id, :picture)
     end
 end
+ 
