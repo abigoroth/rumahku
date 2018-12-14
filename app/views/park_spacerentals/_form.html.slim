@@ -3,8 +3,8 @@
   /= f.association :park_space, label_method: :parknum
   = f.input :car_id, collection: Car.where(apartment_id: @park_spacerental.apartment_id), label_method: :platnum  
   = f.association :apartment, label_method: :number_apartment  
-  = f.input :start_rent   
-  = f.input :end_rent   
+  = f.input :start_rent, as: :string,input_html: {value: params[:start_rent.to_s]}, :readonly=>true 
+  = f.input :end_rent, as: :string,input_html: {value: params[:end_rent.to_s]}, :readonly=>true   
   = f.input :price
   = f.file_field :picture, id: :park_spacerental_picture  
   hr
