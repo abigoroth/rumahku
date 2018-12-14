@@ -11,3 +11,12 @@
   App.cable = ActionCable.createConsumer();
 
 }).call(this);
+
+ /**
+         * Plays a notification sound when a new chat message arrives
+         */
+
+        notify: function () {
+          var audioplayer = $('#chatAudio')[0];
+          audioplayer.play();
+      },
