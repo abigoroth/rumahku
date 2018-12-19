@@ -103,6 +103,7 @@ table#dttb-apartments.responsive.nowrap.table.table-hover data-sort="true" data-
       th Start Rent
       th End Rent
       th Price
+      th Total
       th Receipt
       th
       th
@@ -115,15 +116,20 @@ table#dttb-apartments.responsive.nowrap.table.table-hover data-sort="true" data-
         td = park_spacerental.start_rent
         td = park_spacerental.end_rent
         td = park_spacerental.price
+        td = park_spacerental.total
         td = image_tag park_spacerental.picture_url, width: '20%' if park_spacerental.picture.present?
         td = link_to 'Show', park_spacerental
         td = link_to 'Edit', edit_park_spacerental_path(park_spacerental)
         td = link_to 'Destroy', park_spacerental, data: { confirm: 'Are you sure?' }, method: :delete
 
+        /running_total = running_total + ((end_rent - start.rent) *10)
+
 br
 
 = link_to 'New Park Space Rental', new_park_spacerental_path
 
+br
+/h4.pull-right Invoice total:  <%= park_spacerental.total running_total 
 form
   center
    input type="button" value="Filter Expired" onclick="window.location.href='http://localhost:3000/park_spacerentals/filter_expired '"

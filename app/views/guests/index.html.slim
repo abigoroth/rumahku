@@ -91,11 +91,15 @@ br
               th data-data="block" Block
               th data-data="date" Date
               th data-data="phone_number" Phone number
-              th data-data="purpose" Purpose
+              th data-data="purpose" Purpose 
+              th data-data="guest_in" Guest In
+              th data-data="guest_out" Guest Out
               th data-data="url" data-orderable="false" data-class-name="all" data-searchable="false" class="skip-export" width="100px"
-              th 
-              th 
-              th 
+              th
+              th
+             
+            
+              
               
           tbody
             - @guests.each do |guest| 
@@ -105,9 +109,12 @@ br
                 td = guest.date
                 td = guest.phone_number
                 td = guest.purpose
+                td = guest.guest_in
+                td = guest.guest_out
                 td = link_to 'Show', guest
-                td = link_to 'Edit', edit_guest_path(guest)
+                td = link_to 'Update', edit_guest_path(guest)
                 td = link_to 'Destroy', guest, data: { confirm: 'Are you sure?' }, method: :delete
+               
         br
          br
          = link_to 'Back', pages_residentlist_path

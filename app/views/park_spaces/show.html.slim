@@ -163,16 +163,16 @@ br
                   th
                   
 
-                tbody
-                  - @park_space.parkspacelogs.where(park_space_id: @park_space.id).each_with_index do |parkspacelog|
-                    tr
-                      /td = parkspacelog.parking_no
-                      td = parkspacelog.date
-                      td = parkspacelog.message
-                      td = link_to 'View', parkspacelog
-                      td = link_to 'Edit', edit_parkspacelog_path(parkspacelog)
-                      td = link_to 'Delete', parkspacelog, data: { confirm: 'Are you sure?' }, method: :delete 
-    #tab3.tab-pane
+                  tbody
+                    - @park_space.parkspacelogs.where(park_space_id: @park_space.id).each_with_index do |parkspacelog|
+                      tr
+                        /td = parkspacelog.parking_no
+                        td = parkspacelog.date
+                        td = parkspacelog.message
+                        td = link_to 'View', parkspacelog
+                        td = link_to 'Edit', edit_parkspacelog_path(parkspacelog)
+                        td = link_to 'Delete', parkspacelog, data: { confirm: 'Are you sure?' }, method: :delete 
+      #tab3.tab-pane
       p
       br
         -if cookies.signed['user.id'] 
@@ -232,35 +232,35 @@ br
                 br
                 br  
       #tab3.tab-pane
-        -if cookies.signed['user.id'] 
-              -if current_user.apartments.any?
-                = simple_form_for current_user.apartments.first do |f|
-                  = render 'apartment_fields', f: f
-                  = f.submit
-                br  
-                   input[type="button" value="Request Parking Queue" onclick="window.location.href='http://localhost:3000/park_spaces/#{params[:id]}/request_parking_queue'"]
-               
-        br
-        br
-        -if cookies.signed['admin.id'] 
-                form
-                 center
-                  input onclick="window.location.href='http://localhost:3000/park_spaces/#{params[:id]}/park_spacerentals/new'" type="button" value=("Add Rental") 
+            -if cookies.signed['user.id'] 
+                  -if current_user.apartments.any?
+                    = simple_form_for current_user.apartments.first do |f|
+                      = render 'apartment_fields', f: f
+                      = f.submit
+                    br  
+                      input[type="button" value="Request Parking Queue" onclick="window.location.href='http://localhost:3000/park_spaces/#{params[:id]}/request_parking_queue'"]
+                  
+            br
+            br
+            -if cookies.signed['admin.id'] 
+                    form
+                    center
+                      input onclick="window.location.href='http://localhost:3000/park_spaces/#{params[:id]}/park_spacerentals/new'" type="button" value=("Add Rental") 
 
-                tbody
-                  - @park_space.apartments.each_with_index do |apartment|
-                    tr 
-                      td = apartment.number_apartment                     
-                      td = apartment.requested_start_rent
-                      td = apartment.requested_end_rent
-                      td = link_to 'View', apartment
-                      td = link_to 'Edit', edit_apartment_path(apartment)
-                      td = link_to 'Delete', apartment, data: { confirm: 'Are you sure?' }, method: :delete 
-          
-            form   
-                = link_to 'New', new_park_spacerental_path(@park_space, ps_id: @park_space.id)      
-                /input onclick="window.location.href='http://localhost:3000/park_spaces/#{params[:id]}/park_spacerentals/new'" type="button" value=("Add Rental")
+                    tbody
+                      - @park_space.apartments.each_with_index do |apartment|
+                        tr 
+                          td = apartment.number_apartment                     
+                          td = apartment.requested_start_rent
+                          td = apartment.requested_end_rent
+                          td = link_to 'View', apartment
+                          td = link_to 'Edit', edit_apartment_path(apartment)
+                          td = link_to 'Delete', apartment, data: { confirm: 'Are you sure?' }, method: :delete 
             
+                    form   
+                      = link_to 'New', new_park_spacerental_path(@park_space, ps_id: @park_space.id)      
+                      /input onclick="window.location.href='http://localhost:3000/park_spaces/#{params[:id]}/park_spacerentals/new'" type="button" value=("Add Rental")
+              
             
             
   
