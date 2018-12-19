@@ -1,22 +1,33 @@
 
+ <% if cookies.signed['admin.id'] %>
+  <div id='cssmenu'> 
+    <ul>
+      <li><a href="http://localhost:3000/pages/admin">Home</a></li>
+      <li><a href="http://localhost:3000/infos/new">Resident Registration</a></li>
+      <li><a href="http://localhost:3000/infos">Resident List</a></li>
+      <li><a href="http://localhost:3000/cars">Car</a></li>
+      <li><a href="http://localhost:3000/apartments">Apartment</a></li>
+      <li><a href="http://localhost:3000/park_spaces">Park Space Rental</a></li>
+      <li><a href="http://localhost:3000/chat_rooms">Chat Rooms</a></li>
+    </ul>
+  </div>
+ <% end %>
+ <% if cookies.signed['user.id'] %>
+  <div id='cssmenu'> 
+    <ul>
+      <li><a class="active" href="http://localhost:3000/pages/user">Home</a></li>
+      <li><a href="http://localhost:3000/guests/new">Guest Registration</a></li>
+      <li><a href="http://localhost:3000/chat_rooms">Chat Rooms</a></li>
+      <li><a href="http://localhost:3000/park_spaces">Park Space Rental</a></li>
+    </ul>
+  </div>
+ <% end %>
 
-<div id='cssmenu'> 
-<ul>
-  <li><a href="http://localhost:3000/pages/admin">Home</a></li>
-  <li><a href="http://localhost:3000/infos/new">Resident Registration</a></li>
-  <li><a href="http://localhost:3000/infos">Resident List</a></li>
-  <li><a href="http://localhost:3000/cars">Car</a></li>
-  <li><a href="http://localhost:3000/apartments">Apartment</a></li>
-  <li><a href="http://localhost:3000/park_spaces">Park Space Rental</a></li>
-  <li><a href="http://localhost:3000/chat_rooms">Chat Rooms</a></li>
-
-  </ul>
-</div>
 
 <br>
 
 
-<h1>Chat rooms</h1>
+<h1>Chat rooms</h1> 
 
 <p class="lead"><%= link_to 'New chat room', new_chat_room_path, class: 'btn btn-primary' %></p>
 <div class="col-md-11">
@@ -24,7 +35,10 @@
 <ul>
   <%= render @chat_rooms %>
   <% @chat_rooms.each do |chat_room| %>
-  <%= link_to 'Destroy', chat_room, method: :delete, data: { confirm: 'Are you sure?' } %>
+    <% if cookies.signed['admin.id'] %>
+    <%= link_to 'Destroy', chat_room, method: :delete, data: { confirm: 'Are you sure?' } %>
+    <% else %>
+    <% end %>  
   <% end %>  
 </ul>
 </div>

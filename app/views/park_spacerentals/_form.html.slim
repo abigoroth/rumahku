@@ -1,5 +1,3 @@
-/= params[:start_rent]
-/= params[:end_rent]
 =simple_form_for @park_spacerental do |f| 
   = f.input :park_space_id, input_html: {value: params[:ps_id]}, :readonly=>true
   /= f.association :park_space, label_method: :parknum  
@@ -11,6 +9,6 @@
   = f.input :end_rent, as: :string, :readonly=>true
   = f.input :price
   = f.file_field :picture, id: :park_spacerental_picture  
-  hr
+  hr 
   = f.submit
   
