@@ -1,5 +1,4 @@
 
-
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -15,7 +14,7 @@
 <p>
   <strong>Apartment Number:</strong>
  
-  <%= link_to @car.apartment&.number_apartment, info_path(params[:id]) %>
+  <%= link_to @car.apartment&.number_apartment, info_path(@car.apartment.user.id) %>
 
  
   

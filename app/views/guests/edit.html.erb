@@ -275,37 +275,25 @@
   }
 </style>
 
+
 <html>
-
-  <head>
-  <div id='cssmenu'>
-  <ul>
-      <li><a href="http://localhost:3000/pages/user">Home</a></li>
-      <li><a class="active" href="http://localhost:3000/guests/new">Guest Registration</a></li>
-      <li><a href="http://localhost:3000/chat_rooms">Chat Rooms</a></li>
-      <li><a href="http://localhost:3000/park_spaces">Park Space Rental</a></li>
-  </ul>
-  </div>
-  </head>
-
-  <body>
-
-
 
 <div class="wrapper fadeInDown">
   <div id="formContent">
     <!-- Tabs Titles -->
-    <h2 class="active"> Guest Registration </h2>
-  
+    <h2 class="active"> Editing Guest </h2>
+    
+
     <!-- Icon --> 
     <div class="fadeIn first">
-      <img src="http://chittagongit.com//images/guest-icon-png/guest-icon-png-5.jpg" id="icon" alt="Guard Icon" />
+      <img src="http://chittagongit.com//images/guest-icon-png/guest-icon-png-5.jpg" id="icon" alt="Guest Icon" />
     </div>
 <br>
 <br>
-    <div class="form">
-      <%= render 'form', guest: @guest %>
-    </div>
+<div class="form">
+<%= render 'form', guest: @guest %>
+</div>
+<%= link_to 'Show', @guest %> |
 <%= link_to 'Back', guests_path %>
 </button>
 </center>
@@ -315,4 +303,4 @@
 
 
 
- 
+

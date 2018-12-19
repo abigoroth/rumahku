@@ -44,8 +44,8 @@ class ApartmentsController < ApplicationController
 
     #respond_to do |format|
       if @apartment.update(apartment_params)
-        #format.html { redirect_to "/apartments", notice: 'Apartment was successfully updated.' }
-        #format.json { render :show, status: :ok, location: @apartment }
+        #format.html { redirect_to @apartment, notice: 'Apartment was successfully updated.' }
+        #format.json { render :show, status: :ok, location: @apartment }        
       else
         format.html { render :edit }
         format.json { render json: @apartment.errors, status: :unprocessable_entity }
@@ -73,10 +73,6 @@ class ApartmentsController < ApplicationController
   def request_parking_queue
      current_user.apartments.first.update_column(:parking_queue, DateTime.today)
      redirect_to '/park_spaces'
-  end
-
-  def filter_air
-    @apartments = Apartment.where('requested_start_rent < ?', Date.today)    
   end
 
   def filter_parking_queue

@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   
-  resources :chat_rooms, only: [:new, :create, :show, :index]
+  resources :chat_rooms
   #root 'chat_rooms#index'
 
  
@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   get 'chat_rooms/show'
   get 'chat_rooms/new'
   get 'chat_rooms/_chat_room'
-  get 'chat_rooms/index'
+  get 'chat_rooms/index' 
   get 'messages/_message'
   get 'park_spacerentals/filter_expired'
  
@@ -29,7 +29,6 @@ Rails.application.routes.draw do
   
   resources :park_spaces do
     resources :park_spacerentals
-    resources :parkspacelogs
   end
   resources :park_spacerentals
   get 'pages/space_rental'
@@ -41,7 +40,6 @@ Rails.application.routes.draw do
   resources :parkingqueues
   resources :park_spaces
   resources :park_spacerentals
-  
   get 'pages/space_rental'
   resources :cars
   resources :parkspacelogs
@@ -57,7 +55,8 @@ Rails.application.routes.draw do
   get 'pages/user'
   get 'pages/guard'
   get 'pages/admin'
-  get 'apartments/filter_parking_queue' 
+  get 'apartments/filter_parking_queue'
+  
   devise_for :guards
   devise_for :admins
   devise_for :users
@@ -68,14 +67,8 @@ Rails.application.routes.draw do
   resources :park_spaces do
     resources :apartments   
         member do
-          get "request_parking_queue"          
-        end     
-  end
-
-  resources :park_spaces do
-    resources :park_spacerentals   
-        member do
-          get "filter_expired"          
+          get "request_parking_queue"
+          #get "filter_parking_queue"  
         end     
   end
   
@@ -93,7 +86,8 @@ Rails.application.routes.draw do
   resources :residents
   resources :parkingqueues
 
-
+  
+  resources :park_spacerentals
   get 'pages/space_rental'
   resources :cars
   resources :parkspacelogs
@@ -139,6 +133,7 @@ end
   get 'pages/main'
   get 'pages/jeng2'
   resources :apartments
+ 
   resources :parkspacelogs
   resources :guests
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

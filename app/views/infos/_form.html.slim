@@ -9,6 +9,11 @@
   .form-inputs
     = f.input :email
     = f.input :password
+    br
+    = f.association :apartment, label_method: :number_apartment
+    br
+    = f.input :aptnums
+    br
     = f.input :fullname
     br
     = f.input :IC_number
@@ -21,8 +26,6 @@
     br
     = f.input :phonenum
     br
-    = f.association :apartment, label_method: :number_apartment
-    = f.input :aptnums
     = f.input :owner
     
     br
