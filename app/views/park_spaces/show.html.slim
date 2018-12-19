@@ -4,7 +4,7 @@ html
   head               
         meta[name="viewport" content="width=device-width, initial-scale=1"]
         link[rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"]
-        script[src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"]
+        /script[src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"]
         script[src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"]
         
         css:
@@ -227,6 +227,10 @@ p
                       td = link_to 'View', parkspacelog
                       td = link_to 'Edit', edit_parkspacelog_path(parkspacelog)
                       td = link_to 'Delete', parkspacelog, data: { confirm: 'Are you sure?' }, method: :delete 
+         
+              form   
+                = link_to 'New', new_parkspacelog_path(@park_space, ps_id: @park_space.id)   
+            
     #tab3.tab-pane
       p
       br
