@@ -12,6 +12,9 @@ class ParkSpace < ApplicationRecord
     
     has_many :requests, class_name: "Apartment" 
     
+    has_many :cars, inverse_of: :park_space
+    accepts_nested_attributes_for :cars, reject_if: :all_blank, allow_destroy: true
+
     #validates :start_rent, presence: true
     #validates :end_rent, presence: true
     

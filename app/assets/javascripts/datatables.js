@@ -65,3 +65,8 @@ $(document).on('turbolinks:before-cache', function() {
     return dataTable = null;
   }
 });
+
+
+$(document).ready(function() {
+  $('#example').DataTable();
+} );

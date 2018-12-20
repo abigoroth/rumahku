@@ -230,33 +230,28 @@ p
     #tab3.tab-pane
       p
       br
-        -if cookies.signed['user.id']
-          button.btn-lg.btn-primary.col-3[type="submit" data-toggle="collapse" data-target="#demo"] Car Form  
-          #demo.collapse 
-            =@park_space.errors.inspect if @park_space.errors.any?
-            =simple_form_for @park_space do |f|  
-              = f.error_notification
-              = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
-              h3 Car Details Form
-              hr
-              #cars
-                - @park_space.cars.build
-                = f.simple_fields_for :cars do |car|
-                  = render 'car_fields', f: car
-              button.btn-lg.btn-primary.col-3[type="submit" data-toggle="collapse" data-target="#demo"] Submit 
-        
-            #demo.collapse                         
-                  -if current_user.apartments.any?
-                      =simple_form_for current_user.apartments.first do |f|                
-                        = render 'apartment_fields', f: f                
-                        button.btn-lg.btn-primary.col-3[type="submit" data-toggle="collapse" data-target="#demo"] Submit                
-                        /= f.submit 
-
-                        /#demo.collapse
-                            input[type="button" class="btn-lg btn-primary col-3" value="Request Parking Queue" onclick="window.location.href='http://localhost:3000/park_spaces/#{params[:id]}/request_parking_queue'"]
-                
-           
+        -if cookies.signed['user.id'] 
+              -if current_user.apartment.present?
+                  =simple_form_for current_user.apartment do |f|                
+                      = render 'apartment_fields', f: f
+                      /= f.submit
+                      button.btn-lg.btn-primary.col-3[type="submit" data-toggle="collapse" data-target="#demo"] Next                
+                      
+                  #demo.collapse  
+                    =@park_space.errors.inspect if @park_space.errors.any?
+                    =simple_form_for @park_space do |f|  
+                        = f.error_notification
+                        = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
+                        h3 Car Details Form
+                        hr
+                        #cars
+                          - @park_space.cars.build
+                          = f.simple_fields_for :cars do |car|
+                            = render 'car_fields', f: car
+                          = f.submit
                         
+                          input[type="button" class="btn-lg btn-primary col-3" value="Request Parking Queue" onclick="window.location.href='http://localhost:3000/park_spaces/#{params[:id]}/request_parking_queue'"]
+                          
                                   
                   
           

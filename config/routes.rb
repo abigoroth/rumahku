@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   
-  resources :chat_rooms, only: [:new, :create, :show, :index]
+  resources :chat_rooms
   #root 'chat_rooms#index'
 
  
@@ -11,8 +11,9 @@ Rails.application.routes.draw do
   get 'chat_rooms/show'
   get 'chat_rooms/new'
   get 'chat_rooms/_chat_room'
-  get 'chat_rooms/index'
+  get 'chat_rooms/index' 
   get 'messages/_message'
+  get 'park_spacerentals/filter_expired'
  
   resources :clusters
   get 'floorplans/_maparea_field'
@@ -55,6 +56,7 @@ Rails.application.routes.draw do
   get 'pages/guard'
   get 'pages/admin'
   get 'apartments/filter_parking_queue'
+  
   devise_for :guards
   devise_for :admins
   devise_for :users
@@ -66,7 +68,7 @@ Rails.application.routes.draw do
     resources :apartments   
         member do
           get "request_parking_queue"
-          get "filter_parking_queue"  
+          #get "filter_parking_queue"  
         end     
   end
   
