@@ -112,8 +112,6 @@ table#dttb-apartments.responsive.nowrap.table.table-hover data-sort="true" data-
       th data-data="start_rent"Requested Start Rent
       th data-data="end_rent"Requested End Rent
       th
-      th
-      th
 
 
   tbody
@@ -125,10 +123,23 @@ table#dttb-apartments.responsive.nowrap.table.table-hover data-sort="true" data-
         td = apartment.parking_queue
         td = apartment.requested_start_rent
         td = apartment.requested_end_rent
-        td = link_to 'Show', apartment
-        td = link_to 'Edit', edit_apartment_path(apartment)
-        td = link_to 'Destroy', apartment, data: { confirm: 'Are you sure?' }, method: :delete
+        /td = link_to 'Show', apartment
+        /td = link_to 'Edit', edit_apartment_path(apartment)
+        /td = link_to 'Destroy', apartment, data: { confirm: 'Are you sure?' }, method: :delete
 
+        td.dropdown
+          button#dropdownMenu1.btn.btn-default.dropdown-toggle[type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"]
+            |  Action 
+            span.caret
+          ul.dropdown-menu[aria-labelledby="dropdownMenu1"]
+            li
+              = link_to 'Show', apartment               
+            li
+              = link_to 'Edit', edit_apartment_path(apartment)
+            li
+              = link_to 'Destroy', apartment, data: { confirm: 'Are you sure?' }, method: :delete
+            
+   
 
 
 form  

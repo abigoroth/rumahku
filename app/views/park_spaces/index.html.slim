@@ -80,9 +80,9 @@
                 background-color: #45a049;
             }
         
-
-    #cssmenu 
-     ul          
+    -if cookies.signed['admin.id'] 
+     #cssmenu 
+      ul          
         li      
             a href="http://localhost:3000/pages/admin"  Home
         li
@@ -99,7 +99,21 @@
             a href="http://localhost:3000/chat_rooms" Chat Rooms
         li
 
-    br  
+    br 
+
+    -if cookies.signed['user.id'] 
+     #cssmenu
+      ul
+        li
+            a.active href="http://localhost:3000/pages/user"  Home
+        li
+            a href="http://localhost:3000/guests/new"  Guest Registration
+        li
+            a href="http://localhost:3000/chat_rooms"  Chat Rooms
+        li
+            a href="http://localhost:3000/park_spaces"  Park Space Rental
+    br
+ 
 
 
 
@@ -199,11 +213,9 @@
       tr
       th data_data="park_number" Park Number
       th data_data="space_type" Space Type
-      th data_data="available" Available
-     
+      th data_data="available" Available     
       th
-      th
-      th
+    
 
       tbody
         - @park_spaces.each do |park_space|
@@ -216,10 +228,22 @@
             td = park_space.parknum
             td = park_space.spacetype
             td = available 
-           
-            td = link_to 'Show', park_space
-            td = link_to 'Edit', edit_park_space_path(park_space)
-            td = link_to 'Destroy', park_space, data: { confirm: 'Are you sure?' }, method: :delete
+            /td = link_to 'Show', park_space
+            /td = link_to 'Edit', edit_park_space_path(park_space)
+            /td = link_to 'Destroy', park_space, data: { confirm: 'Are you sure?' }, method: :delete
+
+
+            td.dropdown
+                button#dropdownMenu1.btn.btn-default.dropdown-toggle[type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"]
+                    |  Action 
+                    span.caret
+                ul.dropdown-menu[aria-labelledby="dropdownMenu1"]
+                    li
+                    = link_to 'Show', park_space               
+                    li
+                    = link_to 'Edit', edit_park_space_path(park_space)
+                    li
+                    = link_to 'Destroy', park_space, data: { confirm: 'Are you sure?' }, method: :delete
 
 
 
@@ -237,4 +261,8 @@
             clickNavigate: true,
             areas: #{raw @park_spaces.map{|x| {key: x.parknum, fillColor: x.colour, staticState: true} }.to_json } ,
             mapKey: 'parkinglot'
-        });
+        }); 
+
+
+
+   
