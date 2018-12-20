@@ -4,7 +4,7 @@ html
   head               
         meta[name="viewport" content="width=device-width, initial-scale=1"]
         link[rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"]
-        /script[src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"]
+        script[src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"]
         script[src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"]
         
         css:
@@ -234,29 +234,47 @@ p
     #tab3.tab-pane
       p
       br
-        -if cookies.signed['user.id'] 
-              -if current_user.apartment.present?
-                  =simple_form_for current_user.apartment do |f|                
-                      = render 'apartment_fields', f: f
-                      /= f.submit
-                      button.btn-lg.btn-primary.col-3[type="submit" data-toggle="collapse" data-target="#demo"] Next                
-                      
-                  #demo.collapse  
-                    =@park_space.errors.inspect if @park_space.errors.any?
-                    =simple_form_for @park_space do |f|  
-                        = f.error_notification
-                        = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
-                        h3 Car Details Form
-                        hr
-                        #cars
-                          - @park_space.cars.build
-                          = f.simple_fields_for :cars do |car|
-                            = render 'car_fields', f: car
-                          = f.submit
+        -if cookies.signed['user.id']
+          .container
+            button.btn.btn-info.btn-lg.col-3[type="button" data-toggle="modal" data-target="#myModal"]
+              | Form
+            #myModal.modal.fade[role="dialog"]
+              .modal-dialog
+                .modal-content
+                  .modal-header
+                    button.close[type="button" data-dismiss="modal"]
+                      | ×
+                    h4.modal-title-centered
+                      | Request Form
+                  .modal-body
+                    -if current_user.apartment.present?
+                    =simple_form_for current_user.apartment do |f|                
+                        = render 'apartment_fields', f: f
+                        /= f.submit
+                        button.btn-lg.btn-primary.col-3[type="submit" data-toggle="collapse" data-target="#demo"] Next                
                         
-                          input[type="button" class="btn-lg btn-primary col-3" value="Request Parking Queue" onclick="window.location.href='http://localhost:3000/park_spaces/#{params[:id]}/request_parking_queue'"]
-                          
-                                  
+                    #demo.collapse  
+                      =@park_space.errors.inspect if @park_space.errors.any?
+                      =simple_form_for @park_space do |f|  
+                          = f.error_notification
+                          = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
+                          h3 Car Details Form
+                          hr
+                          #cars
+                            - @park_space.cars.build
+                            = f.simple_fields_for :cars do |car|
+                              = render 'car_fields', f: car                                                          
+                            button.btn.btn-info.btn-lg.col-3[type="submit" data-toggle="collapse" data-target="#r"]Submit
+                             
+                            #r.collapse.centered
+                             br       
+                             input[type="button" class="btn-lg btn-primary col-8" value="Confirm Request Parking Queue" onclick="window.location.href='http://localhost:3000/park_spaces/#{params[:id]}/request_parking_queue'"]
+                                      
+                    .modal-footer
+                    button.btn.btn-default[type="button" data-dismiss="modal"]
+                      | Close
+                  
+                      
                   
           
         -if cookies.signed['admin.id'] 

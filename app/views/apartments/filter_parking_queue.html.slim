@@ -1,7 +1,11 @@
 doctype html
 html
   head
-        meta content="width=device-width, initial-scale=1" name="viewport" 
+        /meta content="width=device-width, initial-scale=1" name="viewport" 
+        meta[name="viewport" content="width=device-width, initial-scale=1"]
+        link[rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"]
+        script[src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"]
+        script[src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"]
         css:
            body {
              margin: 0;
@@ -101,10 +105,7 @@ table#dttb-apartments.responsive.nowrap.table.table-hover data-sort="true" data-
       th  Parking Queue
       th  Requested Start Rent
       th  Requested End Rent
-      th
-      th
-      th
-      th
+      
 
   tbody
     - @apartments.each do |apartment|
@@ -115,19 +116,28 @@ table#dttb-apartments.responsive.nowrap.table.table-hover data-sort="true" data-
         td = apartment.parking_queue
         td = apartment.requested_start_rent
         td = apartment.requested_end_rent
-        td = link_to 'Show', apartment
-        td = link_to 'Edit', edit_apartment_path(apartment)
-        td = link_to 'Destroy', apartment, data: { confirm: 'Are you sure?' }, method: :delete
-        td = link_to 'New Park Space', new_park_spacerental_path(park_spacerental:{apartment_id: apartment.id, start_rent: apartment.requested_start_rent.strftime('%d-%m-%Y'), end_rent: apartment.requested_end_rent.strftime('%d-%m-%Y')}, ps_id: apartment.requested_park_space_id)
-
-
-
-
-      
-
+        /td = link_to 'Show', apartment
+        /td = link_to 'Edit', edit_apartment_path(apartment)
+        /td = link_to 'Destroy', apartment, data: { confirm: 'Are you sure?' }, method: :delete
+        /td = link_to 'New Park Space', new_park_spacerental_path(park_spacerental:{apartment_id: apartment.id, start_rent: apartment.requested_start_rent.strftime('%d-%m-%Y'), end_rent: apartment.requested_end_rent.strftime('%d-%m-%Y')}, ps_id: apartment.requested_park_space_id)
+        td.dropdown
+          button#dropdownMenu1.btn.btn-default.dropdown-toggle[type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"]
+            |  Dropdown 
+            span.caret
+          ul.dropdown-menu[aria-labelledby="dropdownMenu1"]
+            li
+              = link_to 'Show', apartment               
+            li
+              = link_to 'Edit', edit_apartment_path(apartment)
+            li
+              = link_to 'Destroy', apartment, data: { confirm: 'Are you sure?' }, method: :delete
+            li
+              = link_to 'New Park Space', new_park_spacerental_path(park_spacerental:{apartment_id: apartment.id, start_rent: apartment.requested_start_rent.strftime('%d-%m-%Y'), end_rent: apartment.requested_end_rent.strftime('%d-%m-%Y')}, ps_id: apartment.requested_park_space_id)
+   
+            
   = link_to 'New Apartment', new_apartment_path
   br
   = link_to 'Back', pages_main_path
         
 
-
+   
