@@ -1,7 +1,15 @@
+br
+br
+br
+br
 doctype html
 html
   head
-        meta content="width=device-width, initial-scale=1" name="viewport" 
+        /meta content="width=device-width, initial-scale=1" name="viewport" 
+        meta[name="viewport" content="width=device-width, initial-scale=1"]
+        link[rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"]
+        script[src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"]
+        script[src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"]
         css:
            body {
              margin: 0;
@@ -17,7 +25,7 @@ html
            td, th {
                border: 1px solid #dddddd;
                text-align: left;
-               padding: 8px;
+               padding: 30px;
            }
           
            tr:nth-child(even) {
@@ -85,40 +93,52 @@ html
         a href="http://localhost:3000/chat_rooms" Chat Rooms
     li
 
+br
+br
 br   
+  
         
         
 
-        table#dttb-infos.responsive.nowrap.table.table-hover data-sort="true" data-source="#{url_for(format: :json)}"
-          thead
-            tr
-              th data-data="Email" Email
-              th data-data="Fullname" Name
-              th data-data="IC_number" IC Number
-              th data-data="aptnums" Apartment Number
-              th data-data="phonenum" Phone Number
-              th data-data="owner" Race
-              th data-data="occupation" Occupation
-              th 
-              th 
-              th
+table#dttb-infos.responsive.nowrap.table.table-hover data-sort="true" data-source="#{url_for(format: :json)}"
+ thead
+    tr
+    th data-data="Email" Email
+    th data-data="Fullname" Name
+    th data-data="IC_number" IC Number
+    th data-data="aptnums" Apartment Number
+    th data-data="phonenum" Phone Number
+    th data-data="owner" Race
+    th data-data="occupation" Occupation
+    th 
+              
              
               
               
-          tbody
-            - @infos.each do |info| 
-              tr
-                td = info.email 
-                td = info.fullname 
-                td = info.IC_number
-                td = info.apartment&.number_apartment
-                td = info.phonenum 
-                td
-                td
-                td = link_to 'Show',  info_path(info) 
-                td = link_to 'Edit', edit_info_path(info) 
-                td = link_to 'Delete', info_path(info), data: { confirm: 'Are you sure?' }, method: :delete
-        br
-         = link_to 'New Info', new_info_path 
-         br
-         = link_to 'Back', pages_admin_path
+ tbody
+  - @infos.each do |info| 
+    tr
+      td = info.email 
+      td = info.fullname 
+      td = info.IC_number
+      td = info.apartment&.number_apartment
+      td = info.phonenum 
+      td = info.races
+      td = info.occupation
+      td.dropdown
+       button#dropdownMenu1.btn.btn-default.dropdown-toggle[type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"]
+        |  Action 
+        span.caret
+       ul.dropdown-menu[aria-labelledby="dropdownMenu1"]
+        li
+          = link_to 'Show',  info_path(info)         
+        li
+          = link_to 'Edit', edit_info_path(info) 
+        li
+          = link_to 'Delete', info_path(info), data: { confirm: 'Are you sure?' }, method: :delete
+                        
+               
+br
+= link_to 'New Info', new_info_path 
+br
+= link_to 'Back', pages_admin_path

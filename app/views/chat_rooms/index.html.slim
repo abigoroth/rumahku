@@ -1,0 +1,84 @@
+br
+br
+br
+br
+doctype html
+html
+  head
+        /meta content="width=device-width, initial-scale=1" name="viewport" 
+        meta[name="viewport" content="width=device-width, initial-scale=1"]
+        link[rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"]
+        script[src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"]
+        script[src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"]
+    
+  - if cookies.signed['admin.id']
+    #cssmenu
+      ul
+        li
+          a[href="http://localhost:3000/pages/admin"]
+            | Home
+        li
+          a[href="http://localhost:3000/infos/new"]
+            | Resident Registration
+        li
+          a[href="http://localhost:3000/infos"]
+            | Resident List
+        li
+          a[href="http://localhost:3000/cars"]
+            | Car
+        li
+          a[href="http://localhost:3000/apartments"]
+            | Apartment
+        li
+          a[href="http://localhost:3000/park_spaces"]
+            | Park Space Rental
+        li
+          a[href="http://localhost:3000/chat_rooms"]
+            | Chat Rooms
+  - if cookies.signed['user.id']
+    #cssmenu
+      ul
+        li
+          a.active[href="http://localhost:3000/pages/user"]
+            | Home
+        li
+          a[href="http://localhost:3000/guests/new"]
+            | Guest Registration
+        li
+          a[href="http://localhost:3000/chat_rooms"]
+            | Chat Rooms
+        li
+          a[href="http://localhost:3000/park_spaces"]
+            | Park Space Rental
+    
+  - if cookies.signed['guard.id']
+      #cssmenu
+        ul         
+          li
+            a[href="http://localhost:3000/guests/new"]
+              | Guest Registration
+          li
+            a[href="http://localhost:3000/chat_rooms"]
+              | Chat Rooms
+        
+      
+br
+p
+font[size="5" face="tahoma-bold" color="Black"]
+  | Chat rooms
+  
+p.lead
+br  
+  - if cookies.signed['admin.id']
+    = link_to 'New chat room', new_chat_room_path, class: 'btn btn col-3'
+.col-md-11
+  p.card-text
+
+  ul
+    = render @chat_rooms
+    - @chat_rooms.each do |chat_room|
+      - if cookies.signed['admin.id']
+        = link_to 'Destroy', chat_room, method: :delete, data: { confirm: 'Are you sure?' }
+      - else
+
+

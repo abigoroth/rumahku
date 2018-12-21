@@ -1,37 +1,21 @@
+br
+br
+br
+br
 doctype html
 html
   head
-        meta content="width=device-width, initial-scale=1" name="viewport" 
+        /meta content="width=device-width, initial-scale=1" name="viewport" 
+        meta[name="viewport" content="width=device-width, initial-scale=1"]
+        link[rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"]
+        script[src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"]
+        script[src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"]
         css:
            body {
              margin: 0;
              font-family: Arial, Helvetica, sans-serif;
            }
-          
-          .topnav {
-             overflow: hidden;
-             background-color: #333;
-           }
-          
-          .topnav a {
-             float: left;
-             color: #f2f2f2;
-             text-align: center;
-             padding: 14px 16px;
-             text-decoration: none;
-             font-size: 17px;
-           }
-          
-          .topnav a:hover {
-             background-color: #ddd;
-             color: black;
-           }
-          
-          .topnav a.active {
-             background-color: #4CAF50;
-             color: white;
-           }
-          
+        
            table {
                font-family: arial, sans-serif;
                border-collapse: collapse;
@@ -41,7 +25,7 @@ html
            td, th {
                border: 1px solid #dddddd;
                text-align: left;
-               padding: 8px;
+               padding: 30px;
            }
           
            tr:nth-child(even) {
@@ -77,25 +61,47 @@ html
            input[type=submit]:hover {
                background-color: #45a049;
            }
+           .button {
+              background-color: #4CAF50;
+              border: none;
+              color: white;
+              padding: 15px 25px;
+              text-align: center;
+              font-size: 16px;
+              cursor: pointer;
+          }
 
-        
+          .button:hover {
+              background-color: green;
+          }
       
-        .topnav          
-          a href="http://localhost:3000/pages/admin"  Home
-          a href="http://localhost:3000/infos/new"  Resident Registration
-          a href="http://localhost:3000/infos"  Resident List
-          a href="http://localhost:3000/cars"  Car
-          a.active href="http://localhost:3000/apartments"  Apartment
-          a href="http://localhost:3000/park_spaces"  Park Space Rental
-          a href="http://localhost:3000/floorplans"  Floor Plan
-          a href="http://localhost:3000/clusters" Cluster
-          a href="http://localhost:3000/chat_rooms" Chat Rooms
- 
-              
+#cssmenu
+ ul          
+    li      
+        a href="http://localhost:3000/pages/admin"  Home
+    li
+        a href="http://localhost:3000/infos/new"  Resident Registration
+    li
+        a.active href="http://localhost:3000/infos"  Resident List
+    li
+        a href="http://localhost:3000/cars"  Car
+    li
+        a href="http://localhost:3000/apartments"  Apartment
+    li
+        a href="http://localhost:3000/park_spaces"  Park Space Rental
+    li
+        a href="http://localhost:3000/chat_rooms" Chat Rooms
+    li
+
+br
+br
+br   
+
+
 
 table#dttb-apartments.responsive.nowrap.table.table-hover data-sort="true" data-source="#{url_for(format: :json)}"
   thead
-    tr
+      tr
       th data-data="number_apartment" Number Apartment
       th data-data="level" Level
       th data-data="apartment_type" Apartment Type
@@ -103,8 +109,7 @@ table#dttb-apartments.responsive.nowrap.table.table-hover data-sort="true" data-
       th data-data="start_rent"Requested Start Rent
       th data-data="end_rent"Requested End Rent
       th
-      th
-      th
+     
 
 
   tbody
@@ -116,10 +121,19 @@ table#dttb-apartments.responsive.nowrap.table.table-hover data-sort="true" data-
         td = apartment.parking_queue
         td = apartment.requested_start_rent
         td = apartment.requested_end_rent
-        td = link_to 'Show', apartment
-        td = link_to 'Edit', edit_apartment_path(apartment)
-        td = link_to 'Destroy', apartment, data: { confirm: 'Are you sure?' }, method: :delete
+        td.dropdown
+          button#dropdownMenu1.btn.btn-default.dropdown-toggle[type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"]
+            |  Action 
+            span.caret
+          ul.dropdown-menu[aria-labelledby="dropdownMenu1"]
+            li
+              = link_to 'Show', apartment         
+            li
+              = link_to 'Edit', edit_apartment_path(apartment)
+            li
+              = link_to 'Destroy', apartment, data: { confirm: 'Are you sure?' }, method: :delete
 
+            
 
 form         
      input onclick="window.location.href='http://localhost:3000/apartments/filter_parking_queue'" type="button" value="Filter Parking Queue"

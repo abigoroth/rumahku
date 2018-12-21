@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_07_071338) do
+ActiveRecord::Schema.define(version: 2018_12_20_092714) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,6 +52,7 @@ ActiveRecord::Schema.define(version: 2018_12_07_071338) do
     t.date "requested_start_rent"
     t.date "requested_end_rent"
     t.jsonb "requested_rent_date"
+    t.integer "car_id"
   end
 
   create_table "apartments_users", id: false, force: :cascade do |t|
@@ -195,6 +196,7 @@ ActiveRecord::Schema.define(version: 2018_12_07_071338) do
     t.datetime "updated_at", null: false
     t.string "apartment_id"
     t.string "picture"
+    t.decimal "total"
   end
 
   create_table "park_spaces", force: :cascade do |t|
