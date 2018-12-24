@@ -36,6 +36,11 @@ class ParkSpacesController < ApplicationController
     #redirect_to '/park_spaces'
   end
 
+  def fixed_parking
+    @park_spaces = ParkSpace.all
+  end
+  
+
   # POST /park_spaces
   # POST /park_spaces.json
   def create

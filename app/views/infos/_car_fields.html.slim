@@ -4,7 +4,7 @@
     = f.input :cartype, collection:["Normal","Electic"]
     = f.input :owner
     = f.input :platnum
-    = f.association :apartment, label_method: :number_apartment
+    /= f.association :apartment, label_method: :number_apartment
     = link_to_remove_association "remove car ", f
   
 

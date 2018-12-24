@@ -129,9 +129,9 @@ table#dttb-infos.responsive.nowrap.table.table-hover data-sort="true" data-sourc
         td = car.cartype 
         td = link_to car.user&.fullname, info_path(car) 
         td = car.platnum 
-        /td = link_to 'Show', car 
         td = link_to 'Edit', edit_car_path(car) 
         td = link_to 'Delete', car, data: { confirm: 'Are you sure?' }, method: :delete
+        td
 br
 = link_to 'New Car', new_car_path 
 br

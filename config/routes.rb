@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   
+  
   resources :chat_rooms
   #root 'chat_rooms#index'
 
@@ -14,6 +15,7 @@ Rails.application.routes.draw do
   get 'chat_rooms/index' 
   get 'messages/_message'
   get 'park_spacerentals/filter_expired'
+  get 'park_spaces/fixed_parking'
  
   resources :clusters
   get 'floorplans/_maparea_field'

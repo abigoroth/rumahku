@@ -1,21 +1,25 @@
-= simple_form_for(@guest) do |f|
-  = f.error_notification
-  = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
 
-  .form-inputs
-    = f.input :plat_number
-  br
-    = f.input :block
-  br
-    = f.input :date
-  br
-    = f.input :phone_number
-  br
-    = f.input :purpose
-  br
-    =f.input :guest_in
-  br  
-    =f.input :guest_out
+br
+  -if cookies.signed['user.id'] 
+        -if current_user.apartment.present?                    
+            = simple_form_for(@guest) do |f|
+              = f.error_notification
+              = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
 
-  .form-actions
-    = f.button :submit
+              .form-inputs
+                = f.input :plat_number
+              br
+                = f.input :block
+              br
+                = f.input :date
+              br
+                = f.input :phone_number
+              br  
+                = f.input :purpose
+              br
+                =f.input :guest_in
+              br  
+                =f.input :guest_out
+
+              .form-actions
+                = f.button :submit

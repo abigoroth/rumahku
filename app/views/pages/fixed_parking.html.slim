@@ -1,0 +1,136 @@
+doctype html
+html
+  head
+        meta content="width=device-width, initial-scale=1" name="viewport" 
+        css:
+           body {
+             margin: 0;
+             font-family: Arial, Helvetica, sans-serif;
+           }
+          
+          .topnav {
+             overflow: hidden;
+             background-color: #333;
+           }
+          
+          .topnav a {
+             float: left;
+             color: #f2f2f2;
+             text-align: center;
+             padding: 14px 16px;
+             text-decoration: none;
+             font-size: 17px;
+           }
+          
+          .topnav a:hover {
+             background-color: #ddd;
+             color: black;
+           }
+          
+          .topnav a.active {
+             background-color: #4CAF50;
+             color: white;
+           }
+          
+           table {
+               font-family: arial, sans-serif;
+               border-collapse: collapse;
+               width: 100;
+           }
+          
+           td, th {
+               border: 1px solid #dddddd;
+               text-align: left;
+               padding: 8px;
+           }
+          
+           tr:nth-child(even) {
+               background-color: #dddddd;
+           }
+          
+          .center {
+               text-align: center;
+               border: 3px ;
+           }
+          
+           input[type=text], select {
+               width: 100;
+               padding: 12px 20px;
+               margin: 8px 0;
+               display: inline-block;
+               border: 1px solid #ccc;
+               border-radius: 4px;
+               box-sizing: border-box;
+           }
+          
+           input[type=submit] {
+               width: 100;
+               background-color: #4CAF50;
+               color: white;
+               padding: 14px 20px;
+               margin: 8px 0;
+               border: none;
+               border-radius: 4px;
+               cursor: pointer;
+           }
+          
+           input[type=submit]:hover {
+               background-color: #45a049;
+           }
+      
+#cssmenu 
+ ul          
+    li      
+        a href="http://localhost:3000/pages/admin"  Home
+    li
+        a href="http://localhost:3000/infos/new"  Resident Registration
+    li
+        a href="http://localhost:3000/infos"  Resident List
+    li
+        a.active href="http://localhost:3000/cars"  Car
+    li
+        a href="http://localhost:3000/apartments"  Apartment
+    li
+        a href="http://localhost:3000/park_spaces"  Park Space Rental
+    li
+        a href="http://localhost:3000/chat_rooms" Chat Rooms
+    li      
+
+
+table#dttb-apartments.responsive.nowrap.table.table-hover data-sort="true" data-source="#{url_for(format: :json)}"
+  thead
+    tr
+      th Start Rent
+      th End Rent
+      th Price
+      th Total
+      th Receipt
+      th
+      th
+      th     
+      
+
+  tbody
+    - @pages.each do |page|
+      tr
+        td = page.start_rent
+        td = page.end_rent
+        td = page.price
+        td = page.total
+        td = image_tag page.picture_url, width: '20%' if page.picture.present?
+        td = link_to 'Show', page
+        td = link_to 'Edit', edit_page_path(page)
+        td = link_to 'Destroy', page, data: { confirm: 'Are you sure?' }, method: :delete
+
+        /running_total = running_total + ((end_rent - start.rent) *10)
+
+br
+
+= link_to 'New Park Space Rental', new_park_spacerental_path
+
+br
+/h4.pull-right Invoice total:  <%= park_spacerental.total running_total 
+form
+  center
+   input type="button" value="Received Parking" onclick="window.location.href='http://localhost:3000/park_spacerentals/filter_expired '"
+
