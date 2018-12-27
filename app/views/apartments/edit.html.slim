@@ -1,0 +1,21 @@
+#cssmenu
+ul
+li
+  a href="http://localhost:3000/pages/admin"  Home
+li
+  a href="http://localhost:3000/infos/new"  Resident Registration
+li
+  a href="http://localhost:3000/infos"  Resident List
+li
+  a href="http://localhost:3000/cars"  Car
+li
+  a.active href="http://localhost:3000/apartments"  Apartment
+li
+  a href="http://localhost:3000/park_spaces"  Park Space Rental
+li
+  a href="http://localhost:3000/chat_rooms"  Chat Rooms
+br/
+h1 Editing Apartment
+= render 'form', apartment: @apartment 
+= link_to 'Show', @apartment 
+= link_to 'Back', apartments_path 

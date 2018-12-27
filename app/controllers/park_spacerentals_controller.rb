@@ -15,11 +15,7 @@ class ParkSpacerentalsController < ApplicationController
 
   # GET /park_spacerentals/new
   def new
-    if params[:park_spacerental]
-      @park_spacerental = ParkSpacerental.new(park_spacerental_params)
-    else
-      @park_spacerental = ParkSpacerental.new
-    end
+    @park_spacerental = ParkSpacerental.new
   end
 
   # GET /park_spacerentals/1/edit
@@ -59,7 +55,7 @@ class ParkSpacerentalsController < ApplicationController
       end
     end
   end
-
+ 
   # DELETE /park_spacerentals/1
   # DELETE /park_spacerentals/1.json
   def destroy
@@ -69,9 +65,10 @@ class ParkSpacerentalsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
 
-  def filter_expired
-    @park_spacerentals = ParkSpacerental.where('start_rent < ?', Date.today)
+  def filter_expired 
+    @park_spacerentals = ParkSpacerental.where('start_rent < ?', Date.today)    
   end
 
   private
@@ -82,6 +79,7 @@ class ParkSpacerentalsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def park_spacerental_params
-      params.require(:park_spacerental).permit(:park_space_id, :car_id, :start_rent, :end_rent, :price, :apartment_id, :picture, :requested_start_rent, :requested_end_rent, :apartment_id)
+      params.require(:park_spacerental).permit(:park_space_id, :car_id, :start_rent, :end_rent, :price, :total, :apartment_id, :picture)
     end
 end
+ 

@@ -1,3 +1,4 @@
+  center
   css:
     @import url('https://fonts.googleapis.com/css?family=Poppins');
     
@@ -51,7 +52,21 @@
       text-align: center;
       justify-content: center; 
     }
-    
+    .simple_form div.left {
+      float: left;
+      width: 125px;
+      text-align: right;
+      margin: 2px 10px;
+      display: inline;
+    }
+
+    .simple_form div.right {
+      float: left;
+      text-align: left;
+      margin: 2px 10px;
+      display: inline;
+    }
+
    
 
   
@@ -79,6 +94,12 @@
             p
             b Purpose:
             = @guest.purpose 
+            p
+            b Guest In:
+            = @guest.guest_in
+            p
+            b Guest Out:
+            = @guest.guest_out
             p
             = link_to 'Edit', edit_guest_path(@guest)
             '|

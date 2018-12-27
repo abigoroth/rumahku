@@ -1,0 +1,84 @@
+doctype html
+html
+  head
+        meta content="width=device-width, initial-scale=1" name="viewport" 
+        css:
+           body {
+             margin: 0;
+             font-family: Arial, Helvetica, sans-serif;
+           }
+        
+           table {
+               font-family: arial, sans-serif;
+               border-collapse: collapse;
+               width: 100;
+           }
+          
+           td, th {
+               border: 1px solid #dddddd;
+               text-align: left;
+               padding: 8px;
+           }
+          
+           tr:nth-child(even) {
+               background-color: #dddddd;
+           }
+          
+          .center {
+               text-align: center;
+               border: 3px ;
+           }
+          
+           input[type=text], select {
+               width: 100;
+               padding: 12px 20px;
+               margin: 8px 0;
+               display: inline-block;
+               border: 1px solid #ccc;
+               border-radius: 4px;
+               box-sizing: border-box;
+           }
+          
+           input[type=submit] {
+               width: 100;
+               background-color: #4CAF50;
+               color: white;
+               padding: 14px 20px;
+               margin: 8px 0;
+               border: none;
+               border-radius: 4px;
+               cursor: pointer;
+           }
+          
+           input[type=submit]:hover {
+               background-color: #45a049;
+           }
+           .button {
+              background-color: #4CAF50;
+              border: none;
+              color: white;
+              padding: 15px 25px;
+              text-align: center;
+              font-size: 16px;
+              cursor: pointer;
+          }
+
+          .button:hover {
+              background-color: green;
+          }
+          
+link href="https://cdn.datatables.net/1.10.19/css/dataTables.semanticui.min.css" rel="stylesheet" type="text/css" /
+script charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js" type="text/javascript" 
+
+#cssmenu
+ ul
+    li   
+        a href="http://localhost:3000/pages/guard" Home       
+    li      
+        
+        a href="http://localhost:3000/guests" Guest
+    li
+        a href="http://localhost:3000/chat_rooms" Chat Rooms
+    li
+
+br 

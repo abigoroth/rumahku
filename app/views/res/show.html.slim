@@ -1,0 +1,33 @@
+p#notice
+= notice
+p
+  strong
+    | Email:
+  = @re.email
+p
+  strong
+    | Name:
+  = @re.name
+p
+  strong
+    | Apartmentnum:
+  = @re.apartmentnum
+p
+  strong
+    | Phonenumber:
+  = @re.phonenumber
+p
+  strong
+    | Owner:
+  = @re.owner
+p
+  strong
+    | Password:
+  = @re.password
+p
+  strong
+    | Picture:
+  = @re.picture
+= link_to 'Edit', edit_re_path(@re)
+|  | 
+= link_to 'Back', res_path

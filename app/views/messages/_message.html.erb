@@ -6,7 +6,7 @@
         <% if message.try(:user) %>
           <%= gravatar_for_user message.user %>
           <% user = message.user %>
-
+          
         <% elsif message.try(:admin) %>
           <%= gravatar_for_admin message.admin %>
           <% user = message.admin %>

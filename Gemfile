@@ -23,6 +23,7 @@ gem 'jquery-ui-rails', '5.0.5'
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem "jsonb_accessor", "~> 1.0.0"
+gem 'bootstrap-datepicker-rails'
 
 
 

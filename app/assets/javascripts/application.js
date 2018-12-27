@@ -19,7 +19,10 @@
 //= require activestorage
 //= require datatables
 //= require alertify
-//= require jquery-imagemapster/dist/jquery.imagemapster.min.js
 //= require cocoon
 //= require cable
+//= require bootstrap-datepicker
+//= require bootstrap-datepicker/core
+//= require bootstrap-datepicker/locales/bootstrap-datepicker.es.js
+//= require bootstrap-datepicker/locales/bootstrap-datepicker.fr.js
 

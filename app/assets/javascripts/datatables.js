@@ -28,6 +28,12 @@
 
 
 
+
+
+
+
+
+
 $.extend( $.fn.dataTable.defaults, {
   responsive: true,
   pagingType: 'full',
@@ -36,6 +42,9 @@ $.extend( $.fn.dataTable.defaults, {
   //  "<'row'<'dttb col-12 px-0'tr>>" +
   //  "<'row'<'col-sm-12 table-footer'lip>>"
 });
+
+
+
 
 
 $(document).on('preInit.dt', function(e, settings) {

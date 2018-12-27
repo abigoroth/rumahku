@@ -1,0 +1,13 @@
+= simple_form_for(@re) do |f|
+  = f.error_notification
+  = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
+  .form-inputs
+    = f.input :email
+    = f.input :name
+    = f.input :apartmentnum
+    = f.input :phonenumber
+    = f.input :owner
+    = f.input :password
+    = f.input :picture
+  .form-actions
+    = f.button :submit

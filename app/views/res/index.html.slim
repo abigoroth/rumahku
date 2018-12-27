@@ -1,0 +1,47 @@
+p#notice
+= notice
+h1
+  | Res
+table
+  thead
+    tr
+      th
+        | Email
+      th
+        | Name
+      th
+        | Apartmentnum
+      th
+        | Phonenumber
+      th
+        | Owner
+      th
+        | Password
+      th
+        | Picture
+      th[colspan="3"]
+  tbody
+    - @res.each do |res|
+      tr
+        td
+          = re.email
+        td
+          = re.name
+        td
+          = re.apartmentnum
+        td
+          = re.phonenumber
+        td
+          = re.owner
+        td
+          = re.password
+        td
+          = re.picture
+        td
+          = link_to 'Show', re
+        td
+          = link_to 'Edit', edit_re_path(re)
+        td
+          = link_to 'Destroy', re, method: :delete, data: { confirm: 'Are you sure?' }
+br
+= link_to 'New Re', new_re_path

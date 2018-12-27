@@ -10,3 +10,4 @@ class ParkSpacerental < ApplicationRecord
    
     
 end
+ 

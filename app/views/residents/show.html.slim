@@ -1,0 +1,19 @@
+p
+  strong
+    | Name:
+  = @resident.name
+p
+  strong
+    | Id:
+  = @resident.id
+p
+  strong
+    | Phonenum:
+  = @resident.phonenum
+p
+  strong
+    | Owner:
+  = @resident.owner
+= link_to 'Edit', edit_resident_path(@resident)
+|  | 
+= link_to 'Back', residents_path

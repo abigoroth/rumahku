@@ -1,0 +1,14 @@
+
+p#notice = notice 
+p
+  strong Type:
+  = @car.cartype 
+p
+  strong Plat Number:
+  = @car.platnum 
+p
+  strong Apartment Number:
+  = link_to @car.apartment&.number_apartment, info_path(@car.apartment.user.id) 
+= link_to 'Edit', edit_car_path(@car) 
+= link_to 'Back', cars_path 
+ 

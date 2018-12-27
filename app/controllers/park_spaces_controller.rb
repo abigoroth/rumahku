@@ -17,7 +17,7 @@ class ParkSpacesController < ApplicationController
   def show     
   end
 
-  
+ 
 
   # GET /park_spaces/new
   def new
@@ -35,6 +35,11 @@ class ParkSpacesController < ApplicationController
     redirect_to '/pages/floor_plan'
     #redirect_to '/park_spaces'
   end
+
+  def fixed_parking
+    @park_spaces = ParkSpace.all
+  end
+  
 
   # POST /park_spaces
   # POST /park_spaces.json

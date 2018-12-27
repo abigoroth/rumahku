@@ -1,28 +1,57 @@
-br
-br
-br
-br
+div style="background-color: #ffffcc" /
 doctype html
 html
   head
-        /meta content="width=device-width, initial-scale=1" name="viewport" 
-        meta[name="viewport" content="width=device-width, initial-scale=1"]
+        br/
+        br
         link[rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"]
-        script[src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"]
-        script[src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"]
+        /script[src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"]
+        /script[src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"]
+        meta content="width=device-width, initial-scale=1" name="viewport" 
         css:
            body {
              margin: 0;
              font-family: Arial, Helvetica, sans-serif;
+             height: 100%;
+             margin: 0;
+             background-image: url("https://www.decomurale.ca/wp-content/uploads/2015/10/C_shutterstock_139454717.jpg");
+             height: 100%; 
+             background-position: center;
+             background-repeat: no-repeat;
+             background-size: cover;
+             }
+          
+          .topnav {
+             overflow: hidden;
+             background-color: #333;
            }
-        
+          
+          .topnav a {
+             float: left;
+             color: #f2f2f2;
+             text-align: center;
+             padding: 14px 16px;
+             text-decoration: none;
+             font-size: 17px;
+           }
+          
+          .topnav a:hover {
+             background-color: #ddd;
+             color: black;
+           }
+          
+          .topnav a.active {
+             background-color: #4CAF50;
+             color: white;
+           }
+          
            table {
                font-family: arial, sans-serif;
                border-collapse: collapse;
                width: 100;
            }
           
-           td, th {
+           td, th { 
                border: 1px solid #dddddd;
                text-align: left;
                padding: 30px;
@@ -30,7 +59,7 @@ html
           
            tr:nth-child(even) {
                background-color: #dddddd;
-           }
+           } 
           
           .center {
                text-align: center;
@@ -75,28 +104,27 @@ html
               background-color: green;
           }
       
-#cssmenu
+#cssmenu 
  ul          
     li      
         a href="http://localhost:3000/pages/admin"  Home
     li
         a href="http://localhost:3000/infos/new"  Resident Registration
     li
-        a.active href="http://localhost:3000/infos"  Resident List
+        a href="http://localhost:3000/infos"  Resident List
     li
         a href="http://localhost:3000/cars"  Car
     li
-        a href="http://localhost:3000/apartments"  Apartment
+        a.active href="http://localhost:3000/apartments"  Apartment
     li
         a href="http://localhost:3000/park_spaces"  Park Space Rental
     li
         a href="http://localhost:3000/chat_rooms" Chat Rooms
     li
 
-br
-br
-br  
-  
+br 
+
+   
 table#dttb-apartments.responsive.nowrap.table.table-hover data-sort="true" data-source="#{url_for(format: :json)}"
   thead
       tr
@@ -106,6 +134,8 @@ table#dttb-apartments.responsive.nowrap.table.table-hover data-sort="true" data-
       th  Parking Queue
       th  Requested Start Rent
       th  Requested End Rent
+      th
+      th
       th
       
 
@@ -118,28 +148,10 @@ table#dttb-apartments.responsive.nowrap.table.table-hover data-sort="true" data-
         td = apartment.parking_queue
         td = apartment.requested_start_rent
         td = apartment.requested_end_rent
-        /td = link_to 'Show', apartment
-        /td = link_to 'Edit', edit_apartment_path(apartment)
-        /td = link_to 'Destroy', apartment, data: { confirm: 'Are you sure?' }, method: :delete
-        /td = link_to 'New Park Space', new_park_spacerental_path(park_spacerental:{apartment_id: apartment.id, start_rent: apartment.requested_start_rent.strftime('%d-%m-%Y'), end_rent: apartment.requested_end_rent.strftime('%d-%m-%Y')}, ps_id: apartment.requested_park_space_id)
-        td.dropdown
-          button#dropdownMenu1.btn.btn-default.dropdown-toggle[type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"]
-            |  Action 
-            span.caret
-          ul.dropdown-menu[aria-labelledby="dropdownMenu1"]
-            li
-              = link_to 'Show', apartment               
-            li
-              = link_to 'Edit', edit_apartment_path(apartment)
-            li
-              = link_to 'Destroy', apartment, data: { confirm: 'Are you sure?' }, method: :delete
-            li
-              = link_to 'New Park Space', new_park_spacerental_path(park_spacerental:{apartment_id: apartment.id, start_rent: apartment.requested_start_rent.strftime('%d-%m-%Y'), end_rent: apartment.requested_end_rent.strftime('%d-%m-%Y')}, ps_id: apartment.requested_park_space_id)
-           
-            
-= link_to 'New Apartment', new_apartment_path
-br
-= link_to 'Back', pages_main_path
-        
+        td = link_to 'Show', apartment
+        td = link_to 'Edit', edit_apartment_path(apartment)
+        td = link_to 'Destroy', apartment, data: { confirm: 'Are you sure?' }, method: :delete
+      
 
-   
+br 
+= link_to 'Back', apartments_path
