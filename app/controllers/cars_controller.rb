@@ -28,7 +28,7 @@ class CarsController < ApplicationController
   end
 
   def current_user
-    @current_user ||= User.find(cookies.signed[:user_id])
+    @current_user ||= User.find(cookies.signed[:user_id]) || Admin.find(cookies.signed[:admin_id])
   end
 
   # POST /cars
