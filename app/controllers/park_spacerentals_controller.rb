@@ -26,6 +26,9 @@ class ParkSpacerentalsController < ApplicationController
   def edit
   end
 
+  
+
+
   # POST /park_spacerentals
   # POST /park_spacerentals.json
   def create

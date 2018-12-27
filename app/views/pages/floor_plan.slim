@@ -95,9 +95,15 @@ h3 You are successfully request for parking space.
 h3 Please wait for our feedback.
 br
 
-
+| Total days rented : 
+=current_user.apartment&.days 
+        
+br
+| Total Amount : RM 
+=current_user.apartment&.price
 
     /input[type="button" value="Request Another Parking Queue" onclick="window.location.href='http://localhost:3000/park_spaces'"]
 
+br
 br
 = link_to 'Back', pages_admin_path

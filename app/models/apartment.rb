@@ -12,6 +12,16 @@ class Apartment< ApplicationRecord
     #validates :number_apartment, presence: true
     #has_many :parkingqueues
     
+    def days  
+        @apartment = Apartment.find(id)
+        days = ( @apartment.requested_end_rent - @apartment.requested_start_rent ).to_i
+        return days;
+    end
+     
+    def price
+        price = days * 30
+        return price;
+    end
    
 end
 

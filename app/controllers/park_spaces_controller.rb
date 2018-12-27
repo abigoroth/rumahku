@@ -17,7 +17,7 @@ class ParkSpacesController < ApplicationController
   def show     
   end
 
- 
+  
 
   # GET /park_spaces/new
   def new

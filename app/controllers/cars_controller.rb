@@ -15,6 +15,7 @@ class CarsController < ApplicationController
   # GET /cars/1
   # GET /cars/1.json
   def show
+   
   end
 
   # GET /cars/new
@@ -26,10 +27,15 @@ class CarsController < ApplicationController
   def edit
   end
 
+  def current_user
+    @current_user ||= User.find(cookies.signed[:user_id])
+  end
+
   # POST /cars
   # POST /cars.json
   def create
     @car = Car.new(car_params)
+   
 
     respond_to do |format|
       if @car.save
@@ -75,7 +81,7 @@ class CarsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def car_params
-      params.require(:car).permit(:cartype, :owner, :queue, :platnum, :apartment_id)
+      params.require(:car).permit(:cartype, :owner, :queue, :platnum, :apartment_id, :info_id)
     end
 end
 

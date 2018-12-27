@@ -11,6 +11,8 @@ class InfosController < ApplicationController
   # GET /infos/1
   # GET /infos/1.json
   def show
+    @info = User.find(params[:id])
+    @info = current_user.infos.where(id: params[:id])
   end
 
   # GET /infos/new
@@ -33,6 +35,7 @@ class InfosController < ApplicationController
   # POST /infos.json
   def create
     @info = User.new(info_params)
+    @info.current_user = current_user
 
     respond_to do |format|
       if @info.save
