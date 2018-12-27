@@ -66,6 +66,17 @@ html
           .button:hover {
               background-color: green;
           }
+
+          .simple_form label {
+            float: left;
+            width: 100px;
+            text-align: right;
+            margin: 2px 10px;
+           }
+
+         .simple_form div.input {
+            margin-bottom: 10px;
+           }
       
 #cssmenu
  ul          
@@ -100,7 +111,6 @@ br
               th data-data="owner" Race
               th data-data="occupation" Occupation
               th 
-              th 
               
              
               
@@ -113,11 +123,23 @@ br
                 td = info.IC_number
                 td = info.apartment&.number_apartment
                 td = info.phonenum 
-                td = info.owner 
-                td = link_to 'Show',  info_path(info) 
-                td = link_to 'Edit', edit_info_path(info) 
-                td = link_to 'Delete', info_path(info), data: { confirm: 'Are you sure?' }, method: :delete
-                
+                td
+                td
+                /td = link_to 'Show',  info_path(info) 
+                /td = link_to 'Edit', edit_info_path(info) 
+                /td = link_to 'Delete', info_path(info), data: { confirm: 'Are you sure?' }, method: :delete
+
+                td.dropdown
+                    button#dropdownMenu1.btn.btn-default.dropdown-toggle[type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"]
+                        |  Action 
+                        span.caret
+                    ul.dropdown-menu[aria-labelledby="dropdownMenu1"]
+                        li
+                        = link_to 'Show', info_path(info)                
+                        li
+                        = link_to 'Edit', edit_info_path(info)
+                        li
+                        = link_to 'Destroy', info_path(info), data: { confirm: 'Are you sure?' }, method: :delete
         br
          = link_to 'New Info', new_info_path 
          br

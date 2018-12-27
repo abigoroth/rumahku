@@ -1,0 +1,148 @@
+html
+  head
+    meta[name="viewport" content="width=device-width, initial-scale=1"]
+    style
+      |  .collapsible { background-color: #777; margin: auto; color: white; cursor: pointer; padding: 18px; text-align: center; outline: none; font-size: 20px; border-radius: 25px; width: 500px; } .active, .collapsible:hover { align-items: center; justify-content: center; background-color: #555; border-radius: 25px; width: 500px; margin: auto; } .heads { align-items: center; justify-content: center; background-color: #777; color: white; cursor: pointer; padding: 18px; width: 100%; border: none; text-align: center; outline: none; font-size: 20px; border-radius: 25px; width: 500px; margin: auto; } .heady { align-items: center; justify-content: center; background-color: #008080; color: white; cursor: pointer; padding: 10px; width: 100%; border: none; text-align: center; outline: none; font-size: 20px; border-radius: 15px; width: 100px; margin: auto; } a, link { color: black; } .content { padding-top: 35px; padding-left: 35px; padding-bottom: 35px; display: none; overflow: hidden; background-color: #f1f1f1; border-radius: 25px; width: 500px; margin: auto; border-color: #777; border-style: solid; text-align: left; } .bodys { padding-top: 35px; padding-left: 35px; padding-bottom: 35px; background-color: #f1f1f1; border-radius: 25px; border-color: #777; border-style: solid; width: 500px; margin: auto; } body { padding-left: 35px; margin: 0; font-family: Arial, Helvetica, sans-serif; margin: auto; } .topnav { overflow: hidden; background-color: #333; margin: auto; } .topnav a { float: left; color: #f2f2f2; text-align: center; padding: 14px 16px; text-decoration: none; font-size: 17px; } .topnav a:hover { background-color: #ddd; color: black; } .topnav a.active { background-color: #4CAF50; color: white; } 
+  .topnav
+    a[href="http://localhost:3000/pages/admin"]
+      | Home
+    a[href="hhttp://localhost:3000/infos/new"]
+      | Resident Registration
+    a[href="http://localhost:3000/infos"]
+      | Resident List
+    a[href="http://localhost:3000/cars"]
+      | Car
+    a[href="http://localhost:3000/pages/main"]
+      | Apartment
+    a[href="http://localhost:3000/park_spaces"]
+      | Park Space Rental
+    a[href="http://localhost:3000/floorplans"]
+      | Floor Plan
+    a[href="http://localhost:3000/clusters"]
+      | Cluster
+  ul.nav.nav-tabs
+    li.nav-item
+      a.nav-link.active[href="#"]
+        | Resident's Information
+    li.nav-item
+      a.nav-link[href="http://localhost:3000/members/new"]
+        | Add Members
+  br
+  .heads
+    |  Resident's Details 
+  .bodys
+    p
+      strong
+        | Email :
+      = @info.email
+    p
+      strong
+        | Name :
+      = @info.fullname
+    p
+      strong
+        | IC Number :
+      = @info.IC_number
+    p
+      strong
+        | Age :
+      = @info.age
+    p
+      strong
+        | Races :
+      = @info.races
+    p
+      strong
+        | Occupation :
+      = @info.occupation
+    p
+      strong
+        | Phone Number :
+      = @info.phonenum
+    p
+      strong
+        | Apartment Number :
+      = @info&.apartment.number_apartment
+    p
+      strong
+        | Owner:
+      = @info.owner
+  br
+  center
+    div
+      button.collapsible
+        | Emergency Contact
+      .content
+        p
+          strong
+            | Name :
+          = @info.emergency_name
+        p
+          strong
+            | Phone Number
+          = @info.emergency_contact
+  br
+  center
+    div
+      button.collapsible
+        | View House Members
+      .content
+        p
+          strong
+            | Members in House :
+          = @info.members.count + 1
+          |  members 
+        - @info.members.each do |member|
+          p
+            strong
+              | Name :
+          td
+            = member.member_name
+          p
+            strong
+              | Age :
+          td
+            = member.member_age
+          p
+            strong
+              | Relationship :
+          td
+            = member.member_relationship
+          hr
+  br
+  center
+    div
+      button.collapsible
+        | Car
+      .content
+        p
+          strong
+            | Number of cars :
+          = @info.cars.count
+          |  cars 
+          - @info.cars.each do |car|
+            p
+              strong
+                | Car Type :
+            td
+              = car.cartype
+        p
+          strong
+            | Owner Name :
+          td
+            = car.owner
+        p
+          strong
+            | Plat Number :
+          td
+            = car.platnum
+        hr
+  script
+    |  var coll = document.getElementsByClassName("collapsible"); var i; for (i = 0; i < coll.length; i++) { coll[i].addEventListener("click", function() { this.classList.toggle("active"); var content = this.nextElementSibling; if (content.style.display === "block") { content.style.display = "none"; } else { content.style.display = "block"; } }); } 
+  br
+  br
+  center
+    button.heady
+      = link_to 'Edit', edit_info_path(@info)
+    button.heady
+      = link_to 'Back', infos_path

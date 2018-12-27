@@ -1,0 +1,32 @@
+doctype html
+html
+  head
+    title
+      | Rumahku
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+  p.navbar-text.pull-right
+    - if guard_signed_in?
+      |  Logged in as 
+      strong
+        = current_guard.email
+      | . 
+      = link_to 'Edit profile', edit_guard_registration_path, :class => 'navbar-link'
+      |  | 
+      = link_to "Logout", destroy_guard_session_path, method: :delete, :class => 'navbar-link'
+    - else
+      = link_to "Sign up", new_guard_registration_path, :class => 'navbar-link'
+      |  | 
+      = link_to "Login", new_guard_session_path, :class => 'navbar-link'
+  body
+    .container
+      - if notice
+        p.alert.alert-success
+          = notice
+      - if alert
+        p.alert.alert-danger
+          = alert
+      = yield
+
