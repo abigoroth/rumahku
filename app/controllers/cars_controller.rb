@@ -1,6 +1,6 @@
 class CarsController < ApplicationController
   #before_action :authenticate
-  #before_action -> { authenticate(['admin', 'user']) } #modifyuser
+  before_action -> { authenticate(['admin', 'user']) } #modifyuser
   before_action :set_car, only: [:show, :edit, :update, :destroy]
 
 
@@ -27,16 +27,12 @@ class CarsController < ApplicationController
   def edit
   end
 
-  def current_user
-    @current_user ||= User.find(cookies.signed[:user_id]) || Admin.find(cookies.signed[:admin_id])
-  end
-
+  
   # POST /cars
   # POST /cars.json
   def create
     @car = Car.new(car_params)
    
-
     respond_to do |format|
       if @car.save
         format.html { redirect_to @car, notice: 'Car was successfully created.' }

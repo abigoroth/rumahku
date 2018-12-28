@@ -22,6 +22,8 @@ class GuestsController < ApplicationController
   def edit
   end
 
+  
+
   # POST /guests
   # POST /guests.json
   def create
@@ -70,7 +72,7 @@ class GuestsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def guest_params
-      params.require(:guest).permit(:plat_number, :block,  :date, :phone_number, :purpose, :guest_in, :guest_out)
+      params.require(:guest).permit(:plat_number, :block,  :date, :phone_number, :purpose, :guest_in, :guest_out, :apartment_id, :number_apartment)
     end
 end
 

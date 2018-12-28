@@ -455,6 +455,8 @@ html[lang="en"]
                                   td = car.cartype 
                                   td = link_to car.user&.fullname, info_path(car) 
                                   td = car.platnum 
+
+                                  input[type="button" class="btn-lg btn-primary" value="Add New Car" onclick="window.location.href='http://localhost:3000/cars/#{params[:id]}/new'"]
                                   /td = link_to 'Show', car
                                   
                                   /td.dropdown
@@ -501,7 +503,7 @@ html[lang="en"]
                             th
                               
                         tbody
-                            - ParkSpacerental.current_scope do |psr,index| 
+                            - ParkSpacerental.all.each do |psr,index| 
                                 tr 
                                 /td = index+1
                                 td = psr.car.platnum
@@ -537,25 +539,21 @@ html[lang="en"]
                        table.table
                         thead
                           tr
-                          th data-data="plat_number" Plat number                        
-                          th data-data="date" Date
+                          th data-data="plat_number" Plat number 
                           th data-data="phone_number" Phone number
                           th data-data="purpose" Purpose
                           th data-data="guest_in" Guest In
                           th data-data="guest_out" Guest Out
-                          th data-data="url" data-orderable="false" data-class-name="all" data-searchable="false" class="skip-export" width="100px"
-                          
-                          
+                    
                        tbody
                         - Guest.all.each do |guest| 
-                            tr
-                            td = guest.plat_number                           
-                            td = guest.date
+                           tr
+                            td = guest.plat_number
                             td = guest.phone_number
                             td = guest.purpose
                             td = guest.guest_in
                             td = guest.guest_out
-                            td
+                           
                             
                                 
                     .modal-footer

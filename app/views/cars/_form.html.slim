@@ -1,8 +1,8 @@
 = simple_form_for @car do |f|
-  = f.input :cartype, collection:["Normal","Electric"]
-  = f.input :owner   
-  = f.input :platnum
-  = f.association :apartment, label_method: :number_apartment
-  = f.button :submit
+  = f.input :cartype, collection:["Normal","Electric"], :input_html => { :cols => 1, :rows => 1, :style => 'width: 30%'}
+  = f.input :owner, :input_html => { :cols => 1, :rows => 1, :style => 'width: 30%'}   
+  = f.input :platnum, :input_html => { :cols => 1, :rows => 1, :style => 'width: 30%'}
+  = f.association :apartment, label_method: :number_apartment, :input_html => { :cols => 1, :rows => 1, :style => 'width: 30%'}
+  = f.button :submit, :input_html => { :cols => 1, :rows => 1, :style => 'width: 30%'}
 
   
