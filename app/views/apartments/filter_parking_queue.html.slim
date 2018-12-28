@@ -1,4 +1,4 @@
-div style="background-color: #ffffcc" /
+
 doctype html
 html
   head
@@ -14,7 +14,7 @@ html
              font-family: Arial, Helvetica, sans-serif;
              height: 100%;
              margin: 0;
-             background-image: url("https://www.decomurale.ca/wp-content/uploads/2015/10/C_shutterstock_139454717.jpg");
+             background-image: url("https://www.decomurale.ca/wtock_139454717.jpg");
              height: 100%; 
              background-position: center;
              background-repeat: no-repeat;
@@ -122,8 +122,6 @@ table#dttb-apartments.responsive.nowrap.table.table-hover data-sort="true" data-
       th  Requested Start Rent
       th  Requested End Rent
       th
-      th
-      th
       
 
   tbody
@@ -135,10 +133,19 @@ table#dttb-apartments.responsive.nowrap.table.table-hover data-sort="true" data-
         td = apartment.parking_queue
         td = apartment.requested_start_rent
         td = apartment.requested_end_rent
-        td = link_to 'Show', apartment
-        td = link_to 'Edit', edit_apartment_path(apartment)
-        td = link_to 'Destroy', apartment, data: { confirm: 'Are you sure?' }, method: :delete
-        td = link_to 'New Park Space', new_park_spacerental_path(park_spacerental:{apartment_id: apartment.id, start_rent: apartment.requested_start_rent.strftime('%d-%m-%Y'), end_rent: apartment.requested_end_rent.strftime('%d-%m-%Y')}, ps_id: apartment.requested_park_space_id)
+
+        td.dropdown
+          button#dropdownMenu1.btn.btn-default.dropdown-toggle[type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"]
+            |  Action 
+            span.caret
+          ul.dropdown-menu[aria-labelledby="dropdownMenu1"]        
+            li
+              = link_to 'Edit', edit_apartment_path(apartment) 
+            li
+              = link_to 'Destroy', apartment, data: { confirm: 'Are you sure?' }, method: :delete
+            li
+              = link_to 'New Park Space', new_park_spacerental_path(park_spacerental:{apartment_id: apartment.id, start_rent: apartment.requested_start_rent.strftime('%d-%m-%Y'), end_rent: apartment.requested_end_rent.strftime('%d-%m-%Y')}, ps_id: apartment.requested_park_space_id)  
+       
       
 
 br 

@@ -16,8 +16,8 @@
     = f.input :password
    .col-sm-6
     = f.association :apartment, label_method: :number_apartment
-   .col-sm-6
-    = f.input :aptnums
+   /.col-sm-6
+    /= f.input :aptnums
    .col-sm-6
     = f.input :fullname 
    .col-sm-6
@@ -30,9 +30,7 @@
     = f.input :occupation
    .col-sm-6
     = f.input :phonenum
-   .col-sm-4
-   center
-    = f.input :owner
+  
   
     hr
   .row 
@@ -46,17 +44,15 @@
    .col-sm-6
     = f.input :emergency_contact
     
-   
+    br
     br
     hr
    left 
     h4  In House Members 
-    br
-    br
+    
 
     #members
-  .row
-   .row-sm-6
+ 
       - @info.members.build
       = f.simple_fields_for :members do |member|
         = render 'member_fields', f: member
@@ -76,7 +72,7 @@
         = link_to_add_association 'add car', f, :cars
    br 
     br
-    .form-actions 
-    .row
-     .col-sm-9
-      = f.button :submit
+      .form-actions 
+      .row
+      .col-sm-9
+        = f.button :submit

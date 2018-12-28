@@ -1,4 +1,4 @@
-.container-fluid  
+ 
 = simple_form_for(@guest) do |f|
   = f.error_notification
   = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
@@ -23,7 +23,7 @@
       = f.input :guest_out  
  
   .form-actions
-    = f.button :submit
+    button.btn-lg.btn-primary.col-3[type="submit" data-toggle="collapse" data-target="#demo"] Submit  
 
 
 
