@@ -1,4 +1,4 @@
-.container-fluid  
+ 
 = simple_form_for(@guest) do |f|
   = f.error_notification
   = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
@@ -9,8 +9,8 @@
    .col-sm-6
       = f.input :plat_number
    .col-sm-6
-      = f.association :apartment, label_method: :number_apartment
-   .col-sm-6      
+      = f.input :block
+   .col-sm-6
       = f.input :phone_number
    .col-sm-6
       = f.input :purpose
@@ -23,8 +23,8 @@
       = f.input :guest_out  
  
   .form-actions
-   
-    /= f.button :submit
+    button.btn-lg.btn-primary.col-3[type="submit" data-toggle="collapse" data-target="#demo"] Submit  
 
-    button.btn-lg.btn-primary.col-3[type="submit" data-toggle="collapse" data-target="#demo"] Submit              
-                      
+
+
+     

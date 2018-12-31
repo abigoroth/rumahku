@@ -1,10 +1,10 @@
-br
+
 doctype html
 html
   head               
         meta[name="viewport" content="width=device-width, initial-scale=1"]
         link[rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"]
-        script[src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"]
+        /script[src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"]
         script[src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"]
         
         css:
@@ -124,17 +124,23 @@ html
 
         br
         br
-        .topnav
-          a href="http://localhost:3000/pages/admin"  Home
-          a href="http://localhost:3000/infos/new"  Resident Registration
-          a href="http://localhost:3000/infos"  Resident List
-          a href="http://localhost:3000/cars"  Car
-          a href="http://localhost:3000/apartments"  Apartment
-          a.active href="http://localhost:3000/park_spaces"  Park Space Rental          
-          /a href="http://localhost:3000/floorplans"  Floor Plan
-          /a href="http://localhost:3000/clusters" Cluster
-          a href="http://localhost:3000/chat_rooms" Chat Rooms
-br
+#cssmenu 
+ ul          
+    li      
+        a href="http://localhost:3000/pages/admin"  Home
+    li
+        a href="http://localhost:3000/infos/new"  Resident Registration
+    li
+        a href="http://localhost:3000/infos"  Resident List
+    li
+        a.active href="http://localhost:3000/cars"  Car
+    li
+        a href="http://localhost:3000/apartments"  Apartment
+    li
+        a href="http://localhost:3000/park_spaces"  Park Space Rental
+    li
+        a href="http://localhost:3000/chat_rooms" Chat Rooms
+    li
          
   
 
@@ -227,6 +233,10 @@ p
                       td = link_to 'View', parkspacelog
                       td = link_to 'Edit', edit_parkspacelog_path(parkspacelog)
                       td = link_to 'Delete', parkspacelog, data: { confirm: 'Are you sure?' }, method: :delete 
+         
+              form   
+                = link_to 'New', new_parkspacelog_path(@park_space, ps_id: @park_space.id)   
+            
     #tab3.tab-pane
       p
       br
@@ -246,11 +256,11 @@ p
                         hr
                         #cars
                           - @park_space.cars.build
-                          = f.simple_fields_for :cars do |car|
-                            = render 'car_fields', f: car
-                          = f.submit
-                        
-                          input[type="button" class="btn-lg btn-primary col-3" value="Request Parking Queue" onclick="window.location.href='http://localhost:3000/park_spaces/#{params[:id]}/request_parking_queue'"]
+                            = f.simple_fields_for :cars do |car|
+                             = render 'car_fields', f: car
+                             = f.submit
+                          
+                            input[type="button" class="btn-lg btn-primary col-3" value="Request Parking Queue" onclick="window.location.href='http://localhost:3000/park_spaces/#{params[:id]}/request_parking_queue'"]
                           
                                   
                   
@@ -286,3 +296,13 @@ p
             
             
   
+ 
+
+  
+  
+  
+
+       
+
+
+     
