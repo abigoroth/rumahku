@@ -3,66 +3,80 @@
   - path= info_path(@info)
 - else
   - path= infos_path
+.container-fluid  
 = simple_form_for @info, url:path do |f|
   = f.error_notification
   = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
   
   .form-inputs
-    = f.input :email, :input_html => { :style => 'width: 30%'}
-
-    = f.input :password,  :input_html => { :cols => 1, :rows => 1, :style => 'width: 30%'}
-    br
-    = f.association :apartment, label_method: :number_apartment,  :input_html => { :cols => 1, :rows => 1, :style => 'width: 30%'}
-    br
-    = f.input :aptnums,  :input_html => { :cols => 1, :rows => 1, :style => 'width: 30%'}
-    br
-    = f.input :fullname,  :input_html => { :cols => 1, :rows => 1, :style => 'width: 30%'} 
-    br
-    = f.input :IC_number,  :input_html => { :cols => 1, :rows => 1, :style => 'width: 30%'}
-    br
-    = f.input :age,  :input_html => { :cols => 1, :rows => 1, :style => 'width: 30%'}
-    br
-    = f.input :races, collection:["Malay","Chinese","Indian","Others"],  :input_html => { :cols => 1, :rows => 1, :style => 'width: 30%'}
-    br
-    = f.input :occupation,  :input_html => { :cols => 1, :rows => 1, :style => 'width: 30%'}
-    br
-    = f.input :phonenum,  :input_html => { :cols => 1, :rows => 1, :style => 'width: 30%'}
-    br
-    = f.input :owner,  :input_html => { :cols => 1, :rows => 1, :style => 'width: 30%'}
-    
-    br
+  .row
+   .col-sm-6
+    = f.input :email
+   .col-sm-6
+    = f.input :password
+   .col-sm-6
+    = f.association :apartment, label_method: :number_apartment
+   .col-sm-6
+    = f.input :aptnums
+   .col-sm-6
+    = f.input :fullname 
+   .col-sm-6
+    = f.input :IC_number
+   .col-sm-6
+    = f.input :age
+   .col-sm-6
+    = f.input :races, collection:["Malay","Chinese","Indian","Others"]
+   .col-sm-6
+    = f.input :occupation
+   .col-sm-6
+    = f.input :phonenum
+   .col-sm-4
+   center
+    = f.input :owner
+  
     hr
-    b  Emergency Contact 
+  .row 
+  center 
+    h4  Emergency Contact 
     br
     br
-    = f.input :emergency_name,  :input_html => { :cols => 1, :rows => 1, :style => 'width: 30%'}
-    = f.input :emergency_contact,  :input_html => { :cols => 1, :rows => 1, :style => 'width: 30%'}
+  .row
+   .col-sm-6
+    = f.input :emergency_name
+   .col-sm-6
+    = f.input :emergency_contact
     
    
     br
     hr
-    b  In House Members 
+   left 
+    h4  In House Members 
     br
     br
 
     #members
+  .row
+   .row-sm-6
       - @info.members.build
       = f.simple_fields_for :members do |member|
         = render 'member_fields', f: member
       .links
         = link_to_add_association 'add member', f, :members
-    br
+   br
     hr
-    b  Cars
-    br
-    br
+   right
+    h4  Cars
+   
     #cars
+  
       - @info.cars.build
       = f.simple_fields_for :cars do |car|
         = render 'car_fields', f: car
       .links
         = link_to_add_association 'add car', f, :cars
-    br 
+   br 
     br
     .form-actions 
+    .row
+     .col-sm-9
       = f.button :submit

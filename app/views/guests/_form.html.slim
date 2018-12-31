@@ -5,17 +5,17 @@
 
 
   .form-inputs
-      = f.input :plat_number, :as => :text, :input_html => { :cols => 1, :rows => 1, :style => 'width: 30%'}
+      = f.input :plat_number,  :input_html => { :cols => 1, :rows => 1, :style => 'width: 30%'}
   
-      = f.association :apartment, label_method: :number_apartment, :input_html => { :cols => 1, :rows => 1, :style => 'width: 30%'}
+      = f.input :block,  :input_html => { :cols => 1, :rows => 1, :style => 'width: 30%'}
   
-      = f.input :phone_number, :as => :text, :input_html => { :cols => 1, :rows => 1, :style => 'width: 30%'}
+      = f.input :phone_number,  :input_html => { :cols => 1, :rows => 1, :style => 'width: 30%'}
   
-      = f.input :purpose, :as => :text, :input_html => { :cols => 1, :rows => 1, :style => 'width: 30%'}
+      = f.input :purpose, :input_html => { :cols => 1, :rows => 1, :style => 'width: 30%'}
   
-      = f.input :guest_in, :as => :datetime, :input_html => { :cols => 1, :rows => 1, :style => 'width: 30%'}
+      = f.input :guest_in, :input_html => { :cols => 1, :rows => 1, :style => 'width: 30%'}
   
-      = f.input :guest_out, :as => :datetime, :input_html => { :cols => 1, :rows => 1, :style => 'width: 30%'}  
+      = f.input :guest_out, :input_html => { :cols => 1, :rows => 1, :style => 'width: 30%'}  
 
   .form-actions
     = f.button :submit
