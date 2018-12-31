@@ -1,46 +1,46 @@
-
-    
-  css:
+css:
 
     #formContent {
       -webkit-border-radius: 10px 10px 10px 10px;
       border-radius: 10px 10px 10px 10px;
-      background: #fff;
+      background: lightblue;
       padding: 30px;
       
-      max-width: 5550px;
+      max-width: 6500px;
       position: relative;
       padding: 0px;
+      padding-top: 5px;
+      padding-right: 50px;
+      padding-left: 50px;
       -webkit-box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
       box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
       text-align: center;
     }
 
-  #css
+#cssmenu
    ul          
       li      
           a.active href="http://localhost:3000/pages/user"  Home
       li
-        a[href="http://localhost:3000/pages/user"]
-          | Home
+          a href="http://localhost:3000/guests/new"  Guest Registration
       li
-        a.active[href="http://localhost:3000/guests/new"]
-          | Guest Registration
+          a href="http://localhost:3000/cars/new"  Car
       li
           a href="http://localhost:3000/park_spaces"  Park Space Rental
       li
           a href="http://localhost:3000/chat_rooms" Chat Rooms
 
           
-  .wrapper.fadeInDown
+.wrapper.fadeInDown
       #formContent
-        h2.active
-          |  Guest Registration 
-        .fadeIn.first
-          img#icon[src="http://chittagongit.com//images/guest-icon-png/guest-icon-png-5.jpg" alt="Guard Icon"]
-        br
-        br
-        .form
-          = render 'form', guest: @guest
-        = link_to 'Back', guests_path
-        br
+        center
+          h2. Guest Registration
+          /! Icon
+          .fadeIn.first
+            img#icon alt=("Guard Icon") src="http://chittagongit.com//images/guest-icon-png/guest-icon-png-5.jpg" 
+          br/
+          br/
+          .form
+            = render 'form', guest: @guest
+          = link_to 'Back', guests_path
+          br/

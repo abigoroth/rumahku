@@ -1,103 +1,10 @@
-div style="background-color: #ffffcc" /
+br
 doctype html
 html
-  head
-        /meta content="width=device-width, initial-scale=1" name="viewport" 
-        meta[name="viewport" content="width=device-width, initial-scale=1"]
-        link[rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"]
-        script[src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"]
-        script[src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"]
-        css:
-           body {
-             margin: 0;
-             font-family: Arial, Helvetica, sans-serif;
-           }
-        
-           table {
-               font-family: arial, sans-serif;
-               border-collapse: collapse;
-               width: 100;
-           }
-          
-           td, th {
-               border: 1px solid #dddddd;
-               text-align: left;
-               padding: 30px;
-           }
-          
-           tr:nth-child(even) {
-               background-color: #dddddd;
-           }
-          
-          .center {
-               text-align: center;
-               border: 3px ;
-           }
-          
-           input[type=text], select {
-               width: 100;
-               padding: 12px 20px;
-               margin: 8px 0;
-               display: inline-block;
-               border: 1px solid #ccc;
-               border-radius: 4px;
-               box-sizing: border-box;
-           }
-          
-           input[type=submit] {
-               width: 100;
-               background-color: #4CAF50;
-               color: white;
-               padding: 14px 20px;
-               margin: 8px 0;
-               border: none;
-               border-radius: 4px;
-               cursor: pointer;
-           }
-          
-           input[type=submit]:hover {
-               background-color: #45a049;
-           }
-           .button {
-              background-color: #4CAF50;
-              border: none;
-              color: white;
-              padding: 15px 25px;
-              text-align: center;
-              font-size: 16px;
-              cursor: pointer;
-          }
-
-          .button:hover {
-              background-color: green;
-          }
-      
-#cssmenu
- ul          
-    li      
-        a href="http://localhost:3000/pages/admin"  Home
-    li
-        a href="http://localhost:3000/infos/new"  Resident Registration
-    li
-        a.active href="http://localhost:3000/infos"  Resident List
-    li
-        a href="http://localhost:3000/cars"  Car
-    li
-        a href="http://localhost:3000/apartments"  Apartment
-    li
-        a href="http://localhost:3000/park_spaces"  Park Space Rental
-    li
-        a href="http://localhost:3000/chat_rooms" Chat Rooms
-    li
-
-br
-   
-/doctype html
-  html
   head               
         meta[name="viewport" content="width=device-width, initial-scale=1"]
         link[rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"]
-        /script[src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"]
+        script[src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"]
         script[src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"]
         
         css:
@@ -217,23 +124,17 @@ br
 
         br
         br
-#cssmenu 
- ul          
-    li      
-        a href="http://localhost:3000/pages/admin"  Home
-    li
-        a href="http://localhost:3000/infos/new"  Resident Registration
-    li
-        a href="http://localhost:3000/infos"  Resident List
-    li
-        a.active href="http://localhost:3000/cars"  Car
-    li
-        a href="http://localhost:3000/apartments"  Apartment
-    li
-        a href="http://localhost:3000/park_spaces"  Park Space Rental
-    li
-        a href="http://localhost:3000/chat_rooms" Chat Rooms
-    li
+        .topnav
+          a href="http://localhost:3000/pages/admin"  Home
+          a href="http://localhost:3000/infos/new"  Resident Registration
+          a href="http://localhost:3000/infos"  Resident List
+          a href="http://localhost:3000/cars"  Car
+          a href="http://localhost:3000/apartments"  Apartment
+          a.active href="http://localhost:3000/park_spaces"  Park Space Rental          
+          /a href="http://localhost:3000/floorplans"  Floor Plan
+          /a href="http://localhost:3000/clusters" Cluster
+          a href="http://localhost:3000/chat_rooms" Chat Rooms
+br
          
   
 
@@ -283,7 +184,7 @@ p
             table.table
             table#dttb-jeng2s.responsive.nowrap.table.table-hover data-sort="true" data-source="#{url_for(format: :json)}" 
               thead     
-                  tr 
+                tr 
                   th No 
                   th Car 
                   th Start Date
@@ -292,7 +193,7 @@ p
                     
 
         
-              tbody
+                tbody
                   - @park_space.park_spacerentals.each_with_index do |psr,index| 
                     tr 
                       td = index+1
@@ -307,7 +208,7 @@ p
         table.table
             table#dttb-jeng2s.responsive.nowrap.table.table-hover data-sort="true" data-source="#{url_for(format: :json)}"
               thead              
-                    tr
+                tr
                     /th data-data="parking_no" Parking no
                     th data-data="date" Date
                     th data-data="message" Message
@@ -317,7 +218,7 @@ p
                   
                   
 
-              tbody
+                tbody
                   - @park_space.parkspacelogs.where(park_space_id: @park_space.id).each_with_index do |parkspacelog|
                     tr
                       /td = parkspacelog.parking_no
@@ -326,11 +227,6 @@ p
                       td = link_to 'View', parkspacelog
                       td = link_to 'Edit', edit_parkspacelog_path(parkspacelog)
                       td = link_to 'Delete', parkspacelog, data: { confirm: 'Are you sure?' }, method: :delete 
-              
-        -if cookies.signed['admin.id']
-              form   
-                = link_to 'New', new_parkspacelog_path(@park_space, ps_id: @park_space.id)   
-            
     #tab3.tab-pane
       p
       br
@@ -350,11 +246,11 @@ p
                         hr
                         #cars
                           - @park_space.cars.build
-                            = f.simple_fields_for :cars do |car|
-                             = render 'car_fields', f: car
-                             = f.submit
-                          
-                            input[type="button" class="btn-lg btn-primary col-3" value="Request Parking Queue" onclick="window.location.href='http://localhost:3000/park_spaces/#{params[:id]}/request_parking_queue'"]
+                          = f.simple_fields_for :cars do |car|
+                            = render 'car_fields', f: car
+                          = f.submit
+                        
+                          input[type="button" class="btn-lg btn-primary col-3" value="Request Parking Queue" onclick="window.location.href='http://localhost:3000/park_spaces/#{params[:id]}/request_parking_queue'"]
                           
                                   
                   
@@ -363,7 +259,7 @@ p
            table.table
             table#dttb-jeng2s.responsive.nowrap.table.table-hover data-sort="true" data-source="#{url_for(format: :json)}"
               thead              
-                    tr
+                tr
                     th data-data="number_apartment" Number Apartment                     
                     th data-data="requested_start_rent" Requested Start Rent
                     th data-data="requested_end_rent" Requested End Rent
@@ -373,7 +269,7 @@ p
                   
                   
 
-              tbody
+                tbody
                   - @park_space.apartments.each_with_index do |apartment|
                     tr 
                       td = apartment.number_apartment                     
@@ -390,13 +286,3 @@ p
             
             
   
- 
-
-  
-  
-  
-
-       
-
-
-     

@@ -1,22 +1,30 @@
-
+.container-fluid  
 = simple_form_for(@guest) do |f|
   = f.error_notification
   = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
 
 
   .form-inputs
-      = f.input :plat_number,  :input_html => { :cols => 1, :rows => 1, :style => 'width: 30%'}
-  
-      = f.input :block,  :input_html => { :cols => 1, :rows => 1, :style => 'width: 30%'}
-  
-      = f.input :phone_number,  :input_html => { :cols => 1, :rows => 1, :style => 'width: 30%'}
-  
-      = f.input :purpose, :input_html => { :cols => 1, :rows => 1, :style => 'width: 30%'}
-  
-      = f.input :guest_in, :input_html => { :cols => 1, :rows => 1, :style => 'width: 30%'}
-  
-      = f.input :guest_out, :input_html => { :cols => 1, :rows => 1, :style => 'width: 30%'}  
-
+  .row
+   .col-sm-6
+      = f.input :plat_number
+   .col-sm-6
+      = f.association :apartment, label_method: :number_apartment
+   .col-sm-6      
+      = f.input :phone_number
+   .col-sm-6
+      = f.input :purpose
+  br    
+  center   
+   .row-sm-8
+      = f.input :guest_in
+  br    
+   .row-sm-8
+      = f.input :guest_out  
+ 
   .form-actions
-    = f.button :submit
-    
+   
+    /= f.button :submit
+
+    button.btn-lg.btn-primary.col-3[type="submit" data-toggle="collapse" data-target="#demo"] Submit              
+                      
