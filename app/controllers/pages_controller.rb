@@ -1,4 +1,97 @@
 class PagesController < ApplicationController
-  def fixed_parking
+ 
+
+
+
+
+  #before_action -> { authenticate(['admin','user']) } #modifyuser
+  #before_action :set_page, only: [:show, :edit, :update, :destroy]
+  
+
+  
+
+  # GET /pages
+  # GET /pages.json
+  def index
+    @pages = Pages.all
+    @park_spacerentals = ParkSpacerental.all
+    @apartments = Apartment.all
+    @cars = Car.all
   end
-end
+
+  # GET /pages/1
+  # GET /pages/1.json
+  def show     
+  end
+
+ 
+
+  # GET /pages/new
+  def new
+    @page = Pages.new
+   
+  end
+
+  # GET /pages/1/edit
+  def edit
+    @page = Pages.find(params[:id])
+  end
+
+  
+
+  # POST /pages
+  # POST /pages.json
+  def create
+    @page = Pages.new(page_params)
+
+    respond_to do |format|
+      if @page.save
+        format.html { redirect_to @page, notice: 'Page was successfully created.' }
+        format.json { render :show, status: :created, location: @page }
+      else
+        format.html { render :new }
+        format.json { render json: @page.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  # PATCH/PUT /pages/1
+  # PATCH/PUT /pages/1.json
+  def update
+    #respond_to do |format|
+      if @page.update(page_params)
+        #format.html { redirect_to @page, notice: 'Page was successfully updated.' }
+        #format.json { render :show, status: :ok, location: @page }
+      else
+        format.html { render :edit }
+        format.json { render json: @page.errors, status: :unprocessable_entity }
+      end
+    #end
+  end
+
+  # DELETE /pages/1
+  # DELETE /pages/1.json
+  def destroy
+    @page.destroy
+    respond_to do |format|
+      format.html { redirect_to pages_url, notice: 'Page was successfully destroyed.' }
+      format.json { head :no_content }
+    end
+  end
+
+  
+
+  private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_page
+      @page = Pages.find(params[:id])
+      
+    end
+
+    # Never trust parameters from the scary internet, only allow the white list through.
+    def page_params
+      params.require(:page).permit(:parknum, :spacetype, :available, :info_id, :user_id, apartments_attributes: [:id, :requested_page_id, :requested_start_rent, :requested_end_rent, :_destroy], cars_attributes: [:id, :cartype, :owner, :queue, :platnum, :apartment_id, :_destroy])
+    end
+
+
+  end

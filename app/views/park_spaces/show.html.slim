@@ -125,7 +125,8 @@ html
         br
         br
 #cssmenu 
- ul          
+ ul
+  -if cookies.signed['admin.id']           
     li      
         a href="http://localhost:3000/pages/admin"  Home
     li
@@ -133,15 +134,24 @@ html
     li
         a href="http://localhost:3000/infos"  Resident List
     li
-        a.active href="http://localhost:3000/cars"  Car
+        a href="http://localhost:3000/cars"  Car
     li
-        a href="http://localhost:3000/apartments"  Apartment
+        a.active href="http://localhost:3000/apartments"  Apartment
     li
         a href="http://localhost:3000/park_spaces"  Park Space Rental
     li
         a href="http://localhost:3000/chat_rooms" Chat Rooms
     li
-         
+  -if cookies.signed['user.id']           
+    li      
+        a href="http://localhost:3000/pages/user"  Home
+    li
+        a href="http://localhost:3000/guests/new"  Guest Registration
+    li
+        a href="http://localhost:3000/park_spaces"  Park Space Rental
+    li
+        a href="http://localhost:3000/chat_rooms" Chat Rooms
+    li
   
 
 p#notice = notice
