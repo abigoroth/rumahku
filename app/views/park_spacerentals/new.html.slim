@@ -1,5 +1,56 @@
-h1 New Park Space Rental
+css:
 
-== render 'form', park_spacerental: @park_spacerental
+  #formContent {
+    -webkit-border-radius: 10px 10px 10px 10px;
+    border-radius: 10px 10px 10px 10px;
+    background: ;
+    padding: 30px;
+    
+    max-width: 6500px;
+    position: relative;
+    padding: 0px;
+    padding-top: 5px;
+    padding-right: 50px;
+    padding-left: 50px;
+    -webkit-box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+    box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+    text-align: center;
+  }
 
-= link_to 'Back', park_spaces_path
+
+#cssmenu 
+ ul          
+    li      
+        a href="http://localhost:3000/pages/admin"  Home
+    li
+        a href="http://localhost:3000/infos/new"  Resident Registration
+    li
+        a href="http://localhost:3000/infos"  Resident List
+    li
+        a href="http://localhost:3000/cars"  Car
+    li
+        a.active href="http://localhost:3000/apartments"  Apartment
+    li
+        a href="http://localhost:3000/park_spaces"  Park Space Rental
+    li
+        a href="http://localhost:3000/chat_rooms" Chat Rooms
+    li
+
+br  
+br/
+br/
+br
+
+html
+.wrapper.fadeInDown
+  #formContent
+     h2.active
+      |  New Park Space Rental
+     center
+     br/
+     .form 
+        == render 'form', park_spacerental: @park_spacerental
+    
+        = link_to 'Back', park_spaces_path
+     br/
+     br   

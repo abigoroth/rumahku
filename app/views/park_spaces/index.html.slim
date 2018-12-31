@@ -1,4 +1,4 @@
-
+div style="background-color: #ffffcc" /
 doctype html
 html
   head
@@ -89,23 +89,34 @@ html
             input[type=submit]:hover {
                 background-color: #45a049;
             }
-        br/
-        br/
-        br/
+
+        br
+        br
+        br    
+     
+        
 
   #cssmenu 
     ul          
-      li      
-          a.active href="http://localhost:3000/pages/user"  Home
-      li
-          a href="http://localhost:3000/guests/new"  Guest Registration
-      li
-          a href="http://localhost:3000/cars/new"  Car
-      li
-          a href="http://localhost:3000/park_spaces"  Park Space Rental
-      li
-          a href="http://localhost:3000/chat_rooms" Chat Rooms
+        li      
+            a href="http://localhost:3000/pages/admin"  Home
+        li
+            a href="http://localhost:3000/infos/new"  Resident Registration
+        li
+            a href="http://localhost:3000/infos"  Resident List
+        li
+            a.active href="http://localhost:3000/cars"  Car
+        li
+            a href="http://localhost:3000/apartments"  Apartment
+        li
+            a href="http://localhost:3000/park_spaces"  Park Space Rental
+        li
+            a href="http://localhost:3000/chat_rooms" Chat Rooms
+        li
+
+  br /
     
+ 
   .tabbable 
     ul.nav.nav-tabs
      li.active
@@ -119,7 +130,7 @@ html
         | JOHN 3
 
     .tab-content
-     #tab1.tab-pane.active
+      #tab1.tab-pane.active
         center
          h1 JOHN 1
    
@@ -212,7 +223,7 @@ html
         br 
         br
 
-         table#dttb-infos.responsive.nowrap.table.table-hover data-sort="true" data-source="#{url_for(format: :json)}"
+        table#dttb-infos.responsive.nowrap.table.table-hover data-sort="true" data-source="#{url_for(format: :json)}"
             thead
             tr
             th data_data="park_number" Park Number
@@ -220,8 +231,7 @@ html
             th data_data="available" Available
             
             th
-            th
-            th
+           
 
             tbody
                 - @park_spaces.each do |park_space|
@@ -233,11 +243,20 @@ html
                     tr
                         td = park_space.parknum
                         td = park_space.spacetype
-                        td = available 
+                        td = available
+                        td.dropdown
+                              button#dropdownMenu1.btn.btn-default.dropdown-toggle[type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"]
+                                    |  Action 
+                                    span.caret
+                              ul.dropdown-menu[aria-labelledby="dropdownMenu1"]        
+                                    li
+                                    = link_to 'Show', park_space
+                                    li
+                                    = link_to 'Edit', edit_park_space_path(park_space)
+                                    li
+                                    = link_to 'Destroy', park_space, data: { confirm: 'Are you sure?' }, method: :delete 
                     
-                        td = link_to 'Show', park_space
-                        td = link_to 'Edit', edit_park_space_path(park_space)
-                        td = link_to 'Destroy', park_space, data: { confirm: 'Are you sure?' }, method: :delete
+                        
 
                 /= @park_spaces.map{|x| {key: x.parknum, fillColor: (x.available? ? '80ff00' : 'ff0000'), staticState: true} }
                 css:
@@ -263,7 +282,7 @@ html
                 input[type="button" value="Fixed Parking" onclick="window.location.href='http://localhost:3000/park_spaces/fixed_parking'"]
 
 
-     #tab2.tab-pane.active
+      #tab2.tab-pane.active
         center
             h1 JOHN 2
         
@@ -356,7 +375,7 @@ html
         br 
         br
 
-            table#dttb-infos.responsive.nowrap.table.table-hover data-sort="true" data-source="#{url_for(format: :json)}"
+        table#dttb-infos.responsive.nowrap.table.table-hover data-sort="true" data-source="#{url_for(format: :json)}"
                 thead
                 tr
                 th data_data="park_number" Park Number
@@ -364,8 +383,7 @@ html
                 th data_data="available" Available
                 
                 th
-                th
-                th
+               
 
                 tbody
                     - @park_spaces.each do |park_space|
@@ -378,14 +396,21 @@ html
                             td = park_space.parknum
                             td = park_space.spacetype
                             td = available 
-                        
-                            td = link_to 'Show', park_space
-                            td = link_to 'Edit', edit_park_space_path(park_space)
-                            td = link_to 'Destroy', park_space, data: { confirm: 'Are you sure?' }, method: :delete
+                            td.dropdown
+                              button#dropdownMenu1.btn.btn-default.dropdown-toggle[type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"]
+                                    |  Action 
+                                    span.caret
+                              ul.dropdown-menu[aria-labelledby="dropdownMenu1"]        
+                                    li
+                                    = link_to 'Show', park_space
+                                    li
+                                    = link_to 'Edit', edit_park_space_path(park_space)
+                                    li
+                                    = link_to 'Destroy', park_space, data: { confirm: 'Are you sure?' }, method: :delete
+       
+                          
 
-            /= @park_spaces.map{|x| {key: x.parknum, fillColor: (x.available? ? '80ff00' : 'ff0000'), staticState: true} }
-                css:
-                    .not-available { background-color:#0F0 }
+          
 
                 javascript: 
 
@@ -407,7 +432,7 @@ html
             input[type="button" value="Fixed Parking" onclick="window.location.href='http://localhost:3000/park_spaces/fixed_parking'"]
 
 
-     #tab3.tab-pane.active
+      #tab3.tab-pane.active
         center
             h1 JOHN 3
         
@@ -508,8 +533,7 @@ html
             th data_data="available" Available
             
             th
-            th
-            th
+            
 
             tbody
                 - @park_spaces.each do |park_space|
@@ -523,10 +547,17 @@ html
                         td = park_space.spacetype
                         td = available 
                     
-                        td = link_to 'Show', park_space
-                        td = link_to 'Edit', edit_park_space_path(park_space)
-                        td = link_to 'Destroy', park_space, data: { confirm: 'Are you sure?' }, method: :delete
-
+                        td.dropdown
+                              button#dropdownMenu1.btn.btn-default.dropdown-toggle[type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"]
+                                    |  Action 
+                                    span.caret
+                              ul.dropdown-menu[aria-labelledby="dropdownMenu1"]        
+                                    li
+                                    = link_to 'Show', park_space
+                                    li
+                                    = link_to 'Edit', edit_park_space_path(park_space)
+                                    li
+                                    = link_to 'Destroy', park_space, data: { confirm: 'Are you sure?' }, method: :delete
                 /= @park_spaces.map{|x| {key: x.parknum, fillColor: (x.available? ? '80ff00' : 'ff0000'), staticState: true} }
                 css:
                     .not-available { background-color:#0F0 }

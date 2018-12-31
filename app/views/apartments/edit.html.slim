@@ -1,21 +1,47 @@
 #cssmenu
-ul
-li
-  a href="http://localhost:3000/pages/admin"  Home
-li
-  a href="http://localhost:3000/infos/new"  Resident Registration
-li
-  a href="http://localhost:3000/infos"  Resident List
-li
-  a href="http://localhost:3000/cars"  Car
-li
-  a.active href="http://localhost:3000/apartments"  Apartment
-li
-  a href="http://localhost:3000/park_spaces"  Park Space Rental
-li
-  a href="http://localhost:3000/chat_rooms"  Chat Rooms
+  ul
+    li
+      a href="http://localhost:3000/pages/admin"  Home
+    li
+      a href="http://localhost:3000/infos/new"  Resident Registration
+    li
+      a href="http://localhost:3000/infos"  Resident List
+    li
+      a href="http://localhost:3000/cars"  Car
+    li
+      a.active href="http://localhost:3000/apartments"  Apartment
+    li
+      a href="http://localhost:3000/park_spaces"  Park Space Rental
+    li
+      a href="http://localhost:3000/chat_rooms"  Chat Rooms
 br/
-h1 Editing Apartment
-= render 'form', apartment: @apartment 
-= link_to 'Show', @apartment 
-= link_to 'Back', apartments_path 
+
+css:
+
+     #formContent {
+      -webkit-border-radius: 10px 10px 10px 10px;
+      border-radius: 10px 10px 10px 10px;
+      background: lightblue;
+      padding: 30px;
+      width: 100%;
+      max-width: 6500px;
+      position: relative;
+      padding: 0px;
+      padding-top: 5px;
+      padding-right: 50px;
+      padding-left: 50px;
+      -webkit-box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+      box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+      text-align: center;
+     }
+
+#formContent
+  br
+  h1 Editing Apartment
+  = render 'form', apartment: @apartment 
+  br
+  = link_to 'Show', @apartment
+  '|
+  = link_to 'Back', apartments_path 
+  br
+  br
