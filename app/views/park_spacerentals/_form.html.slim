@@ -1,24 +1,27 @@
-.container-fluid
-=simple_form_for @park_spacerental do |f|
-  .form-inputs
-  .row 
-    .col-sm-6
-     = f.input :park_space_id, input_html: {value: params[:ps_id]}, :readonly=>true
-    /= f.association :park_space, label_method: :parknum  
-    .col-sm-6
-     = f.association :apartment, label_method: :number_apartment, :readonly=>true
-    .col-sm-6
-     = f.input :car_id, collection: Car.where(apartment_id: @park_spacerental.apartment_id), label_method: :platnum  
-    .col-sm-6
-     = f.input :start_rent, as: :string, :readonly=>true
-    .col-sm-6
-     = f.input :end_rent, as: :string, :readonly=>true
-    .col-sm-6
-     = f.input :price
-    .col-sm-6
-     = f.file_field :picture, id: :park_spacerental_picture  
-     
-    .col-sm-6
-     = f.submit
-  
+
+
+
+= params[:park_spacerental][:start_rent]
+
+= params[:park_spacerental][:car_id]
+
+= simple_form_for @park_spacerental do |f| 
  
+    = f.input :park_space_id, input_html: {value: params[:ps_id]}, :readonly=>true
+  
+    = f.input :apartment_id, input_html: {value: params[:park_spacerental][:apartment_id]}, as: :string, :readonly=>true
+   
+    = f.input :car_id,  input_html: {value: params[:park_spacerental][:car_id]}, as: :string
+
+    = f.input :start_rent, input_html: {value: params[:park_spacerental][:start_rent]}, as: :string
+  
+    = f.input :end_rent,  input_html: {value: params[:park_spacerental][:end_rent]}, as: :string
+  
+    = f.input :price
+  
+    = f.file_field :picture, id: :park_spacerental_picture  
+   
+    = f.submit
+
+
+  

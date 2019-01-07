@@ -119,23 +119,24 @@ br
         li
             a href="http://localhost:3000/chat_rooms" Chat Rooms
         li
-    
-  .tabbable 
+= link_to 'New Park space', new_park_space_path        
+ 
+.tabbable 
     ul.nav.nav-tabs
      li.active
       a[href="#tab1" data-toggle="tab"]
-        | JOHN 1
+        | J 1
      li
       a[href="#tab2" data-toggle="tab"]
-        | JOHN 2
+        | J 2
      li
       a[href="#tab3" data-toggle="tab"]
-        | JOHN 3
+        | J 3
 
     .tab-content
-     #tab1.tab-pane.active
+      #tab1.tab-pane.active
         center
-         h1 JOHN 1
+         h1 J 1
             
   
         center/
@@ -144,7 +145,7 @@ br
         img alt="S" src="http://i68.tinypic.com/j0w39z.jpg" usemap="#s" /
         map name="s" 
             area alt="1" coords="113,548,163,657" href="http://localhost:3000/park_spaces/1" shape="rect" class="not-available" parkinglot="1"/
-            area alt="2" coords="165,548,217,656" href="http://localhost:3000/park_spaces/2" shape="rect" parkinglot="2" /
+            area alt="2" coords="165,548,217,656" href="http://localhost:3000/park_spaces/2" shape="rect" parkinglot="2"/
             area alt="3" coords="235,547,296,658" href="http://localhost:3000/park_spaces/3" shape="rect" parkinglot="3"/
             area alt="4" coords="302,548,348,656" href="http://localhost:3000/park_spaces/4" shape="rect" parkinglot="4" /
             area alt="5" coords="351,548,397,656" href="http://localhost:3000/park_spaces/5" shape="rect" parkinglot="5" /
@@ -224,18 +225,19 @@ br
             area alt="69" coords="702,6,745,107" href="http://localhost:3000/park_spaces/69" shape="rect" parkinglot="69" /
             area alt="70" coords="754,7,803,107" href="http://localhost:3000/park_spaces/70" shape="rect" parkinglot="70" / 
 
+        
         br 
         br
+        
 
-        /table#dttb-infos.responsive.nowrap.table.table-hover data-sort="true" data-source="#{url_for(format: :json)}"
+        table#dttb-infos.responsive.nowrap.table.table-hover data-sort="true" data-source="#{url_for(format: :json)}"
             thead
             tr
             th data_data="park_number" Park Number
             th data_data="space_type" Space Type
             th data_data="available" Available     
             th
-            th
-            th
+           
 
             tbody
                 - @park_spaces.each do |park_space|
@@ -247,11 +249,22 @@ br
                     tr
                         td = park_space.parknum
                         td = park_space.spacetype
-                        td = available 
+                        td = available
+                        td.dropdown
+                              button#dropdownMenu1.btn.btn-default.dropdown-toggle[type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"]
+                                    |  Action 
+                                    span.caret
+                              ul.dropdown-menu[aria-labelledby="dropdownMenu1"]        
+                                    li
+                                    = link_to 'Show', park_space
+                                    li
+                                    = link_to 'Edit', edit_park_space_path(park_space)
+                                    li
+                                    = link_to 'Destroy', park_space, data: { confirm: 'Are you sure?' }, method: :delete 
                     
-                        td = link_to 'Show', park_space
-                        td = link_to 'Edit', edit_park_space_path(park_space)
-                        td = link_to 'Destroy', park_space, data: { confirm: 'Are you sure?' }, method: :delete
+                        /td = link_to 'Show', park_space
+                        /td = link_to 'Edit', edit_park_space_path(park_space)
+                        /td = link_to 'Destroy', park_space, data: { confirm: 'Are you sure?' }, method: :delete
                     
 
 
@@ -263,9 +276,9 @@ br
             /= @park_spaces.map{|x| {key: x.parknum, fillColor: (x.available? ? '80ff00' : 'ff0000'), staticState: true} }
             
              
-     #tab2.tab-pane
+    #tab2.tab-pane
         center
-            h1 JOHN 2
+            h1 J 2
 
             center/
             h3 Lower Ground Floor
@@ -356,9 +369,9 @@ br
             br 
             br
         
-     #tab3.tab-pane
+    #tab3.tab-pane
         center
-            h1 JOHN 3
+            h1 J 3
 
             center/
             h3 Lower Ground Floor
@@ -449,10 +462,10 @@ br
             br 
             br
         
-  css:
+css:
             .not-available { background-color:#0F0 }
 
- javascript: 
+javascript: 
 
                 $('img').mapster({
                 clickNavigate: true,

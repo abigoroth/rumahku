@@ -1,10 +1,15 @@
 
- 
-   
+  .form-inputs
+  .row
+   .col-sm-6
     = f.input :cartype, collection:["Normal","Electic"]
+   .col-sm-6 
     = f.input :owner
+   .col-sm-6
     = f.input :platnum
+   .col-sm-6 
     = f.association :apartment, label_method: :number_apartment
+   .col-sm-6 
     = f.hidden_field :apartment_id, value: params[:id]
     
     /= link_to_remove_association "remove car ", f

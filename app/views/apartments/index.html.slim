@@ -117,7 +117,7 @@ br
 
 table#dttb-apartments.responsive.nowrap.table.table-hover data-sort="true" data-source="#{url_for(format: :json)}"
   thead
-    tr
+      tr
       th data-data="number_apartment" Number Apartment
       th data-data="level" Level
       th data-data="apartment_type" Apartment Type
@@ -158,8 +158,10 @@ table#dttb-apartments.responsive.nowrap.table.table-hover data-sort="true" data-
 form  
 center       
      input onclick="window.location.href='http://localhost:3000/apartments/filter_parking_queue'" type="button" value="Filter Parking Queue"
-      
+     br  
+     = link_to 'New Apartment', new_apartment_path 
 br
-
- = link_to 'New Apartment', new_apartment_path,  class: "btn btn-primary"
+/center
+ /.form-actions
+    button.btn-lg.btn-primary.col-3[type="submit" data-toggle="collapse" data-target="#demo"] Submit  
  

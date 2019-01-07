@@ -79,7 +79,7 @@ class ParkSpacerentalsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def park_spacerental_params
-      params.require(:park_spacerental).permit(:park_space_id, :car_id, :start_rent, :end_rent, :price, :total, :apartment_id, :picture)
+      params.require(:park_spacerental).permit(:park_space_id, :car_id, :start_rent, :end_rent, :price, :total, :apartment_id, :picture, :requested_start_rent, :requested_end_rent, :apartment, :park_space)
     end
 end
  

@@ -93,7 +93,23 @@ html
            input[type=submit]:hover {
                background-color: #45a049;
            }
-      
+          
+            #formContent {
+            -webkit-border-radius: 10px 10px 10px 10px;
+            border-radius: 10px 10px 10px 10px;
+            background: white;
+            padding: 30px;
+            width: 100%;
+            max-width: 6500px;
+            position: relative;
+            padding: 0px;
+            padding-top: 5px;
+            padding-right: 50px;
+            padding-left: 50px;
+            -webkit-box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+            box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+            text-align: center;
+            }
        
         br
         br
@@ -173,7 +189,7 @@ p
             br
             table.table
               thead     
-                tr 
+                  tr 
                   th No 
                   th Car 
                   th Start Date
@@ -182,11 +198,11 @@ p
                     
 
         
-                tbody
+                  tbody
                   - @park_space.park_spacerentals.each_with_index do |psr,index| 
                     tr 
                       td = index+1
-                      td = psr.car.platnum
+                      td = psr.car_id
                       td = psr.start_rent
                       td = psr.end_rent
                       td = link_to "Edit", edit_park_spacerental_path(psr)
@@ -199,7 +215,7 @@ p
       br
         table.table
               thead              
-                tr
+                    tr
                     /th data-data="parking_no" Parking no
                     th data-data="date" Date
                     th data-data="message" Message
@@ -209,78 +225,86 @@ p
                   
                   
 
-                tbody
-                  - @park_space.parkspacelogs.where(park_space_id: @park_space.id).each_with_index do |parkspacelog|
-                    tr
-                      /td = parkspacelog.parking_no
-                      td = parkspacelog.date
-                      td = parkspacelog.message
-                      td = link_to 'View', parkspacelog
-                      td = link_to 'Edit', edit_parkspacelog_path(parkspacelog)
-                      td = link_to 'Delete', parkspacelog, data: { confirm: 'Are you sure?' }, method: :delete 
-         
+                    tbody
+                    - @park_space.parkspacelogs.where(park_space_id: @park_space.id).each_with_index do |parkspacelog|
+                      tr
+                        /td = parkspacelog.parking_no
+                        td = parkspacelog.date
+                        td = parkspacelog.message
+                        td = link_to 'View', parkspacelog
+                        td = link_to 'Edit', edit_parkspacelog_path(parkspacelog)
+                        td = link_to 'Delete', parkspacelog, data: { confirm: 'Are you sure?' }, method: :delete 
+          
               form  
               -if cookies.signed['admin.id']    
                 = link_to 'New', new_parkspacelog_path(@park_space, ps_id: @park_space.id)   
             
     #tab3.tab-pane
-      p
       br
-        -if cookies.signed['user.id'] 
-              -if current_user.apartment.present?
-                  =simple_form_for current_user.apartment do |f|                
-                      = render 'apartment_fields', f: f
-                      /= f.submit
-                      button.btn-lg.btn-primary.col-3[type="submit" data-toggle="collapse" data-target="#demo"] Next                
-                      
-                  #demo.collapse  
-                    =@park_space.errors.inspect if @park_space.errors.any?
-                    =simple_form_for @park_space do |f|  
-                        = f.error_notification
-                        = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
-                        h3 Car Details Form
-                        hr
-                        #cars
-                          - @park_space.cars.build
-                            = f.simple_fields_for :cars do |car|
-                             = render 'car_fields', f: car
-                             = f.submit
-                          
-                            input[type="button" class="btn-lg btn-primary col-3" value="Request Parking Queue" onclick="window.location.href='http://localhost:3000/park_spaces/#{params[:id]}/request_parking_queue'"]
-                          
-                                  
-                  
-          
-        -if cookies.signed['admin.id'] 
-           table.table
-            table#dttb-jeng2s.responsive.nowrap.table.table-hover data-sort="true" data-source="#{url_for(format: :json)}"
-              thead              
-                tr
-                    th data-data="number_apartment" Number Apartment                     
-                    th data-data="requested_start_rent" Requested Start Rent
-                    th data-data="requested_end_rent" Requested End Rent
-                    th data-data="url" data-orderable="false" data-class-name="all" data-searchable="false" class="skip-export" width="100px"
-                    th
-                    th
-                  
-                  
+      #formContent
+        p
+        br
+          -if cookies.signed['user.id'] 
+                -if current_user.apartment.present?
+                    =simple_form_for current_user.apartment do |f|                
+                        = render 'apartment_fields', f: f
+                        = f.submit
+                        /button.btn-lg.btn-primary.col-3[type="submit" data-toggle="collapse" data-target="#demo"] Submit                
+                        
+                    /#demo.collapse  
+                    
+        p
+        br
+          -if cookies.signed['user.id']
+            button.btn-lg.btn-primary.col-3[type="submit" data-toggle="collapse" data-target="#demo"] Car Form  
+            #demo.collapse 
+              =@park_space.errors.inspect if @park_space.errors.any?
+              =simple_form_for @park_space do |f|  
+                = f.error_notification
+                = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
+                h3 Car Details Form
+                hr
+                #cars
+                  - @park_space.cars.build
+                  = f.simple_fields_for :cars do |car|
+                    = render 'car_fields', f: car
+                button.btn-lg.btn-primary.col-3[type="submit" data-toggle="collapse" data-target="#demo"] Submit 
+        
+            input[type="button" class="btn-lg btn-primary col-3" value="Request Parking Queue" onclick="window.location.href='http://localhost:3000/park_spaces/#{params[:id]}/request_parking_queue'"]
+                            
+                    
+                    
+            
+          -if cookies.signed['admin.id'] 
+            table.table
+              table#dttb-jeng2s.responsive.nowrap.table.table-hover data-sort="true" data-source="#{url_for(format: :json)}"
+                thead              
+                      tr
+                      th data-data="number_apartment" Number Apartment                     
+                      th data-data="requested_start_rent" Requested Start Rent
+                      th data-data="requested_end_rent" Requested End Rent
+                      th data-data="url" data-orderable="false" data-class-name="all" data-searchable="false" class="skip-export" width="100px"
+                      th
+                      th
+                    
+                    
 
-                tbody
-                  - @park_space.apartments.each_with_index do |apartment|
-                    tr 
-                      td = apartment.number_apartment                     
-                      td = apartment.requested_start_rent
-                      td = apartment.requested_end_rent
-                      td = link_to 'View', apartment
-                      td = link_to 'Edit', edit_apartment_path(apartment)
-                      td = link_to 'Delete', apartment, data: { confirm: 'Are you sure?' }, method: :delete 
-          
-            form   
-                = link_to 'New', new_park_spacerental_path(@park_space, ps_id: @park_space.id)      
-                /input onclick="window.location.href='http://localhost:3000/park_spaces/#{params[:id]}/park_spacerentals/new'" type="button" value=("Add Rental")
-            
-            
-            
+                      tbody
+                      - @park_space.apartments.each_with_index do |apartment|
+                        tr 
+                          td = apartment.number_apartment                     
+                          td = apartment.requested_start_rent
+                          td = apartment.requested_end_rent
+                          td = link_to 'View', apartment
+                          td = link_to 'Edit', edit_apartment_path(apartment)
+                          td = link_to 'Delete', apartment, data: { confirm: 'Are you sure?' }, method: :delete 
+              
+              form   
+                  = link_to 'New', new_park_spacerental_path(@park_space, ps_id: @park_space.id)      
+                  /input onclick="window.location.href='http://localhost:3000/park_spaces/#{params[:id]}/park_spacerentals/new'" type="button" value=("Add Rental")
+              
+              
+              
 
 
 

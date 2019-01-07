@@ -156,7 +156,7 @@ table#dttb-apartments.responsive.nowrap.table.table-hover data-sort="true" data-
             li
               = link_to 'Destroy', apartment, data: { confirm: 'Are you sure?' }, method: :delete
             li
-              = link_to 'New Park Space', new_park_spacerental_path(park_spacerental:{apartment_id: apartment.id, start_rent: apartment.requested_start_rent.strftime('%d-%m-%Y'), end_rent: apartment.requested_end_rent.strftime('%d-%m-%Y')}, ps_id: apartment.requested_park_space_id)  
+              = link_to 'New Park Space', new_park_spacerental_path(park_spacerental:{apartment_id: apartment.number_apartment, start_rent: apartment.requested_start_rent.strftime('%d-%m-%Y'), end_rent: apartment.requested_end_rent.strftime('%d-%m-%Y'), car_id: apartment.cars.pluck(:platnum).first}, ps_id: apartment.requested_park_space_id)  
        
       
 

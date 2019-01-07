@@ -3,146 +3,274 @@ html
     meta[name="viewport" content="width=device-width, initial-scale=1"]
     style
       |  .collapsible { background-color: #777; margin: auto; color: white; cursor: pointer; padding: 18px; text-align: center; outline: none; font-size: 20px; border-radius: 25px; width: 500px; } .active, .collapsible:hover { align-items: center; justify-content: center; background-color: #555; border-radius: 25px; width: 500px; margin: auto; } .heads { align-items: center; justify-content: center; background-color: #777; color: white; cursor: pointer; padding: 18px; width: 100%; border: none; text-align: center; outline: none; font-size: 20px; border-radius: 25px; width: 500px; margin: auto; } .heady { align-items: center; justify-content: center; background-color: #008080; color: white; cursor: pointer; padding: 10px; width: 100%; border: none; text-align: center; outline: none; font-size: 20px; border-radius: 15px; width: 100px; margin: auto; } a, link { color: black; } .content { padding-top: 35px; padding-left: 35px; padding-bottom: 35px; display: none; overflow: hidden; background-color: #f1f1f1; border-radius: 25px; width: 500px; margin: auto; border-color: #777; border-style: solid; text-align: left; } .bodys { padding-top: 35px; padding-left: 35px; padding-bottom: 35px; background-color: #f1f1f1; border-radius: 25px; border-color: #777; border-style: solid; width: 500px; margin: auto; } body { padding-left: 35px; margin: 0; font-family: Arial, Helvetica, sans-serif; margin: auto; } .topnav { overflow: hidden; background-color: #333; margin: auto; } .topnav a { float: left; color: #f2f2f2; text-align: center; padding: 14px 16px; text-decoration: none; font-size: 17px; } .topnav a:hover { background-color: #ddd; color: black; } .topnav a.active { background-color: #4CAF50; color: white; } 
-  .topnav
-    a[href="http://localhost:3000/pages/admin"]
-      | Home
-    a[href="hhttp://localhost:3000/infos/new"]
-      | Resident Registration
-    a[href="http://localhost:3000/infos"]
-      | Resident List
-    a[href="http://localhost:3000/cars"]
-      | Car
-    a[href="http://localhost:3000/pages/main"]
-      | Apartment
-    a[href="http://localhost:3000/park_spaces"]
-      | Park Space Rental
-    a[href="http://localhost:3000/floorplans"]
-      | Floor Plan
-    a[href="http://localhost:3000/clusters"]
-      | Cluster
-  ul.nav.nav-tabs
-    li.nav-item
-      a.nav-link.active[href="#"]
-        | Resident's Information
-    li.nav-item
-      a.nav-link[href="http://localhost:3000/members/new"]
-        | Add Members
+          meta[name="viewport" content="width=device-width, initial-scale=1"]
+        link[rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"]
+        /script[src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"]
+        script[src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"]
+        link#bootstrap-css[href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet"]
+        script[src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"]
+        script[src="//code.jquery.com/jquery-1.11.1.min.js"]
+
+ 
+        css:
+           body {
+             margin: 0;
+             font-family: Arial, Helvetica, sans-serif;
+             height: 100%;
+             margin: 0;
+             background-image: url("https://www.decomurale.ca/wtock_139454717.jpg");
+             height: 100%; 
+             background-position: center;
+             background-repeat: no-repeat;
+             background-size: cover;
+             }
+          
+          .topnav {
+             overflow: hidden;
+             background-color: #333;
+           }
+          
+          .topnav a {
+             float: left;
+             color: #f2f2f2;
+             text-align: center;
+             padding: 14px 16px;
+             text-decoration: none;
+             font-size: 17px;
+           }
+          
+          .topnav a:hover {
+             background-color: #ddd;
+             color: black;
+           }
+          
+          .topnav a.active {
+             background-color: #4CAF50;
+             color: white;
+           }
+          
+           table {
+               font-family: arial, sans-serif;
+               border-collapse: collapse;
+               width: 100;
+           }
+          
+           td, th { 
+               border: 1px solid #dddddd;
+               text-align: left;
+               padding: 8px;
+           }
+          
+           tr:nth-child(even) {
+               background-color: #dddddd;
+           } 
+          
+          .center {
+               text-align: center;
+               border: 3px ;
+           }
+          
+           input[type=text], select {
+               width: 100;
+               padding: 12px 20px;
+               margin: 8px 0;
+               display: inline-block;
+               border: 1px solid #ccc;
+               border-radius: 4px;
+               box-sizing: border-box;
+           }
+          
+           input[type=submit] {
+               width: 100;
+               background-color: #4CAF50;
+               color: white;
+               padding: 14px 20px;
+               margin: 8px 0;
+               border: none;
+               border-radius: 4px;
+               cursor: pointer;
+           }
+          
+           input[type=submit]:hover {
+               background-color: #45a049;
+           }
+          
+            #formContent {
+            -webkit-border-radius: 10px 10px 10px 10px;
+            border-radius: 10px 10px 10px 10px;
+            background: lightblue;
+            padding: 30px;
+            width: 100%;
+            max-width: 6500px;
+            position: relative;
+            padding: 0px;
+            padding-top: 5px;
+            padding-right: 50px;
+            padding-left: 50px;
+            -webkit-box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+            box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+            text-align: center;
+            }
+       
+        br
+        br
+
+#cssmenu 
+  ul
+    -if cookies.signed['admin.id']           
+      li      
+          a href="http://localhost:3000/pages/admin"  Home
+      li
+          a href="http://localhost:3000/infos/new"  Resident Registration
+      li
+          a href="http://localhost:3000/infos"  Resident List
+      li
+          a href="http://localhost:3000/cars"  Car
+      li
+          a.active href="http://localhost:3000/apartments"  Apartment
+      li
+          a href="http://localhost:3000/park_spaces"  Park Space Rental
+      li
+          a href="http://localhost:3000/chat_rooms" Chat Rooms
+      li
+    
+    -if cookies.signed['user.id']           
+      li      
+          a href="http://localhost:3000/pages/user"  Home
+      li
+          a href="http://localhost:3000/guests/new"  Guest Registration
+      li
+          a href="http://localhost:3000/park_spaces"  Park Space Rental
+      li
+          a href="http://localhost:3000/chat_rooms" Chat Rooms
+      li
+    
   br
-  .heads
-    |  Resident's Details 
-  .bodys
-    p
-      strong
-        | Email :
-      = @info.email
-    p
-      strong
-        | Name :
-      = @info.fullname
-    p
-      strong
-        | IC Number :
-      = @info.IC_number
-    p
-      strong
-        | Age :
-      = @info.age
-    p
-      strong
-        | Races :
-      = @info.races
-    p
-      strong
-        | Occupation :
-      = @info.occupation
-    p
-      strong
-        | Phone Number :
-      = @info.phonenum
-    p
-      strong
-        | Apartment Number :
-      = @info&.apartment.number_apartment
-    p
-      strong
-        | Owner:
-      = @info.owner
   br
-  center
-    div
-      button.collapsible
-        | Emergency Contact
-      .content
-        p
-          strong
-            | Name :
-          = @info.emergency_name
-        p
-          strong
-            | Phone Number
-          = @info.emergency_contact
   br
-  center
-    div
-      button.collapsible
-        | View House Members
-      .content
-        p
-          strong
-            | Members in House :
-          = @info.members.count + 1
-          |  members 
-        - @info.members.each do |member|
+    /ul.nav.nav-tabs
+      li.nav-item
+        a.nav-link.active[href="#"]
+          | Resident's Information
+      li.nav-item
+        a.nav-link[href="http://localhost:3000/members/new"]
+          | Add Members
+    br
+    .heads
+      |  Resident's Details 
+    .bodys
+      p
+        strong
+          | Email :
+        = @info.email
+      p
+        strong
+          | Name :
+        = @info.fullname
+      p
+        strong
+          | IC Number :
+        = @info.IC_number
+      p
+        strong
+          | Age :
+        = @info.age
+      p
+        strong
+          | Races :
+        = @info.races
+      p
+        strong
+          | Occupation :
+        = @info.occupation
+      p
+        strong
+          | Phone Number :
+        = @info.phonenum
+      p
+        strong
+          | Apartment Number :
+        = @info&.apartment.number_apartment
+      p
+        strong
+          | Owner:
+        = @info.owner
+    br
+    center
+      div
+        button.collapsible
+          | Emergency Contact
+        .content
           p
             strong
               | Name :
-          td
-            = member.member_name
+            = @info.emergency_name
           p
             strong
-              | Age :
-          td
-            = member.member_age
+              | Phone Number
+            = @info.emergency_contact
+    br
+    center
+      div
+        button.collapsible
+          | View House Members
+        .content
           p
             strong
-              | Relationship :
-          td
-            = member.member_relationship
-          hr
-  br
-  center
-    div
-      button.collapsible
-        | Car
-      .content
-        p
-          strong
-            | Number of cars :
-          = @info.cars.count
-          |  cars 
-          - @info.cars.each do |car|
+              | Members in House :
+            = @info.members.count + 1
+            |  members 
+          - @info.members.each do |member|
             p
               strong
-                | Car Type :
+                | Name :
             td
-              = car.cartype
-        p
-          strong
-            | Owner Name :
-          td
-            = car.owner
-        p
-          strong
-            | Plat Number :
-          td
-            = car.platnum
-        hr
-  script
-    |  var coll = document.getElementsByClassName("collapsible"); var i; for (i = 0; i < coll.length; i++) { coll[i].addEventListener("click", function() { this.classList.toggle("active"); var content = this.nextElementSibling; if (content.style.display === "block") { content.style.display = "none"; } else { content.style.display = "block"; } }); } 
-  br
-  br
-  center
-    button.heady
-      = link_to 'Edit', edit_info_path(@info)
-    button.heady
-      = link_to 'Back', infos_path
+              = member.member_name
+            p
+              strong
+                | Age :
+            td
+              = member.member_age
+            p
+              strong
+                | Relationship :
+            td
+              = member.member_relationship
+            hr
+    br
+    center
+      div
+        button.collapsible
+          | Car
+        .content
+          p
+            strong
+              | Number of cars :
+            = @info.cars.count
+            |  cars 
+            - @info.cars.each do |car|
+              p
+                strong
+                  | Car Type :
+                  td
+                    = car.cartype
+              p
+                strong
+                  | Owner Name :
+                td
+                  = car.owner
+              p
+                strong
+                  | Plat Number :
+                td
+                  = car.platnum
+          hr
+    script
+      |  var coll = document.getElementsByClassName("collapsible"); var i; for (i = 0; i < coll.length; i++) { coll[i].addEventListener("click", function() { this.classList.toggle("active"); var content = this.nextElementSibling; if (content.style.display === "block") { content.style.display = "none"; } else { content.style.display = "block"; } }); } 
+    br
+    br
+    center
+      button.heady
+        = link_to 'Edit', edit_info_path(@info)
+      button.heady
+        = link_to 'Back', infos_path

@@ -452,7 +452,7 @@ html[lang="en"]
                                   td = link_to car.user&.fullname, info_path(car) 
                                   td = car.platnum 
 
-                                  input[type="button" class="btn-lg btn-primary" value="Add New Car" onclick="window.location.href='http://localhost:3000/cars/#{params[:id]}/new'"]
+                            input[type="button" class="btn-lg btn-primary" value="Add New Car" onclick="window.location.href='http://localhost:3000/cars/#{params[:id]}/new'"]
                                   /td = link_to 'Show', car
                                   
                                   /td.dropdown
@@ -498,7 +498,7 @@ html[lang="en"]
                             th End Date
                             th
                               
-                        tbody
+                        /tbody
                             - ParkSpacerental.all.each do |psr,index| 
                                 tr 
                                 /td = index+1
